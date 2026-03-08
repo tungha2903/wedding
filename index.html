@@ -3,13 +3,16 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Đình Tùng & Thu Hà Wedding</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<title>Đám Cưới Đình Tùng & Thu Hà</title>
 
 <style>
+
+@font-face{
+font-family:wedding;
+src:url("UTM-EdwardianKT.ttf");
+}
 
 html{
 scroll-behavior:smooth;
@@ -17,82 +20,83 @@ scroll-behavior:smooth;
 
 body{
 margin:0;
-font-family:'Playfair Display',serif;
-background:black;
-color:white;
+font-family:wedding;
+background:#f7f3ee;
 overflow-x:hidden;
 }
 
-section{
-min-height:100vh;
+/* HERO */
+
+.hero{
+height:100vh;
+background:url("anh1.JPG") center/cover no-repeat;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
-text-align:center;
-padding:40px 20px;
-position:relative;
+justify-content:center;
+color:white;
+text-shadow:0 4px 10px black;
 }
 
-h1{
-font-size:40px;
+.hero h1{
+font-size:60px;
+}
+
+/* SECTION */
+
+section{
+padding:80px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+/* FADE */
+
+.fade{
+opacity:0;
+transform:translateY(60px);
+transition:1.4s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:none;
+}
+
+/* STORY */
+
+.story-item{
+display:flex;
+gap:40px;
+margin-bottom:60px;
+align-items:center;
+}
+
+.story-item img{
+width:50%;
+border-radius:14px;
+}
+
+.story-text{
+width:50%;
+font-size:26px;
+line-height:1.7;
+}
+
+.story-text h3{
+font-size:38px;
 margin-bottom:10px;
 }
 
-h2{
-font-size:28px;
-margin:10px 0;
+.reverse{
+flex-direction:row-reverse;
 }
 
-p{
-font-size:19px;
-line-height:1.6;
-max-width:90%;
-}
-
-.gold{
-color:#DAA520;
-}
-
-.hero{
-background:url("anh1.JPG") center/cover no-repeat;
-}
-
-.overlay{
-position:absolute;
-top:0;
-left:0;
-right:0;
-bottom:0;
-background:rgba(0,0,0,0.45);
-}
-
-.content{
-position:relative;
-z-index:2;
-}
-
-.countdown{
-font-size:26px;
-margin-top:20px;
-}
-
-.button{
-background:#DAA520;
-color:black;
-padding:15px 28px;
-border-radius:40px;
-font-size:20px;
-text-decoration:none;
-margin-top:25px;
-display:inline-block;
-}
+/* GALLERY */
 
 .gallery{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
-margin-top:20px;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
 }
 
 .gallery img{
@@ -106,50 +110,100 @@ transition:0.4s;
 transform:scale(1.05);
 }
 
+/* LIGHTBOX */
+
 .lightbox{
 position:fixed;
 top:0;
 left:0;
-right:0;
-bottom:0;
+width:100%;
+height:100%;
 background:black;
 display:none;
 justify-content:center;
 align-items:center;
-z-index:999;
+z-index:1000;
 }
 
 .lightbox img{
-max-width:95%;
-max-height:85%;
+max-width:90%;
+max-height:90%;
 }
 
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
+/* HEART */
 
 .heart{
 position:fixed;
+font-size:18px;
 color:#DAA520;
-font-size:16px;
-animation:heartFloat 7s linear infinite;
-opacity:0.8;
+pointer-events:none;
+animation:floatUp linear forwards;
+z-index:999;
 }
 
-@keyframes heartFloat{
+@keyframes floatUp{
+
 0%{
-transform:translateY(100vh) scale(0.6);
+transform:translateY(0);
+opacity:1;
 }
+
 100%{
-transform:translateY(-10vh) scale(1);
+transform:translateY(-100vh);
+opacity:0;
 }
+
+}
+
+/* RSVP */
+
+.rsvp{
+text-align:center;
+}
+
+button{
+padding:16px 30px;
+font-size:20px;
+border:none;
+background:#DAA520;
+color:white;
+border-radius:30px;
+cursor:pointer;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+font-size:40px;
+text-align:center;
+margin-top:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.story-item{
+flex-direction:column;
+}
+
+.story-item img,
+.story-text{
+width:100%;
+}
+
+.story-text{
+font-size:22px;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
 }
 
 </style>
@@ -157,167 +211,229 @@ transform:translateY(-10vh) scale(1);
 
 <body>
 
-<audio id="music" autoplay loop>
-<source src="music.mp3" type="audio/mp3">
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
 </audio>
+
+<!-- HERO -->
 
 <section class="hero">
 
-<div class="overlay"></div>
+<h1>Đình Tùng ❤ Thu Hà</h1>
 
-<div class="content fade">
+</section>
 
-<h1 class="gold">Đình Tùng</h1>
+<!-- COUNTDOWN -->
 
-<h2>&</h2>
+<section>
 
-<h1 class="gold">Thu Hà</h1>
-
-<p>Trân trọng kính mời</p>
+<h2 style="text-align:center;font-size:40px">
+Đếm Ngược Ngày Cưới
+</h2>
 
 <div class="countdown" id="countdown"></div>
 
-<a href="#info" class="button">Mở thiệp</a>
-
-</div>
-
 </section>
 
-<section id="info">
+<!-- STORY -->
 
-<h2 class="gold fade">Lễ Thành Hôn</h2>
+<section class="fade">
 
-<p class="fade">
-Hôn lễ được cử hành tại<br>
-<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
-</p>
+<div class="story-item">
 
-<p class="fade">
-Vào lúc <b>17:30</b><br>
-Chủ Nhật 29.03.2026<br>
-(Nhằm ngày 11.02.2026 Âm Lịch)
-</p>
-
-</section>
-
-<section>
-
-<h2 class="gold fade">Phần Đãi Tiệc</h2>
-
-<p class="fade">
-Tổ chức tại<br>
-<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
-</p>
-
-<p class="fade">
-Số 9 Hồng Bàng<br>
-P. Hồng Bàng<br>
-TP. Hải Phòng
-</p>
-
-<a class="button" href="https://maps.google.com/?q=9+Hồng+Bàng+Hải+Phòng">
-Chỉ đường Google Maps
-</a>
-
-</section>
-
-<section>
-
-<h2 class="gold fade">Album Ảnh</h2>
-
-<div class="gallery fade">
-
-<img src="anh1.JPG">
 <img src="anh2.JPG">
-<img src="anh3.JPG">
-<img src="anh4.JPG">
+
+<div class="story-text">
+
+<h3>Lần đầu gặp</h3>
+
+<p>
+Chúng mình gặp nhau trong một ngày bình yên
+nhưng lại trở thành kỷ niệm đặc biệt nhất.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="story-item reverse">
+
+<img src="anh3.jpg">
+
+<div class="story-text">
+
+<h3>Tình yêu lớn dần</h3>
+
+<p>
+Qua từng ngày bên nhau
+chúng mình hiểu nhau hơn và yêu nhau nhiều hơn.
+</p>
+
+</div>
 
 </div>
 
 </section>
 
+<!-- LOCATION -->
+
 <section>
 
-<h2 class="gold fade">Xác Nhận Tham Dự</h2>
+<h2 style="text-align:center;font-size:40px">
+Thời Gian & Địa Điểm
+</h2>
 
-<a class="button" href="https://forms.gle/">
-Xác nhận tham gia
-</a>
+<p style="text-align:center;font-size:26px">
+
+⏰ 10:00 - 20/12/2026  
+<br>
+📍 Nhà Hàng Tiệc Cưới ABC – Hà Nội
+
+</p>
 
 </section>
 
-<div class="lightbox" id="lightbox">
+<!-- GALLERY -->
+
+<section class="fade">
+
+<h2 style="text-align:center;font-size:40px">
+Album Ảnh
+</h2>
+
+<div class="gallery">
+
+<img src="anh4.JPG" onclick="openImg(this)">
+<img src="anh5.JPG" onclick="openImg(this)">
+<img src="anh6.JPG" onclick="openImg(this)">
+<img src="anh7.JPG" onclick="openImg(this)">
+<img src="anh8.JPG" onclick="openImg(this)">
+<img src="anh9.jpg" onclick="openImg(this)">
+
+</div>
+
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeImg()">
 <img id="lightbox-img">
 </div>
 
+<!-- RSVP -->
+
+<section class="rsvp">
+
+<h2 style="font-size:40px">
+Xác Nhận Tham Dự
+</h2>
+
+<button onclick="alert('Cảm ơn bạn đã xác nhận tham dự ❤️')">
+Tôi sẽ tham dự
+</button>
+
+</section>
+
 <script>
 
-let target = new Date("2026-03-29 17:30");
+/* MUSIC AUTOPLAY */
 
-function updateCountdown(){
+window.addEventListener("click",()=>{
+document.getElementById("music").play()
+},{once:true})
 
-let now = new Date();
-
-let diff = target-now;
-
-let d = Math.floor(diff/1000/60/60/24);
-let h = Math.floor(diff/1000/60/60)%24;
-let m = Math.floor(diff/1000/60)%60;
-let s = Math.floor(diff/1000)%60;
-
-document.getElementById("countdown").innerHTML=
-d+" ngày "+h+" giờ "+m+" phút "+s+" giây";
-
-}
-
-setInterval(updateCountdown,1000);
-
-const faders=document.querySelectorAll(".fade");
+/* FADE */
 
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
-entry.target.classList.add("show");
+entry.target.classList.add("show")
 }
 })
 })
 
-faders.forEach(el=>observer.observe(el));
-
-const gallery=document.querySelectorAll(".gallery img");
-const lightbox=document.getElementById("lightbox");
-const lightImg=document.getElementById("lightbox-img");
-
-gallery.forEach(img=>{
-img.onclick=()=>{
-lightbox.style.display="flex";
-lightImg.src=img.src;
-}
+document.querySelectorAll(".fade").forEach(el=>{
+observer.observe(el)
 })
 
-lightbox.onclick=()=>{
-lightbox.style.display="none";
-}
+/* HEART */
 
 function createHeart(){
 
-let heart=document.createElement("div");
+if(Math.random()>0.95){
 
-heart.className="heart";
+const heart=document.createElement("div")
 
-heart.innerHTML="❤";
+heart.classList.add("heart")
 
-heart.style.left=Math.random()*100+"vw";
+heart.innerHTML="❤"
 
-document.body.appendChild(heart);
+heart.style.left=Math.random()*100+"vw"
+
+heart.style.bottom="-20px"
+
+heart.style.fontSize=(14+Math.random()*10)+"px"
+
+heart.style.animationDuration="5s"
+
+document.body.appendChild(heart)
 
 setTimeout(()=>{
-heart.remove();
-},7000);
+heart.remove()
+},6000)
 
 }
 
-setInterval(createHeart,3000);
+}
+
+window.addEventListener("scroll",createHeart)
+
+/* GALLERY */
+
+function openImg(img){
+
+document.getElementById("lightbox").style.display="flex"
+document.getElementById("lightbox-img").src=img.src
+
+}
+
+function closeImg(){
+
+document.getElementById("lightbox").style.display="none"
+
+}
+
+/* COUNTDOWN */
+
+const weddingDate=new Date("Dec 20 2026 10:00")
+
+setInterval(()=>{
+
+const now=new Date()
+
+const diff=weddingDate-now
+
+const d=Math.floor(diff/1000/60/60/24)
+const h=Math.floor(diff/1000/60/60)%24
+const m=Math.floor(diff/1000/60)%60
+const s=Math.floor(diff/1000)%60
+
+document.getElementById("countdown").innerHTML=
+d+" ngày "+h+" giờ "+m+" phút "+s+" giây"
+
+},1000)
+
+/* AUTO SCROLL */
+
+if(window.innerWidth<768){
+
+let y=0
+
+setInterval(()=>{
+y+=0.7
+window.scrollTo(0,y)
+},30)
+
+}
 
 </script>
 
