@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Đám Cưới Đình Tùng & Thu Hà</title>
+<title>Đình Tùng & Thu Hà Wedding</title>
 
 <style>
-
-@font-face{
-font-family:wedding;
-src:url("UTM-EdwardianKT.ttf");
-}
 
 html{
 scroll-behavior:smooth;
@@ -20,104 +16,132 @@ scroll-behavior:smooth;
 
 body{
 margin:0;
-font-family:Cambria,serif;
-background:#f7f3ee;
-overflow-x:hidden;
--webkit-font-smoothing:antialiased;
-}
-
-/* HERO */
-
-.hero{
-height:100vh;
-background:url("anh1.JPG") center center no-repeat;
-background-size:contain;
-background-color:black;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-text-shadow:0 4px 10px black;
+font-family:Cambria;
+background:white;
 text-align:center;
+overflow-x:hidden;
 }
 
-.hero h1{
-font-family:wedding;
+.section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:50px 20px;
+}
+
+.names{
+font-family:"UTM EdwardianKT";
 font-size:70px;
+color:#DAA520;
 }
 
-/* SECTION */
-
-section{
-padding:80px 20px;
-max-width:1100px;
-margin:auto;
+.text{
+font-size:24px;
+line-height:1.7;
 }
 
-/* FADE */
-
-.fade{
-opacity:0;
-transform:translateY(80px);
-transition:1.2s cubic-bezier(.22,.61,.36,1);
-}
-
-.fade.show{
-opacity:1;
-transform:translateY(0);
+#countdown{
+font-size:26px;
+margin-top:20px;
+color:#DAA520;
 }
 
 /* STORY */
 
 .story-item{
 display:flex;
-gap:40px;
-margin-bottom:60px;
 align-items:center;
+gap:40px;
+margin:80px auto;
+max-width:1100px;
 }
 
 .story-item img{
-width:50%;
-border-radius:14px;
+width:45%;
+border-radius:20px;
+opacity:0;
+transform:scale(1.1);
+transition:1s;
+cursor:pointer;
 }
 
 .story-text{
-width:50%;
-font-size:32px;
-line-height:1.7;
+width:45%;
+text-align:left;
+font-size:22px;
 }
 
 .story-text h3{
-font-size:46px;
-margin-bottom:10px;
+font-size:32px;
+color:#DAA520;
 }
 
 .reverse{
 flex-direction:row-reverse;
 }
 
-/* GALLERY */
+/* MOBILE */
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
+@media(max-width:768px){
+
+.story-item{
+flex-direction:column;
 }
 
-.gallery img{
+.story-item img,
+.story-text{
 width:100%;
-border-radius:10px;
-cursor:pointer;
-transition:0.4s;
+text-align:center;
 }
 
-.gallery img:hover{
-transform:scale(1.05);
+}
+
+/* BUTTON */
+
+button{
+padding:15px 40px;
+font-size:22px;
+background:#DAA520;
+border:none;
+color:white;
+border-radius:12px;
+cursor:pointer;
+}
+
+/* POPUP */
+
+#popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:10;
+}
+
+.popup-box{
+background:white;
+padding:30px;
+border-radius:15px;
+width:320px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+font-size:16px;
 }
 
 /* LIGHTBOX */
 
-.lightbox{
+#lightbox{
 position:fixed;
 top:0;
 left:0;
@@ -127,343 +151,320 @@ background:black;
 display:none;
 justify-content:center;
 align-items:center;
-z-index:1000;
 }
 
-.lightbox img{
-max-width:90%;
-max-height:90%;
+#lightbox img{
+max-width:95%;
+max-height:95%;
 }
 
 /* HEART */
 
 .heart{
 position:fixed;
-font-size:18px;
+top:-10px;
 color:#DAA520;
-pointer-events:none;
-animation:floatUp linear forwards;
-z-index:999;
+font-size:20px;
+animation:fall linear forwards;
 }
 
-@keyframes floatUp{
-
-0%{
-transform:translateY(0);
-opacity:1;
+@keyframes fall{
+to{
+transform:translateY(110vh);
 }
-
-100%{
-transform:translateY(-100vh);
-opacity:0;
-}
-
-}
-
-/* RSVP */
-
-.rsvp{
-text-align:center;
-}
-
-button{
-padding:16px 30px;
-font-size:22px;
-border:none;
-background:#DAA520;
-color:white;
-border-radius:30px;
-cursor:pointer;
-}
-
-/* COUNTDOWN */
-
-.countdown{
-font-size:42px;
-text-align:center;
-margin-top:20px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:46px;
-}
-
-.story-item{
-flex-direction:column;
-}
-
-.story-item img,
-.story-text{
-width:100%;
-}
-
-.story-text{
-font-size:26px;
-}
-
-.gallery{
-grid-template-columns:repeat(2,1fr);
-}
-
 }
 
 </style>
+
 </head>
 
 <body>
 
-<audio id="music" autoplay loop>
+<audio autoplay loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- HERO -->
+<!-- INTRO -->
 
-<section class="hero">
+<section class="section">
 
-<h1>Đình Tùng ❤ Thu Hà</h1>
+<div class="names">
+Đình Tùng & Thu Hà
+</div>
+
+<div class="text">
+Trân trọng kính mời bạn đến dự lễ cưới
+</div>
 
 </section>
 
-<!-- COUNTDOWN -->
+<!-- INFO -->
 
-<section>
+<section class="section">
 
-<h2 style="text-align:center;font-size:42px">
-Đếm Ngược Ngày Cưới
-</h2>
+<div class="text">
 
-<div class="countdown" id="countdown"></div>
+Hôn lễ được cử hành tại
+
+<br><br>
+
+<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
+
+<br><br>
+
+Vào lúc <b>17:30</b>
+
+<br>
+
+Chủ nhật
+
+<br>
+
+<b>29.03.2026</b>
+
+<br>
+
+(Nhằm ngày 11.02.2026 Âm lịch)
+
+</div>
+
+<div id="countdown"></div>
 
 </section>
 
 <!-- STORY -->
 
-<section class="fade">
+<section class="section">
 
-<div class="story-item">
+<h2 style="font-size:36px;color:#DAA520">Câu chuyện của chúng mình</h2>
 
-<img src="anh2.JPG">
-
+<div class="story-item fade">
+<img src="anh1.jpg">
 <div class="story-text">
-
 <h3>Lần đầu gặp</h3>
-
-<p>
-Chúng mình gặp nhau trong một ngày bình yên
-nhưng lại trở thành kỷ niệm đặc biệt nhất.
-</p>
-
+<p>Chúng mình gặp nhau trong một ngày bình yên.</p>
+</div>
 </div>
 
-</div>
-
-
-<div class="story-item reverse">
-
-<img src="anh3.JPG">
-
+<div class="story-item reverse fade">
+<img src="anh2.jpg">
 <div class="story-text">
+<h3>Bắt đầu trò chuyện</h3>
+<p>Những cuộc trò chuyện khiến khoảng cách dần biến mất.</p>
+</div>
+</div>
 
+<div class="story-item fade">
+<img src="anh3.jpg">
+<div class="story-text">
 <h3>Tình yêu lớn dần</h3>
-
-<p>
-Qua từng ngày bên nhau
-chúng mình hiểu nhau hơn và yêu nhau nhiều hơn.
-</p>
-
+<p>Chúng mình hiểu nhau và yêu nhau nhiều hơn.</p>
+</div>
 </div>
 
+<div class="story-item reverse fade">
+<img src="anh4.jpg">
+<div class="story-text">
+<h3>Những chuyến đi</h3>
+<p>Nhiều chuyến đi và những khoảnh khắc đáng nhớ.</p>
+</div>
 </div>
 
-</section>
+<div class="story-item fade">
+<img src="anh5.jpg">
+<div class="story-text">
+<h3>Kỷ niệm đẹp</h3>
+<p>Những khoảnh khắc giản dị nhưng ý nghĩa.</p>
+</div>
+</div>
 
-<!-- LOCATION -->
+<div class="story-item reverse fade">
+<img src="anh6.jpg">
+<div class="story-text">
+<h3>Hiểu nhau hơn</h3>
+<p>Chúng mình nhận ra người kia là một nửa của mình.</p>
+</div>
+</div>
 
-<section>
+<div class="story-item fade">
+<img src="anh7.jpg">
+<div class="story-text">
+<h3>Lời cầu hôn</h3>
+<p>Một khoảnh khắc mở ra chương mới.</p>
+</div>
+</div>
 
-<h2 style="text-align:center;font-size:42px">
-Thời Gian & Địa Điểm
-</h2>
-
-<p style="text-align:center;font-size:30px">
-
-Hôn lễ được cử hành tại
-<br><br>
-
-<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
-<br><br>
-
-Giờ làm lễ: <b>17:30</b>
-<br>
-
-CHỦ NHẬT <b>29.03.2026</b>
-<br>
-
-(NHẰM NGÀY 11.02.2026 ÂM LỊCH)
-
-</p>
-
-</section>
-
-<!-- GALLERY -->
-
-<section class="fade">
-
-<h2 style="text-align:center;font-size:42px">
-Album Ảnh
-</h2>
-
-<div class="gallery">
-
-<img src="anh4.JPG" onclick="openImg(this)">
-<img src="anh5.JPG" onclick="openImg(this)">
-<img src="anh6.JPG" onclick="openImg(this)">
-<img src="anh7.JPG" onclick="openImg(this)">
-<img src="anh8.JPG" onclick="openImg(this)">
-<img src="anh9.JPG" onclick="openImg(this)">
-
+<div class="story-item reverse fade">
+<img src="anh8.jpg">
+<div class="story-text">
+<h3>Ngày hạnh phúc</h3>
+<p>Và giờ đây chúng mình chuẩn bị về chung một nhà.</p>
+</div>
 </div>
 
 </section>
-
-<div class="lightbox" id="lightbox" onclick="closeImg()">
-<img id="lightbox-img">
-</div>
 
 <!-- RSVP -->
 
-<section class="rsvp">
+<section class="section">
 
-<h2 style="font-size:42px">
-Xác Nhận Tham Dự
-</h2>
-
-<button onclick="confirmJoin()">
-Tôi sẽ tham dự
+<button onclick="openForm()">
+Xác nhận tham dự
 </button>
 
 </section>
 
+<!-- FORM -->
+
+<div id="popup">
+
+<div class="popup-box">
+
+<h3>Xác nhận tham dự</h3>
+
+<form 
+action="https://docs.google.com/forms/d/e/1idmx7zE70ab_1ERp-8xhGivVvg4Y5wrCdJz9nGQ8A_w/formResponse"
+method="POST"
+target="hidden_iframe"
+onsubmit="sent()"
+>
+
+<input
+type="text"
+name="entry.1470591758"
+placeholder="Họ tên"
+required
+>
+
+<input
+type="number"
+name="entry.450176909"
+placeholder="Số lượng"
+required
+>
+
+<label>
+<input type="radio"
+name="entry.418138023"
+value="Tham dự"
+required>
+Tham dự
+</label>
+
+<br>
+
+<label>
+<input type="radio"
+name="entry.418138023"
+value="Không tham dự">
+Không tham dự
+</label>
+
+<br><br>
+
+<button type="submit">Gửi</button>
+
+</form>
+
+<iframe name="hidden_iframe" style="display:none"></iframe>
+
+</div>
+
+</div>
+
+<iframe name="hidden_iframe" style="display:none"></iframe>
+
+<!-- LIGHTBOX -->
+
+<div id="lightbox" onclick="closeLightbox()">
+<img id="lightimg">
+</div>
+
 <script>
-
-/* MUSIC MOBILE */
-
-document.body.addEventListener("touchstart",()=>{
-document.getElementById("music").play()
-},{once:true})
-
-/* FADE */
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show")
-}
-})
-})
-
-document.querySelectorAll(".fade").forEach(el=>{
-observer.observe(el)
-})
-
-/* HEART */
-
-function createHeart(){
-
-if(Math.random()>0.995){
-
-const heart=document.createElement("div")
-
-heart.classList.add("heart")
-
-heart.innerHTML="❤"
-
-heart.style.left=Math.random()*100+"vw"
-
-heart.style.bottom="-20px"
-
-heart.style.fontSize=(14+Math.random()*10)+"px"
-
-heart.style.animationDuration="5s"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>{
-heart.remove()
-},6000)
-
-}
-
-}
-
-window.addEventListener("scroll",createHeart)
-
-/* GALLERY */
-
-function openImg(img){
-
-const box=document.getElementById("lightbox")
-
-box.style.display="flex"
-
-const big=document.getElementById("lightbox-img")
-
-big.src=img.src
-
-big.style.transform="scale(0.8)"
-
-setTimeout(()=>{
-big.style.transform="scale(1)"
-big.style.transition="0.4s"
-},50)
-
-}
-
-function closeImg(){
-
-document.getElementById("lightbox").style.display="none"
-
-}
-
-/* RSVP */
-
-function confirmJoin(){
-
-alert("Cảm ơn bạn đã xác nhận tham dự ❤️")
-
-}
 
 /* COUNTDOWN */
 
-const weddingDate=new Date("Mar 29 2026 17:30")
+const weddingDate=new Date("Mar 29, 2026 17:30:00").getTime()
 
 setInterval(()=>{
 
-const now=new Date()
+let now=new Date().getTime()
 
-const diff=weddingDate-now
+let d=weddingDate-now
 
-const d=Math.floor(diff/1000/60/60/24)
-const h=Math.floor(diff/1000/60/60)%24
-const m=Math.floor(diff/1000/60)%60
-const s=Math.floor(diff/1000)%60
+let days=Math.floor(d/(1000*60*60*24))
+let hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
+let mins=Math.floor((d%(1000*60*60))/(1000*60))
 
 document.getElementById("countdown").innerHTML=
-d+" ngày "+h+" giờ "+m+" phút "+s+" giây"
+"Còn "+days+" ngày "+hours+" giờ "+mins+" phút"
 
 },1000)
 
-/* AUTO SCROLL */
+/* FADE */
 
-let speed=1.2
+const imgs=document.querySelectorAll(".story-item img")
 
-setInterval(()=>{
-window.scrollBy(0,speed)
-},20)
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.style.opacity=1
+e.target.style.transform="scale(1)"
+}
+})
+})
+
+imgs.forEach(img=>observer.observe(img))
+
+/* LIGHTBOX */
+
+document.querySelectorAll(".story-item img").forEach(img=>{
+img.onclick=()=>{
+document.getElementById("lightbox").style.display="flex"
+document.getElementById("lightimg").src=img.src
+}
+})
+
+function closeLightbox(){
+document.getElementById("lightbox").style.display="none"
+}
+
+/* FORM */
+
+function openForm(){
+document.getElementById("popup").style.display="flex"
+}
+
+function sent(){
+setTimeout(()=>{
+alert("Cảm ơn bạn đã phản hồi ❤️")
+document.getElementById("popup").style.display="none"
+},500)
+}
+
+/* HEART */
+
+function heart(){
+
+let h=document.createElement("div")
+
+h.className="heart"
+
+h.innerHTML="❤"
+
+h.style.left=Math.random()*100+"vw"
+
+h.style.animationDuration=6+Math.random()*4+"s"
+
+document.body.appendChild(h)
+
+setTimeout(()=>{
+h.remove()
+},9000)
+
+}
+
+setInterval(heart,2500)
 
 </script>
 
