@@ -3,106 +3,136 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Thiệp cưới Tùng & Hà</title>
+<title>Đám Cưới Đình Tùng & Thu Hà</title>
 
 <style>
 
 @font-face{
-font-family:'Edwardian';
-src:url('UTM-Edwardian.ttf');
+font-family:wedding;
+src:url("UTM-EdwardianKT.ttf");
 }
 
 body{
 margin:0;
-font-family:Cambria;
-background:white;
-color:black;
+font-family:wedding;
+background:#f7f3ee;
 overflow-x:hidden;
 }
 
-/* OPEN CARD */
-
-#cover{
-position:fixed;
-width:100%;
-height:100%;
-background:#fdf5e6;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-
-.card{
-width:280px;
-height:200px;
-background:white;
-border-radius:10px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
-transition:1s;
-transform-style:preserve-3d;
-}
-
-.card.open{
-transform:rotateY(180deg);
-}
-
-button{
-padding:12px 30px;
-border:none;
-background:#DAA520;
-color:white;
-border-radius:8px;
-margin-top:10px;
-}
-
-/* PARALLAX HERO */
+/* HERO */
 
 .hero{
 height:100vh;
-background:url(images/anh1.jpg) center/cover fixed;
+background:url("anh1.JPG") center/cover fixed;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
-text-align:center;
+justify-content:center;
 color:white;
+text-shadow:0 4px 10px black;
 }
 
-.names{
-font-family:'Edwardian';
-font-size:55px;
-color:#DAA520;
-text-shadow:2px 2px 5px black;
+.hero h1{
+font-size:50px;
 }
 
 /* SECTION */
 
-.section{
-padding:60px 20px;
-text-align:center;
+section{
+padding:70px 20px;
 }
 
-/* COUNTDOWN */
+/* FADE */
 
-.countdown{
-font-size:26px;
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:none;
+}
+
+/* ENVELOPE */
+
+.envelope{
+position:fixed;
+width:100%;
+height:100vh;
+background:#efe9e0;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+perspective:1000px;
+}
+
+.card{
+width:280px;
+height:180px;
+background:white;
+position:relative;
+cursor:pointer;
+transform-style:preserve-3d;
+transition:1s;
+}
+
+.card.open{
+transform:rotateX(180deg);
+}
+
+.flap{
+position:absolute;
+width:100%;
+height:100%;
+background:#d8d1c6;
+transform-origin:top;
+transition:1s;
+}
+
+.card.open .flap{
+transform:rotateX(-180deg);
+}
+
+.open-text{
+position:absolute;
+bottom:-40px;
+text-align:center;
+width:100%;
+font-size:24px;
+}
+
+/* STORY */
+
+.story-item{
+display:flex;
+gap:20px;
+align-items:center;
+margin-bottom:40px;
+}
+
+.story-item img{
+width:45%;
+border-radius:12px;
+}
+
+.story-text{
+width:55%;
+}
+
+.reverse{
+flex-direction:row-reverse;
 }
 
 /* GALLERY */
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(3,1fr);
 gap:10px;
-max-width:1000px;
-margin:auto;
 }
 
 .gallery img{
@@ -111,235 +141,317 @@ border-radius:10px;
 cursor:pointer;
 }
 
-/* MODAL */
+/* LIGHTBOX */
 
-#modal{
+.lightbox{
 position:fixed;
-display:none;
-justify-content:center;
-align-items:center;
-background:rgba(0,0,0,0.9);
 top:0;
 left:0;
 width:100%;
 height:100%;
+background:black;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:1000;
 }
 
-#modal img{
+.lightbox img{
 max-width:90%;
-border-radius:10px;
+max-height:90%;
 }
 
-/* RSVP */
+/* GOLD HEART */
 
-.rsvp input{
-padding:10px;
-margin:8px;
-width:250px;
-}
-
-/* FLOWERS */
-
-.flower{
+.heart{
 position:fixed;
-top:-10px;
-animation:fall linear infinite;
+font-size:20px;
+color:#d4af37;
+pointer-events:none;
+animation:floatUp linear forwards;
+z-index:999;
+text-shadow:0 0 6px rgba(212,175,55,0.7);
 }
 
-@keyframes fall{
-to{transform:translateY(110vh);}
+@keyframes floatUp{
+
+0%{
+transform:translateY(0) scale(0.8);
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) scale(1.4);
+opacity:0;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+.story-item{
+flex-direction:column;
+}
+
+.story-item img,
+.story-text{
+width:100%;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div id="cover">
-
-<div class="card" id="card">
-
-<h3>💌 Thiệp cưới</h3>
-
-<p>
-Nguyễn Đình Tùng<br>
-và<br>
-Nguyễn Thị Thu Hà
-</p>
-
-<button onclick="openCard()">Mở thiệp</button>
-
-</div>
-
-</div>
+<!-- MUSIC -->
 
 <audio id="music" loop>
-
 <source src="music.mp3" type="audio/mpeg">
-
 </audio>
+
+<!-- ENVELOPE -->
+
+<div class="envelope" id="envelope">
+
+<div class="card" onclick="openInvite()" id="card">
+
+<div class="flap"></div>
+
+<div class="open-text">
+Mở Thiệp Cưới
+</div>
+
+</div>
+
+</div>
+
+<!-- HERO -->
 
 <section class="hero">
 
-<div class="names">
+<h1>Đình Tùng ❤ Thu Hà</h1>
 
-Nguyễn Đình Tùng<br>
-và<br>
-Nguyễn Thị Thu Hà
+</section>
+
+<!-- STORY -->
+
+<section class="fade">
+
+<h2 style="text-align:center">Câu Chuyện Tình Yêu</h2>
+
+<div class="story-item">
+
+<img src="anh2.JPG">
+
+<div class="story-text">
+
+<h3>Lần đầu gặp</h3>
+
+<p>
+Chúng mình gặp nhau trong một ngày bình yên,
+nhưng lại trở thành kỷ niệm đặc biệt nhất.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="story-item reverse">
+
+<img src="anh3.jpg">
+
+<div class="story-text">
+
+<h3>Tình yêu lớn dần</h3>
+
+<p>
+Qua từng ngày bên nhau,
+chúng mình hiểu nhau hơn và yêu nhau nhiều hơn.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="story-item">
+
+<img src="anh4.JPG">
+
+<div class="story-text">
+
+<h3>Lời cầu hôn</h3>
+
+<p>
+Một ngày đặc biệt khi anh hỏi:
+Em có muốn cùng anh đi hết cuộc đời không?
+</p>
+
+</div>
 
 </div>
 
 </section>
 
-<section class="section">
+<!-- GALLERY -->
 
-<h2>Trân trọng kính mời</h2>
+<section class="fade">
 
-<p>Đến tham dự lễ cưới của chúng tôi</p>
-
-</section>
-
-<section class="section">
-
-<h2>Đếm ngược ngày cưới</h2>
-
-<div id="countdown" class="countdown"></div>
-
-</section>
-
-<section class="section">
-
-<h2>Album ảnh cưới</h2>
+<h2 style="text-align:center">Album Ảnh Cưới</h2>
 
 <div class="gallery">
 
-<img src="images/anh1.jpg" onclick="zoom(this)">
-<img src="images/anh2.jpg" onclick="zoom(this)">
-<img src="images/anh3.jpg" onclick="zoom(this)">
-<img src="images/anh4.jpg" onclick="zoom(this)">
-<img src="images/anh5.jpg" onclick="zoom(this)">
-<img src="images/anh6.jpg" onclick="zoom(this)">
-<img src="images/anh7.jpg" onclick="zoom(this)">
-<img src="images/anh8.jpg" onclick="zoom(this)">
-<img src="images/anh9.jpg" onclick="zoom(this)">
+<img src="anh5.JPG" onclick="openImg(this)">
+<img src="anh6.JPG" onclick="openImg(this)">
+<img src="anh7.JPG" onclick="openImg(this)">
+<img src="anh8.JPG" onclick="openImg(this)">
+<img src="anh9.jpg" onclick="openImg(this)">
 
 </div>
 
 </section>
 
-<div id="modal" onclick="closeImg()">
-<img id="modalImg">
+<div class="lightbox" id="lightbox" onclick="closeImg()">
+<img id="lightbox-img">
 </div>
-
-<section class="section">
-
-<h2>Địa điểm tổ chức</h2>
-
-<iframe
-width="90%"
-height="300"
-style="border:0"
-loading="lazy"
-allowfullscreen
-src="https://maps.google.com/maps?q=ha%20noi&t=&z=13&ie=UTF8&iwloc=&output=embed">
-</iframe>
-
-</section>
-
-<section class="section">
-
-<h2>Xác nhận tham dự</h2>
-
-<form action="https://formspree.io/f/yourID" method="POST">
-
-<input name="name" placeholder="Tên của bạn"><br>
-
-<input name="guest" placeholder="Số người tham dự"><br>
-
-<button type="submit">Xác nhận</button>
-
-</form>
-
-</section>
 
 <script>
 
-/* open card */
+/* OPEN INVITE */
 
-function openCard(){
+function openInvite(){
 
 document.getElementById("card").classList.add("open")
 
 setTimeout(()=>{
 
-document.getElementById("cover").style.display="none"
+document.getElementById("envelope").style.display="none"
 
 document.getElementById("music").play()
+
+startAutoScroll()
+
+startMusicHearts()
 
 },1000)
 
 }
 
-/* countdown */
+/* FADE */
 
-var date=new Date("March 29, 2026 17:30:00").getTime()
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+})
 
-setInterval(function(){
+document.querySelectorAll(".fade").forEach(el=>{
+observer.observe(el)
+})
 
-var now=new Date().getTime()
+/* GALLERY */
 
-var d=date-now
+function openImg(img){
 
-var days=Math.floor(d/(1000*60*60*24))
-
-var hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
-
-var mins=Math.floor((d%(1000*60*60))/(1000*60))
-
-document.getElementById("countdown").innerHTML=
-
-days+" ngày "+hours+" giờ "+mins+" phút"
-
-},1000)
-
-/* zoom gallery */
-
-function zoom(img){
-
-document.getElementById("modal").style.display="flex"
-
-document.getElementById("modalImg").src=img.src
+document.getElementById("lightbox").style.display="flex"
+document.getElementById("lightbox-img").src=img.src
 
 }
 
 function closeImg(){
 
-document.getElementById("modal").style.display="none"
+document.getElementById("lightbox").style.display="none"
 
 }
 
-/* flower */
+/* HEART */
 
-function flower(){
+function createHeart(){
 
-const f=document.createElement("div")
+const heart=document.createElement("div")
 
-f.className="flower"
+heart.classList.add("heart")
 
-f.innerHTML="🌸"
+heart.innerHTML="❤"
 
-f.style.left=Math.random()*100+"vw"
+heart.style.left=Math.random()*100+"vw"
 
-f.style.animationDuration=(Math.random()*5+5)+"s"
+heart.style.bottom="-20px"
 
-document.body.appendChild(f)
+heart.style.fontSize=(16+Math.random()*20)+"px"
 
-setTimeout(()=>{f.remove()},8000)
+heart.style.animationDuration=(4+Math.random()*4)+"s"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+
+heart.remove()
+
+},8000)
 
 }
 
-setInterval(flower,500)
+/* HEART ON SCROLL */
+
+window.addEventListener("scroll",()=>{
+
+for(let i=0;i<2;i++){
+createHeart()
+}
+
+})
+
+/* HEART FOLLOW MUSIC */
+
+function startMusicHearts(){
+
+setInterval(()=>{
+
+createHeart()
+
+},500)
+
+}
+
+/* AUTO SCROLL MOBILE */
+
+function startAutoScroll(){
+
+if(window.innerWidth<768){
+
+let y=0
+
+let scroll=setInterval(()=>{
+
+y+=0.4
+
+window.scrollTo(0,y)
+
+if(y>document.body.scrollHeight){
+clearInterval(scroll)
+}
+
+},30)
+
+}
+
+}
 
 </script>
 
