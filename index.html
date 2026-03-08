@@ -20,25 +20,30 @@ scroll-behavior:smooth;
 
 body{
 margin:0;
-font-family:wedding;
+font-family:Cambria,serif;
 background:#f7f3ee;
 overflow-x:hidden;
+-webkit-font-smoothing:antialiased;
 }
 
 /* HERO */
 
 .hero{
 height:100vh;
-background:url("anh1.JPG") center/cover no-repeat;
+background:url("anh1.JPG") center center no-repeat;
+background-size:contain;
+background-color:black;
 display:flex;
 align-items:center;
 justify-content:center;
 color:white;
 text-shadow:0 4px 10px black;
+text-align:center;
 }
 
 .hero h1{
-font-size:60px;
+font-family:wedding;
+font-size:70px;
 }
 
 /* SECTION */
@@ -53,13 +58,13 @@ margin:auto;
 
 .fade{
 opacity:0;
-transform:translateY(60px);
-transition:1.4s ease;
+transform:translateY(80px);
+transition:1.2s cubic-bezier(.22,.61,.36,1);
 }
 
 .fade.show{
 opacity:1;
-transform:none;
+transform:translateY(0);
 }
 
 /* STORY */
@@ -78,12 +83,12 @@ border-radius:14px;
 
 .story-text{
 width:50%;
-font-size:26px;
+font-size:32px;
 line-height:1.7;
 }
 
 .story-text h3{
-font-size:38px;
+font-size:46px;
 margin-bottom:10px;
 }
 
@@ -163,7 +168,7 @@ text-align:center;
 
 button{
 padding:16px 30px;
-font-size:20px;
+font-size:22px;
 border:none;
 background:#DAA520;
 color:white;
@@ -174,7 +179,7 @@ cursor:pointer;
 /* COUNTDOWN */
 
 .countdown{
-font-size:40px;
+font-size:42px;
 text-align:center;
 margin-top:20px;
 }
@@ -184,7 +189,7 @@ margin-top:20px;
 @media(max-width:768px){
 
 .hero h1{
-font-size:42px;
+font-size:46px;
 }
 
 .story-item{
@@ -197,7 +202,7 @@ width:100%;
 }
 
 .story-text{
-font-size:22px;
+font-size:26px;
 }
 
 .gallery{
@@ -211,7 +216,7 @@ grid-template-columns:repeat(2,1fr);
 
 <body>
 
-<audio id="music" loop>
+<audio id="music" autoplay loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -227,7 +232,7 @@ grid-template-columns:repeat(2,1fr);
 
 <section>
 
-<h2 style="text-align:center;font-size:40px">
+<h2 style="text-align:center;font-size:42px">
 Đếm Ngược Ngày Cưới
 </h2>
 
@@ -259,7 +264,7 @@ nhưng lại trở thành kỷ niệm đặc biệt nhất.
 
 <div class="story-item reverse">
 
-<img src="anh3.jpg">
+<img src="anh3.JPG">
 
 <div class="story-text">
 
@@ -280,15 +285,25 @@ chúng mình hiểu nhau hơn và yêu nhau nhiều hơn.
 
 <section>
 
-<h2 style="text-align:center;font-size:40px">
+<h2 style="text-align:center;font-size:42px">
 Thời Gian & Địa Điểm
 </h2>
 
-<p style="text-align:center;font-size:26px">
+<p style="text-align:center;font-size:30px">
 
-⏰ 10:00 - 20/12/2026  
+Hôn lễ được cử hành tại
+<br><br>
+
+<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
+<br><br>
+
+Giờ làm lễ: <b>17:30</b>
 <br>
-📍 Nhà Hàng Tiệc Cưới ABC – Hà Nội
+
+CHỦ NHẬT <b>29.03.2026</b>
+<br>
+
+(NHẰM NGÀY 11.02.2026 ÂM LỊCH)
 
 </p>
 
@@ -298,7 +313,7 @@ Thời Gian & Địa Điểm
 
 <section class="fade">
 
-<h2 style="text-align:center;font-size:40px">
+<h2 style="text-align:center;font-size:42px">
 Album Ảnh
 </h2>
 
@@ -309,7 +324,7 @@ Album Ảnh
 <img src="anh6.JPG" onclick="openImg(this)">
 <img src="anh7.JPG" onclick="openImg(this)">
 <img src="anh8.JPG" onclick="openImg(this)">
-<img src="anh9.jpg" onclick="openImg(this)">
+<img src="anh9.JPG" onclick="openImg(this)">
 
 </div>
 
@@ -323,11 +338,11 @@ Album Ảnh
 
 <section class="rsvp">
 
-<h2 style="font-size:40px">
+<h2 style="font-size:42px">
 Xác Nhận Tham Dự
 </h2>
 
-<button onclick="alert('Cảm ơn bạn đã xác nhận tham dự ❤️')">
+<button onclick="confirmJoin()">
 Tôi sẽ tham dự
 </button>
 
@@ -335,9 +350,9 @@ Tôi sẽ tham dự
 
 <script>
 
-/* MUSIC AUTOPLAY */
+/* MUSIC MOBILE */
 
-window.addEventListener("click",()=>{
+document.body.addEventListener("touchstart",()=>{
 document.getElementById("music").play()
 },{once:true})
 
@@ -359,7 +374,7 @@ observer.observe(el)
 
 function createHeart(){
 
-if(Math.random()>0.95){
+if(Math.random()>0.995){
 
 const heart=document.createElement("div")
 
@@ -391,8 +406,20 @@ window.addEventListener("scroll",createHeart)
 
 function openImg(img){
 
-document.getElementById("lightbox").style.display="flex"
-document.getElementById("lightbox-img").src=img.src
+const box=document.getElementById("lightbox")
+
+box.style.display="flex"
+
+const big=document.getElementById("lightbox-img")
+
+big.src=img.src
+
+big.style.transform="scale(0.8)"
+
+setTimeout(()=>{
+big.style.transform="scale(1)"
+big.style.transition="0.4s"
+},50)
 
 }
 
@@ -402,9 +429,17 @@ document.getElementById("lightbox").style.display="none"
 
 }
 
+/* RSVP */
+
+function confirmJoin(){
+
+alert("Cảm ơn bạn đã xác nhận tham dự ❤️")
+
+}
+
 /* COUNTDOWN */
 
-const weddingDate=new Date("Dec 20 2026 10:00")
+const weddingDate=new Date("Mar 29 2026 17:30")
 
 setInterval(()=>{
 
@@ -424,16 +459,11 @@ d+" ngày "+h+" giờ "+m+" phút "+s+" giây"
 
 /* AUTO SCROLL */
 
-if(window.innerWidth<768){
-
-let y=0
+let speed=1.2
 
 setInterval(()=>{
-y+=0.7
-window.scrollTo(0,y)
-},30)
-
-}
+window.scrollBy(0,speed)
+},20)
 
 </script>
 
