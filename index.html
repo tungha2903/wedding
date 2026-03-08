@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Đình Tùng ❤ Thu Hà</title>
 
 <style>
 
-/* FONT */
+/* ================= FONT ================= */
 
 @font-face{
 font-family:"Edwardian";
 src:url("UTM-EdwardianKT.ttf") format("truetype");
 }
 
-/* BODY */
-
 body{
 margin:0;
-font-family:Cambria;
+font-family:Cambria, serif;
 background:#fffdf7;
 color:#333;
 overflow-x:hidden;
 }
 
-/* SECTION */
+/* ================= SECTION ================= */
 
 section{
 padding:80px 8%;
 text-align:center;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
 height:90vh;
@@ -49,6 +44,8 @@ background:linear-gradient(#fff7e6,#ffffff);
 font-family:"Edwardian";
 font-size:80px;
 color:#c79a5b;
+white-space:nowrap;
+
 opacity:0;
 transform:translateY(40px);
 animation:fadeName 3s forwards;
@@ -57,6 +54,7 @@ animation:fadeName 3s forwards;
 .date{
 font-size:20px;
 margin-top:10px;
+
 opacity:0;
 animation:fadeDate 3s forwards;
 animation-delay:1.5s;
@@ -72,7 +70,7 @@ animation-delay:1.5s;
 100%{opacity:1;}
 }
 
-/* STORY */
+/* ================= STORY ================= */
 
 .story{
 display:grid;
@@ -83,39 +81,61 @@ align-items:center;
 
 .story img{
 width:100%;
-height:400px;
-object-fit:cover;
+height:auto;
 border-radius:10px;
 }
 
-/* GALLERY */
+/* ================= GALLERY (Pinterest) ================= */
 
 .gallery{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
+column-count:3;
+column-gap:12px;
 }
 
 .gallery img{
+
 width:100%;
-height:250px;
-object-fit:cover;
-border-radius:8px;
+margin-bottom:12px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:transform .5s ease;
+
+animation:floatImg 8s ease-in-out infinite;
+
 }
 
-/* WEDDING INFO */
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+@keyframes floatImg{
+0%{transform:translateY(0)}
+50%{transform:translateY(-6px)}
+100%{transform:translateY(0)}
+}
+
+/* ================= WEDDING INFO ================= */
 
 .wedding-info{
 background:#fff7e6;
 }
 
 .info-box{
+
 max-width:600px;
 margin:auto;
+
 background:white;
+
 padding:40px;
+
 border-radius:12px;
+
 box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
 }
 
 .info-box h3{
@@ -124,25 +144,7 @@ color:#c79a5b;
 margin:15px 0;
 }
 
-.info-box .time{
-font-size:20px;
-margin-top:10px;
-}
-
-.info-box .date{
-font-size:22px;
-font-weight:bold;
-margin-top:10px;
-opacity:1;
-animation:none;
-}
-
-.info-box .lunar{
-font-size:16px;
-color:#777;
-}
-
-/* BUTTON */
+/* ================= BUTTON ================= */
 
 button{
 background:#c79a5b;
@@ -155,15 +157,7 @@ border-radius:6px;
 margin:10px;
 }
 
-/* INPUT */
-
-input{
-padding:10px;
-margin:8px;
-width:220px;
-}
-
-/* MUSIC BUTTON */
+/* ================= MUSIC BUTTON ================= */
 
 #musicBtn{
 position:fixed;
@@ -176,56 +170,95 @@ padding:12px;
 border-radius:50%;
 font-size:18px;
 cursor:pointer;
+z-index:999;
 }
 
-/* HEART */
+/* ================= HEART ================= */
 
 .heart{
+
 position:fixed;
 bottom:-20px;
-font-size:22px;
+
 color:#d4af37;
-animation:float 8s linear infinite;
+
+pointer-events:none;
+
+animation:floatHeart 8s linear;
+
 }
 
-@keyframes float{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-110vh);opacity:0;}
+@keyframes floatHeart{
+
+0%{
+transform:translateY(0);
+opacity:1;
 }
 
-/* MOBILE */
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+
+}
+
+/* ================= LIGHTBOX ================= */
+
+#lightbox{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.85);
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+
+}
+
+#lightbox img{
+
+max-width:90%;
+max-height:90%;
+
+border-radius:10px;
+
+}
+
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
 .couple-name{
-font-size:46px;
+font-size:36px;
+white-space:nowrap;
 }
 
 .story{
 grid-template-columns:1fr;
 }
 
-.story img{
-height:260px;
-}
-
 .gallery{
-grid-template-columns:repeat(2,1fr);
-}
-
-.gallery img{
-height:170px;
+column-count:2;
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- MUSIC -->
+<!-- ================= MUSIC ================= -->
 
 <audio id="bgmusic" loop>
 <source src="music.mp3" type="audio/mpeg">
@@ -233,7 +266,7 @@ height:170px;
 
 <button id="musicBtn">🔊</button>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
@@ -247,20 +280,24 @@ Save the Date • 29.03.2026
 
 </section>
 
-<!-- STORY 1 -->
+<!-- ================= STORY ================= -->
 
 <section class="story">
 
 <div>
 
-<h2>Lần đầu gặp gỡ</h2>
+<h2>Câu chuyện của chúng mình</h2>
 
 <p>
-Chúng mình gặp nhau vào một ngày rất bình thường.
-Không ai nghĩ rằng cuộc gặp gỡ ấy lại trở thành
-khởi đầu của một hành trình dài.
-Từ những câu chuyện nhỏ, tình cảm dần lớn lên
-một cách tự nhiên và ấm áp.
+
+Một cuộc gặp gỡ tình cờ đã trở thành
+khởi đầu cho hành trình yêu thương.
+
+Qua những tháng ngày bên nhau,
+chúng mình nhận ra rằng
+hạnh phúc đơn giản chỉ là
+được nắm tay nhau đi hết cuộc đời.
+
 </p>
 
 </div>
@@ -269,7 +306,7 @@ một cách tự nhiên và ấm áp.
 
 </section>
 
-<!-- GALLERY -->
+<!-- ================= GALLERY ================= -->
 
 <section>
 
@@ -283,68 +320,7 @@ một cách tự nhiên và ấm áp.
 <img src="anh5.jpg">
 <img src="anh6.jpg">
 <img src="anh7.jpg">
-
-</div>
-
-</section>
-
-<!-- WEDDING INFO -->
-
-<section class="wedding-info">
-
-<h2>Thông Tin Hôn Lễ</h2>
-
-<div class="info-box">
-
-<p>Hôn lễ được cử hành tại</p>
-
-<h3>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</h3>
-
-<p class="time">
-Vào lúc <strong>17:30</strong>
-</p>
-
-<p class="date">
-Chủ Nhật • 29.03.2026
-</p>
-
-<p class="lunar">
-(Nhằm ngày 11.02.2026 Âm lịch)
-</p>
-
-</div>
-
-</section>
-
-<!-- STORY 2 -->
-
-<section class="story">
-
 <img src="anh8.jpg">
-
-<div>
-
-<h2>Những năm tháng bên nhau</h2>
-
-<p>
-Chúng mình đã cùng nhau đi qua
-những ngày vui và cả những lúc khó khăn.
-Mỗi kỷ niệm nhỏ đều trở thành một mảnh ghép
-tạo nên câu chuyện tình yêu của hai đứa.
-</p>
-
-</div>
-
-</section>
-
-<!-- ALBUM -->
-
-<section>
-
-<h2>Album cưới</h2>
-
-<div class="gallery">
-
 <img src="anh9.jpg">
 <img src="anh10.jpg">
 <img src="anh11.jpg">
@@ -372,7 +348,29 @@ tạo nên câu chuyện tình yêu của hai đứa.
 
 </section>
 
-<!-- RSVP -->
+<!-- ================= WEDDING INFO ================= -->
+
+<section class="wedding-info">
+
+<h2>Thông Tin Hôn Lễ</h2>
+
+<div class="info-box">
+
+<p>Hôn lễ được cử hành tại</p>
+
+<h3>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</h3>
+
+<p>Vào lúc <strong>17:30</strong></p>
+
+<p><strong>Chủ Nhật • 29.03.2026</strong></p>
+
+<p style="color:#777">(Nhằm ngày 11.02.2026 Âm lịch)</p>
+
+</div>
+
+</section>
+
+<!-- ================= RSVP ================= -->
 
 <section>
 
@@ -397,20 +395,64 @@ Cảm ơn bạn đã phản hồi ❤️
 
 </section>
 
+<!-- ================= LIGHTBOX ================= -->
+
+<div id="lightbox">
+<img id="lightbox-img">
+</div>
+
 <script>
 
-/* HEARTS */
+/* ================= HEARTS ================= */
 
-for(let i=0;i<30;i++){
+setInterval(()=>{
+
 let heart=document.createElement("div")
+
 heart.className="heart"
+
 heart.innerHTML="❤"
+
 heart.style.left=Math.random()*100+"%"
-heart.style.animationDuration=(6+Math.random()*6)+"s"
+
+heart.style.fontSize=(16+Math.random()*20)+"px"
+
+heart.style.animationDuration=(5+Math.random()*5)+"s"
+
 document.body.appendChild(heart)
+
+setTimeout(()=>{
+
+heart.remove()
+
+},8000)
+
+},500)
+
+/* ================= LIGHTBOX ================= */
+
+const images=document.querySelectorAll(".gallery img")
+const lightbox=document.getElementById("lightbox")
+const lightboxImg=document.getElementById("lightbox-img")
+
+images.forEach(img=>{
+
+img.onclick=function(){
+
+lightbox.style.display="flex"
+lightboxImg.src=this.src
+
 }
 
-/* RSVP */
+})
+
+lightbox.onclick=function(){
+
+lightbox.style.display="none"
+
+}
+
+/* ================= RSVP ================= */
 
 function showForm(){
 document.getElementById("form").style.display="block"
@@ -422,7 +464,7 @@ document.getElementById("form").style.display="none"
 document.getElementById("thanks").style.display="block"
 }
 
-/* MUSIC */
+/* ================= MUSIC ================= */
 
 let music=document.getElementById("bgmusic")
 let btn=document.getElementById("musicBtn")
@@ -432,6 +474,7 @@ music.play()
 },{once:true})
 
 btn.onclick=function(){
+
 if(music.paused){
 music.play()
 btn.innerHTML="🔊"
@@ -439,6 +482,7 @@ btn.innerHTML="🔊"
 music.pause()
 btn.innerHTML="🔇"
 }
+
 }
 
 </script>
