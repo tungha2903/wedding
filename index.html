@@ -7,7 +7,7 @@
 
 <style>
 
-/* ================= FONT ================= */
+/* FONT */
 
 @font-face{
 font-family:"Edwardian";
@@ -16,20 +16,20 @@ src:url("UTM-EdwardianKT.ttf") format("truetype");
 
 body{
 margin:0;
-font-family:Cambria, serif;
+font-family:Cambria,serif;
 background:#fffdf7;
 color:#333;
 overflow-x:hidden;
 }
 
-/* ================= SECTION ================= */
+/* SECTION */
 
 section{
 padding:80px 8%;
 text-align:center;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
 height:90vh;
@@ -45,7 +45,6 @@ font-family:"Edwardian";
 font-size:80px;
 color:#c79a5b;
 white-space:nowrap;
-
 opacity:0;
 transform:translateY(40px);
 animation:fadeName 3s forwards;
@@ -53,8 +52,6 @@ animation:fadeName 3s forwards;
 
 .date{
 font-size:20px;
-margin-top:10px;
-
 opacity:0;
 animation:fadeDate 3s forwards;
 animation-delay:1.5s;
@@ -70,22 +67,37 @@ animation-delay:1.5s;
 100%{opacity:1;}
 }
 
-/* ================= STORY ================= */
+/* STORY */
 
 .story{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:40px;
+gap:50px;
 align-items:center;
+margin-bottom:60px;
 }
 
 .story img{
 width:100%;
-height:auto;
 border-radius:10px;
+transform:translateY(0);
+transition:transform .2s;
 }
 
-/* ================= GALLERY (Pinterest) ================= */
+/* TEXT FADE */
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* GALLERY */
 
 .gallery{
 column-count:3;
@@ -93,58 +105,37 @@ column-gap:12px;
 }
 
 .gallery img{
-
 width:100%;
 margin-bottom:12px;
-
 border-radius:10px;
-
 cursor:pointer;
-
-transition:transform .5s ease;
-
-animation:floatImg 8s ease-in-out infinite;
-
+transition:transform .5s;
 }
 
 .gallery img:hover{
 transform:scale(1.05);
 }
 
-@keyframes floatImg{
-0%{transform:translateY(0)}
-50%{transform:translateY(-6px)}
-100%{transform:translateY(0)}
-}
-
-/* ================= WEDDING INFO ================= */
+/* WEDDING INFO */
 
 .wedding-info{
 background:#fff7e6;
 }
 
 .info-box{
-
 max-width:600px;
 margin:auto;
-
 background:white;
-
 padding:40px;
-
 border-radius:12px;
-
 box-shadow:0 10px 30px rgba(0,0,0,0.1);
-
 }
 
 .info-box h3{
-font-size:26px;
 color:#c79a5b;
-margin:15px 0;
 }
 
-/* ================= BUTTON ================= */
+/* BUTTON */
 
 button{
 background:#c79a5b;
@@ -152,95 +143,68 @@ border:none;
 padding:14px 26px;
 color:white;
 font-size:16px;
-cursor:pointer;
 border-radius:6px;
+cursor:pointer;
 margin:10px;
 }
 
-/* ================= MUSIC BUTTON ================= */
+/* MUSIC BUTTON */
 
 #musicBtn{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#c79a5b;
-border:none;
 color:white;
+border:none;
 padding:12px;
 border-radius:50%;
-font-size:18px;
 cursor:pointer;
 z-index:999;
 }
 
-/* ================= HEART ================= */
+/* HEART */
 
 .heart{
-
 position:fixed;
 bottom:-20px;
-
 color:#d4af37;
-
 pointer-events:none;
-
 animation:floatHeart 8s linear;
-
 }
 
 @keyframes floatHeart{
-
-0%{
-transform:translateY(0);
-opacity:1;
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
 }
 
-100%{
-transform:translateY(-110vh);
-opacity:0;
-}
-
-}
-
-/* ================= LIGHTBOX ================= */
+/* LIGHTBOX */
 
 #lightbox{
-
 position:fixed;
-
 top:0;
 left:0;
-
 width:100%;
 height:100%;
-
 background:rgba(0,0,0,0.85);
-
 display:none;
-
 justify-content:center;
 align-items:center;
-
 z-index:9999;
-
 }
 
 #lightbox img{
-
 max-width:90%;
 max-height:90%;
-
 border-radius:10px;
-
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:768px){
 
 .couple-name{
 font-size:36px;
-white-space:nowrap;
 }
 
 .story{
@@ -258,15 +222,13 @@ column-count:2;
 
 <body>
 
-<!-- ================= MUSIC ================= -->
-
 <audio id="bgmusic" loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <button id="musicBtn">🔊</button>
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero">
 
@@ -274,48 +236,78 @@ column-count:2;
 Đình Tùng ❤ Thu Hà
 </h1>
 
-<p class="date">
-Save the Date • 29.03.2026
-</p>
+<p class="date">Save the Date • 29.03.2026</p>
 
 </section>
 
-<!-- ================= STORY ================= -->
+<!-- STORY -->
 
 <section class="story">
 
-<div>
+<div class="fade">
 
-<h2>Câu chuyện của chúng mình</h2>
+<h2>Khởi đầu của một câu chuyện</h2>
 
 <p>
-
-Một cuộc gặp gỡ tình cờ đã trở thành
-khởi đầu cho hành trình yêu thương.
-
-Qua những tháng ngày bên nhau,
-chúng mình nhận ra rằng
-hạnh phúc đơn giản chỉ là
-được nắm tay nhau đi hết cuộc đời.
-
+Có những cuộc gặp gỡ tưởng chừng rất bình thường,
+nhưng lại trở thành một dấu mốc quan trọng của cuộc đời.
+Chúng mình gặp nhau trong một ngày giản dị,
+từ những câu chuyện nhỏ và những nụ cười rất tự nhiên.
 </p>
 
 </div>
 
-<img src="anh1.jpg">
+<img src="anh1.jpg" class="parallax">
 
 </section>
 
-<!-- ================= GALLERY ================= -->
+<section class="story">
+
+<img src="anh2.jpg" class="parallax">
+
+<div class="fade">
+
+<h2>Những ngày đầu quen nhau</h2>
+
+<p>
+Thời gian trôi qua,
+chúng mình bắt đầu trò chuyện nhiều hơn,
+chia sẻ những ước mơ và dự định tương lai.
+Tình cảm lớn dần lên một cách nhẹ nhàng,
+tự nhiên và chân thành.
+</p>
+
+</div>
+
+</section>
+
+<section class="story">
+
+<div class="fade">
+
+<h2>Những kỷ niệm đáng nhớ</h2>
+
+<p>
+Chúng mình đã cùng nhau đi qua
+những chuyến đi xa,
+những buổi chiều bình yên,
+và cả những thử thách của cuộc sống.
+</p>
+
+</div>
+
+<img src="anh3.jpg" class="parallax">
+
+</section>
+
+<!-- GALLERY -->
 
 <section>
 
-<h2>Khoảnh khắc</h2>
+<h2 class="fade">Khoảnh khắc</h2>
 
 <div class="gallery">
 
-<img src="anh2.jpg">
-<img src="anh3.jpg">
 <img src="anh4.jpg">
 <img src="anh5.jpg">
 <img src="anh6.jpg">
@@ -328,29 +320,14 @@ hạnh phúc đơn giản chỉ là
 <img src="anh13.jpg">
 <img src="anh14.jpg">
 <img src="anh15.jpg">
-<img src="anh16.jpg">
-<img src="anh17.jpg">
-<img src="anh18.jpg">
-<img src="anh19.jpg">
-<img src="anh20.jpg">
-<img src="anh21.jpg">
-<img src="anh22.jpg">
-<img src="anh23.jpg">
-<img src="anh24.jpg">
-<img src="anh25.jpg">
-<img src="anh26.jpg">
-<img src="anh27.jpg">
-<img src="anh28.jpg">
-<img src="anh29.jpg">
-<img src="anh30.jpg">
 
 </div>
 
 </section>
 
-<!-- ================= WEDDING INFO ================= -->
+<!-- WEDDING INFO -->
 
-<section class="wedding-info">
+<section class="wedding-info fade">
 
 <h2>Thông Tin Hôn Lễ</h2>
 
@@ -364,15 +341,15 @@ hạnh phúc đơn giản chỉ là
 
 <p><strong>Chủ Nhật • 29.03.2026</strong></p>
 
-<p style="color:#777">(Nhằm ngày 11.02.2026 Âm lịch)</p>
+<p style="color:#777">(Tức ngày 11.02.2026 Âm lịch)</p>
 
 </div>
 
 </section>
 
-<!-- ================= RSVP ================= -->
+<!-- RSVP -->
 
-<section>
+<section class="fade">
 
 <h2>Xác nhận tham dự</h2>
 
@@ -395,7 +372,7 @@ Cảm ơn bạn đã phản hồi ❤️
 
 </section>
 
-<!-- ================= LIGHTBOX ================= -->
+<!-- LIGHTBOX -->
 
 <div id="lightbox">
 <img id="lightbox-img">
@@ -403,7 +380,7 @@ Cảm ơn bạn đã phản hồi ❤️
 
 <script>
 
-/* ================= HEARTS ================= */
+/* HEART */
 
 setInterval(()=>{
 
@@ -417,19 +394,13 @@ heart.style.left=Math.random()*100+"%"
 
 heart.style.fontSize=(16+Math.random()*20)+"px"
 
-heart.style.animationDuration=(5+Math.random()*5)+"s"
-
 document.body.appendChild(heart)
 
-setTimeout(()=>{
-
-heart.remove()
-
-},8000)
+setTimeout(()=>heart.remove(),8000)
 
 },500)
 
-/* ================= LIGHTBOX ================= */
+/* LIGHTBOX */
 
 const images=document.querySelectorAll(".gallery img")
 const lightbox=document.getElementById("lightbox")
@@ -447,12 +418,38 @@ lightboxImg.src=this.src
 })
 
 lightbox.onclick=function(){
-
 lightbox.style.display="none"
-
 }
 
-/* ================= RSVP ================= */
+/* FADE ON SCROLL */
+
+const faders=document.querySelectorAll(".fade")
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+})
+
+faders.forEach(el=>observer.observe(el))
+
+/* PARALLAX */
+
+window.addEventListener("scroll",()=>{
+
+document.querySelectorAll(".parallax").forEach(img=>{
+
+let speed=img.getAttribute("data-speed") || 0.2
+
+img.style.transform="translateY("+window.scrollY*speed+"px)"
+
+})
+
+})
+
+/* RSVP */
 
 function showForm(){
 document.getElementById("form").style.display="block"
@@ -464,7 +461,7 @@ document.getElementById("form").style.display="none"
 document.getElementById("thanks").style.display="block"
 }
 
-/* ================= MUSIC ================= */
+/* MUSIC */
 
 let music=document.getElementById("bgmusic")
 let btn=document.getElementById("musicBtn")
