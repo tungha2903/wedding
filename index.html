@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>Đình Tùng ❤ Thu Hà</title>
 
 <style>
@@ -14,13 +15,12 @@ src:url("UTM-EdwardianKT.ttf");
 
 body{
 margin:0;
-font-family:Cambria;
+font-family:Cambria,serif;
 background:#fffdf7;
-color:#333;
 overflow-x:hidden;
 }
 
-/* HERO SLIDER */
+/* HERO */
 
 .hero{
 height:100vh;
@@ -35,7 +35,7 @@ height:100%;
 background-size:cover;
 background-position:center;
 opacity:0;
-transition:opacity 2s ease;
+transition:opacity 2s;
 }
 
 .slide.active{
@@ -49,44 +49,65 @@ left:50%;
 transform:translate(-50%,-50%);
 text-align:center;
 color:white;
-z-index:2;
 }
 
 .hero-overlay h1{
 font-family:Edward;
-font-size:90px;
-margin:0;
+font-size:80px;
 white-space:nowrap;
+margin:0;
 }
 
 .hero-overlay p{
-font-size:24px;
-margin-top:10px;
+font-size:22px;
+margin:10px 0;
 }
 
-/* countdown */
+/* COUNTDOWN */
 
 .countdown{
 display:flex;
-gap:30px;
 justify-content:center;
-margin-top:30px;
+gap:25px;
+margin-top:20px;
 }
 
 .time-box{
-background:rgba(255,255,255,0.2);
-padding:20px 25px;
-border-radius:10px;
-font-size:22px;
+background:rgba(0,0,0,0.35);
+padding:18px 22px;
+border-radius:8px;
 }
 
 .time-box span{
 display:block;
-font-size:36px;
+font-size:34px;
 font-weight:bold;
 }
 
-/* section */
+/* WEDDING INFO */
+
+.wedding-info{
+margin-top:25px;
+font-size:20px;
+line-height:1.6;
+}
+
+/* HEART */
+
+.heart{
+position:fixed;
+bottom:-20px;
+color:#d4af37;
+pointer-events:none;
+animation:floatHeart 8s linear;
+}
+
+@keyframes floatHeart{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
+}
+
+/* SECTION */
 
 section{
 padding:100px 10%;
@@ -95,15 +116,12 @@ align-items:center;
 gap:60px;
 }
 
-/* story */
-
 .story{
 max-width:600px;
 }
 
 h2{
 font-size:32px;
-margin-bottom:20px;
 }
 
 p{
@@ -114,11 +132,11 @@ color:#555;
 
 img{
 width:420px;
-border-radius:12px;
+border-radius:10px;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* fade */
+/* FADE */
 
 .fade{
 opacity:0;
@@ -131,30 +149,74 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* parallax */
+/* PARALLAX */
 
 .parallax{
 transition:transform .2s linear;
 }
 
-/* event */
+/* GALLERY */
 
-.event{
+.gallery{
+column-count:3;
+column-gap:12px;
+padding:80px 10%;
+}
+
+.gallery img{
+width:100%;
+margin-bottom:12px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* LIGHTBOX */
+
+#lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+}
+
+/* RSVP */
+
+.rsvp{
 text-align:center;
 padding:120px 20px;
-display:block;
 }
 
-.event h2{
-font-size:40px;
+.rsvp input{
+padding:12px;
+width:260px;
+margin:8px;
+border:1px solid #ddd;
 }
 
-/* mobile */
+button{
+background:#c79a5b;
+color:white;
+border:none;
+padding:12px 24px;
+cursor:pointer;
+}
+
+/* MOBILE */
 
 @media(max-width:768px){
 
 .hero-overlay h1{
-font-size:42px;
+font-size:40px;
 }
 
 section{
@@ -164,6 +226,10 @@ text-align:center;
 
 img{
 width:100%;
+}
+
+.gallery{
+column-count:2;
 }
 
 }
@@ -177,14 +243,13 @@ width:100%;
 <source src="music.mp3">
 </audio>
 
-<!-- HERO SLIDER -->
+<!-- HERO -->
 
 <div class="hero">
 
 <div class="slide active" style="background-image:url('anh1.jpg')"></div>
 <div class="slide" style="background-image:url('anh2.jpg')"></div>
 <div class="slide" style="background-image:url('anh3.jpg')"></div>
-<div class="slide" style="background-image:url('anh4.jpg')"></div>
 
 <div class="hero-overlay">
 
@@ -195,24 +260,34 @@ width:100%;
 <div class="countdown">
 
 <div class="time-box">
-<span id="days">0</span>
-Ngày
+<span id="days">0</span>Ngày
 </div>
 
 <div class="time-box">
-<span id="hours">0</span>
-Giờ
+<span id="hours">0</span>Giờ
 </div>
 
 <div class="time-box">
-<span id="minutes">0</span>
-Phút
+<span id="minutes">0</span>Phút
 </div>
 
 <div class="time-box">
-<span id="seconds">0</span>
-Giây
+<span id="seconds">0</span>Giây
 </div>
+
+</div>
+
+<div class="wedding-info">
+
+<p><b>Hôn lễ được cử hành tại</b></p>
+
+<p><b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b></p>
+
+<p>Vào lúc <b>17:30</b></p>
+
+<p>Chủ nhật 29.03.2026</p>
+
+<p>(Nhằm ngày 11.02.2026 Âm lịch)</p>
 
 </div>
 
@@ -226,78 +301,85 @@ Giây
 
 <div class="story fade">
 
-<h2>Khởi đầu của một câu chuyện</h2>
+<h2>Khởi đầu của câu chuyện</h2>
 
 <p>
 Có những cuộc gặp gỡ tưởng chừng rất bình thường,
 nhưng lại trở thành dấu mốc quan trọng của cuộc đời.
 
 Chúng mình gặp nhau trong một ngày giản dị,
-từ những câu chuyện nhỏ
-đã bắt đầu một hành trình dài của yêu thương.
+và từ những câu chuyện nhỏ,
+một hành trình yêu thương đã bắt đầu.
 </p>
 
 </div>
 
-<img src="anh5.jpg" class="parallax fade">
+<img src="anh4.jpg" class="parallax fade">
 
 </section>
 
 <section>
 
-<img src="anh6.jpg" class="parallax fade">
+<img src="anh5.jpg" class="parallax fade">
 
 <div class="story fade">
 
 <h2>Những ngày đầu quen nhau</h2>
 
 <p>
-Thời gian trôi qua,
-những cuộc trò chuyện,
-những buổi gặp gỡ giản dị
+Những buổi trò chuyện kéo dài,
+những lần gặp gỡ giản dị,
 đã khiến khoảng cách giữa hai trái tim
 ngày càng gần lại.
-
-Tình cảm đến một cách tự nhiên
-và chân thành.
 </p>
 
 </div>
 
 </section>
 
-<section class="event fade">
+<!-- GALLERY -->
 
-<h2>Hôn Lễ</h2>
+<div class="gallery">
 
-<p>
-Hôn lễ được cử hành tại  
-<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
-</p>
+<img src="anh6.jpg">
+<img src="anh7.jpg">
+<img src="anh8.jpg">
+<img src="anh9.jpg">
+<img src="anh10.jpg">
 
-<p>
-Vào lúc <b>17:30</b>
-</p>
+</div>
 
-<p>
-Chủ nhật 29.03.2026
-</p>
+<!-- RSVP -->
 
-<p>
-(Tức ngày 11.02.2026 Âm lịch)
-</p>
+<div class="rsvp">
 
-</section>
+<h2>Xác nhận tham dự</h2>
+
+<input placeholder="Họ tên"><br>
+
+<input placeholder="Số lượng khách"><br>
+
+<button onclick="thanks()">Gửi xác nhận</button>
+
+<p id="msg" style="display:none">Cảm ơn bạn đã phản hồi ❤️</p>
+
+</div>
+
+<!-- LIGHTBOX -->
+
+<div id="lightbox">
+<img id="lightbox-img">
+</div>
 
 <script>
 
-/* music */
+/* MUSIC */
 
 document.body.addEventListener("click",()=>{
-document.getElementById("music").play();
-},{once:true});
+document.getElementById("music").play()
+},{once:true})
 
-/* hero slider */
+/* HERO SLIDER */
 
 let slides=document.querySelectorAll(".slide")
 let index=0
@@ -308,61 +390,105 @@ slides[index].classList.remove("active")
 
 index++
 
-if(index>=slides.length){
-index=0
-}
+if(index>=slides.length) index=0
 
 slides[index].classList.add("active")
 
 },5000)
 
-/* countdown */
+/* COUNTDOWN */
 
-const weddingDate=new Date("2026-03-29T17:30:00").getTime()
+const wedding=new Date("2026-03-29T17:30:00").getTime()
 
 setInterval(()=>{
 
 let now=new Date().getTime()
-
-let diff=weddingDate-now
+let diff=wedding-now
 
 let d=Math.floor(diff/(1000*60*60*24))
 let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60))
 let m=Math.floor((diff%(1000*60*60))/(1000*60))
 let s=Math.floor((diff%(1000*60))/1000)
 
-document.getElementById("days").innerHTML=d
-document.getElementById("hours").innerHTML=h
-document.getElementById("minutes").innerHTML=m
-document.getElementById("seconds").innerHTML=s
+days.innerHTML=d
+hours.innerHTML=h
+minutes.innerHTML=m
+seconds.innerHTML=s
 
 },1000)
 
-/* fade */
+/* HEART */
+
+setInterval(()=>{
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+
+heart.innerHTML="❤"
+
+heart.style.left=Math.random()*100+"%"
+
+heart.style.fontSize=(16+Math.random()*20)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),8000)
+
+},500)
+
+/* FADE */
 
 const fades=document.querySelectorAll(".fade")
 
 const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show")
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add("show")
 }
 })
 })
 
 fades.forEach(el=>observer.observe(el))
 
-/* parallax */
+/* PARALLAX */
 
 window.addEventListener("scroll",()=>{
 
 let scroll=window.pageYOffset
 
 document.querySelectorAll(".parallax").forEach(img=>{
+
 img.style.transform="translateY("+(scroll*0.12)+"px)"
+
 })
 
 })
+
+/* GALLERY */
+
+let imgs=document.querySelectorAll(".gallery img")
+let lightbox=document.getElementById("lightbox")
+let lightimg=document.getElementById("lightbox-img")
+
+imgs.forEach(img=>{
+
+img.onclick=()=>{
+
+lightbox.style.display="flex"
+lightimg.src=img.src
+
+}
+
+})
+
+lightbox.onclick=()=>lightbox.style.display="none"
+
+/* RSVP */
+
+function thanks(){
+document.getElementById("msg").style.display="block"
+}
 
 </script>
 
