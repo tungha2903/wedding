@@ -45,8 +45,6 @@ align-items:center;
 background:linear-gradient(#fff7e6,#ffffff);
 }
 
-/* COUPLE NAME */
-
 .couple-name{
 font-family:"Edwardian";
 font-size:80px;
@@ -103,6 +101,45 @@ width:100%;
 height:250px;
 object-fit:cover;
 border-radius:8px;
+}
+
+/* WEDDING INFO */
+
+.wedding-info{
+background:#fff7e6;
+}
+
+.info-box{
+max-width:600px;
+margin:auto;
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.info-box h3{
+font-size:26px;
+color:#c79a5b;
+margin:15px 0;
+}
+
+.info-box .time{
+font-size:20px;
+margin-top:10px;
+}
+
+.info-box .date{
+font-size:22px;
+font-weight:bold;
+margin-top:10px;
+opacity:1;
+animation:none;
+}
+
+.info-box .lunar{
+font-size:16px;
+color:#777;
 }
 
 /* BUTTON */
@@ -205,7 +242,7 @@ height:170px;
 </h1>
 
 <p class="date">
-Save the Date • 20.10.2025
+Save the Date • 29.03.2026
 </p>
 
 </section>
@@ -219,15 +256,11 @@ Save the Date • 20.10.2025
 <h2>Lần đầu gặp gỡ</h2>
 
 <p>
-
 Chúng mình gặp nhau vào một ngày rất bình thường.
 Không ai nghĩ rằng cuộc gặp gỡ ấy lại trở thành
 khởi đầu của một hành trình dài.
-
-Từ những câu chuyện nhỏ,
-tình cảm dần lớn lên một cách tự nhiên
-và ấm áp.
-
+Từ những câu chuyện nhỏ, tình cảm dần lớn lên
+một cách tự nhiên và ấm áp.
 </p>
 
 </div>
@@ -255,6 +288,34 @@ và ấm áp.
 
 </section>
 
+<!-- WEDDING INFO -->
+
+<section class="wedding-info">
+
+<h2>Thông Tin Hôn Lễ</h2>
+
+<div class="info-box">
+
+<p>Hôn lễ được cử hành tại</p>
+
+<h3>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</h3>
+
+<p class="time">
+Vào lúc <strong>17:30</strong>
+</p>
+
+<p class="date">
+Chủ Nhật • 29.03.2026
+</p>
+
+<p class="lunar">
+(Nhằm ngày 11.02.2026 Âm lịch)
+</p>
+
+</div>
+
+</section>
+
 <!-- STORY 2 -->
 
 <section class="story">
@@ -266,61 +327,13 @@ và ấm áp.
 <h2>Những năm tháng bên nhau</h2>
 
 <p>
-
 Chúng mình đã cùng nhau đi qua
 những ngày vui và cả những lúc khó khăn.
-
-Mỗi kỷ niệm nhỏ
-đều trở thành một mảnh ghép
+Mỗi kỷ niệm nhỏ đều trở thành một mảnh ghép
 tạo nên câu chuyện tình yêu của hai đứa.
-
 </p>
 
 </div>
-
-</section>
-
-<!-- GALLERY -->
-
-<section>
-
-<h2>Kỷ niệm</h2>
-
-<div class="gallery">
-
-<img src="anh9.jpg">
-<img src="anh10.jpg">
-<img src="anh11.jpg">
-<img src="anh12.jpg">
-<img src="anh13.jpg">
-<img src="anh14.jpg">
-
-</div>
-
-</section>
-
-<!-- STORY 3 -->
-
-<section class="story">
-
-<div>
-
-<h2>Lời hứa</h2>
-
-<p>
-
-Sau tất cả những hành trình đã đi qua,
-chúng mình nhận ra điều quý giá nhất
-chính là được ở bên nhau.
-
-Vì vậy chúng mình quyết định
-bước sang chương mới của cuộc đời.
-
-</p>
-
-</div>
-
-<img src="anh15.jpg">
 
 </section>
 
@@ -332,6 +345,13 @@ bước sang chương mới của cuộc đời.
 
 <div class="gallery">
 
+<img src="anh9.jpg">
+<img src="anh10.jpg">
+<img src="anh11.jpg">
+<img src="anh12.jpg">
+<img src="anh13.jpg">
+<img src="anh14.jpg">
+<img src="anh15.jpg">
 <img src="anh16.jpg">
 <img src="anh17.jpg">
 <img src="anh18.jpg">
@@ -365,7 +385,6 @@ bước sang chương mới của cuộc đời.
 <div id="form" style="display:none;margin-top:20px">
 
 <input placeholder="Họ tên"><br>
-
 <input placeholder="Số lượng khách"><br>
 
 <button>Gửi</button>
@@ -383,35 +402,24 @@ Cảm ơn bạn đã phản hồi ❤️
 /* HEARTS */
 
 for(let i=0;i<30;i++){
-
 let heart=document.createElement("div")
-
 heart.className="heart"
-
 heart.innerHTML="❤"
-
 heart.style.left=Math.random()*100+"%"
-
 heart.style.animationDuration=(6+Math.random()*6)+"s"
-
 document.body.appendChild(heart)
-
 }
 
 /* RSVP */
 
 function showForm(){
-
 document.getElementById("form").style.display="block"
 document.getElementById("thanks").style.display="none"
-
 }
 
 function decline(){
-
 document.getElementById("form").style.display="none"
 document.getElementById("thanks").style.display="block"
-
 }
 
 /* MUSIC */
@@ -424,7 +432,6 @@ music.play()
 },{once:true})
 
 btn.onclick=function(){
-
 if(music.paused){
 music.play()
 btn.innerHTML="🔊"
@@ -432,7 +439,6 @@ btn.innerHTML="🔊"
 music.pause()
 btn.innerHTML="🔇"
 }
-
 }
 
 </script>
