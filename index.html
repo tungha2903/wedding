@@ -4,173 +4,170 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Đình Tùng & Thu Hà</title>
+<title>Đình Tùng ❤ Thu Hà</title>
 
 <style>
 
 /* FONT */
 
 @font-face{
-font-family:wedding;
+font-family:Edward;
 src:url("UTM-EdwardianKT.ttf");
 }
+
+/* BODY */
 
 body{
 margin:0;
 font-family:Cambria;
-background:#f8f6f1;
-color:#444;
+background:#fffaf5;
+color:#333;
 overflow-x:hidden;
-}
-
-/* TITLE */
-
-.names{
-
-text-align:center;
-margin-top:80px;
-
-}
-
-.names h1{
-
-font-family:wedding;
-font-size:70px;
-color:#C9A24A;
-margin:0;
-
-}
-
-.names p{
-
-font-size:22px;
-margin-top:10px;
-
-}
-
-/* SLIDER */
-
-.slider{
-
-width:90%;
-margin:auto;
-margin-top:60px;
-height:70vh;
-position:relative;
-overflow:hidden;
-border-radius:20px;
-
-}
-
-.slide{
-
-position:absolute;
-width:100%;
-height:100%;
-background-size:contain;
-background-repeat:no-repeat;
-background-position:center;
-background-color:black;
-opacity:0;
-transition:2s;
-
-}
-
-.slide.active{
-opacity:1;
+scroll-behavior:smooth;
 }
 
 /* SECTION */
 
 section{
-
-padding:80px 10%;
-
-}
-
-.title{
-
-text-align:center;
-font-size:36px;
-margin-bottom:40px;
-
+padding:80px 8%;
 }
 
 /* STORY */
 
 .story{
+text-align:center;
+}
 
-display:flex;
-gap:40px;
-margin-bottom:80px;
-align-items:center;
+.story h2{
+font-family:Edward;
+font-size:55px;
+color:#b87a42;
+}
 
+.story-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:40px;
 }
 
 .story img{
-
-width:50%;
-border-radius:15px;
-
-}
-
-.story-text{
-
-width:50%;
-font-size:20px;
-line-height:1.8;
-
-}
-
-.story:nth-child(even){
-flex-direction:row-reverse;
-}
-
-@media(max-width:900px){
-
-.story{
-flex-direction:column !important;
-}
-
-.story img,
-.story-text{
 width:100%;
+border-radius:12px;
 }
 
+.story p{
+line-height:1.8;
+}
+
+/* HERO (giữa trang) */
+
+.hero{
+text-align:center;
+padding:140px 20px;
+background:linear-gradient(#fff7e8,#fff);
+position:relative;
+}
+
+.hero h1{
+font-family:Edward;
+font-size:80px;
+color:#c69a5a;
+margin:0;
+}
+
+.hero p{
+font-size:22px;
+margin-top:10px;
+}
+
+/* SLIDER */
+
+.slider{
+margin:60px auto;
+width:90%;
+overflow:hidden;
+border-radius:10px;
+}
+
+.slides{
+display:flex;
+animation:slide 25s infinite linear;
+}
+
+.slides img{
+width:100%;
+object-fit:cover;
+}
+
+@keyframes slide{
+
+0%{transform:translateX(0)}
+
+20%{transform:translateX(-100%)}
+
+40%{transform:translateX(-200%)}
+
+60%{transform:translateX(-300%)}
+
+80%{transform:translateX(-400%)}
+
+100%{transform:translateX(0)}
+
+}
+
+/* ALBUM TITLE */
+
+.album-title{
+text-align:center;
+}
+
+.album-title h2{
+font-family:Edward;
+font-size:65px;
+color:#b87a42;
+}
+
+.quote{
+max-width:700px;
+margin:auto;
+line-height:1.8;
 }
 
 /* GALLERY */
 
-.gallery{
-
-columns:4;
-column-gap:12px;
-
+.gallery-grid{
+columns:3 250px;
+column-gap:15px;
 }
 
 .gallery img{
-
 width:100%;
-margin-bottom:12px;
-border-radius:12px;
-transition:0.6s;
-
+margin-bottom:15px;
+border-radius:10px;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
 }
 
-.gallery img:hover{
-
-transform:scale(1.05);
-
+.gallery img.show{
+opacity:1;
+transform:translateY(0);
 }
 
-@media(max-width:900px){
-.gallery{columns:3}
+/* EVENT */
+
+.event{
+text-align:center;
+background:#fdf6ea;
 }
 
-@media(max-width:600px){
-.gallery{columns:2}
+.event h2{
+font-family:Edward;
+font-size:55px;
+color:#b87a42;
 }
 
 /* RSVP */
@@ -179,152 +176,176 @@ transform:scale(1.05);
 text-align:center;
 }
 
-input,button{
-
-padding:12px;
-margin:10px;
-font-size:16px;
-
-}
-
 button{
-
-background:#C9A24A;
+background:#c69a5a;
 color:white;
 border:none;
+padding:15px 30px;
+font-size:18px;
+border-radius:6px;
 cursor:pointer;
+}
 
+.form{
+display:none;
+margin-top:20px;
+}
+
+input{
+padding:10px;
+margin:10px;
+width:200px;
 }
 
 /* HEART */
 
 .heart{
-
 position:fixed;
-color:#C9A24A;
-font-size:18px;
-animation:floatUp 6s linear;
+color:#e8c46a;
+animation:float 6s linear forwards;
+pointer-events:none;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-800px);
+opacity:0;
+}
 
 }
 
-@keyframes floatUp{
+/* MOBILE */
 
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-100vh);opacity:0;}
+@media(max-width:768px){
+
+.hero h1{
+font-size:50px;
+}
+
+.story-grid{
+grid-template-columns:1fr;
+}
+
+.gallery-grid{
+columns:2;
+}
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- NAMES -->
+<!-- MUSIC -->
 
-<div class="names">
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
 
-<h1>Đình Tùng ❤ Thu Hà</h1>
+<!-- STORY -->
 
-<p>29.03.2026</p>
+<section class="story">
+
+<h2>Chuyện Tình Yêu</h2>
+
+<div class="story-grid">
+
+<div>
+
+<img src="anh5.jpg">
+
+<p>
+
+Trong một ngày bình thường,  
+chúng tôi vô tình gặp nhau.  
+Một ánh nhìn thoáng qua  
+nhưng lại khiến trái tim rung động.
+
+</p>
 
 </div>
 
-<!-- HERO SLIDER -->
+<div>
 
-<div class="slider">
+<img src="anh6.jpg">
 
-<div class="slide active" style="background-image:url('anh1.jpg')"></div>
-<div class="slide" style="background-image:url('anh2.jpg')"></div>
-<div class="slide" style="background-image:url('anh3.jpg')"></div>
-<div class="slide" style="background-image:url('anh4.jpg')"></div>
+<p>
+
+Từ những cuộc trò chuyện nhỏ,  
+những buổi cà phê giản dị,  
+tình cảm dần lớn lên  
+theo cách rất tự nhiên.
+
+</p>
 
 </div>
 
-<!-- TIME -->
+<div>
 
-<section>
+<img src="anh7.jpg">
 
-<h2 class="title">Lễ Thành Hôn</h2>
+<p>
 
-<div style="text-align:center;font-size:22px;line-height:2">
+Sau tất cả,  
+chúng tôi nhận ra rằng  
+hạnh phúc là khi  
+có nhau trên mọi chặng đường.
 
-📅 17:30 – Chủ Nhật  
-<br>
-29 / 03 / 2026
+</p>
 
-<br><br>
-
-📍 Trung tâm tiệc cưới Hoàng Thành, 
-  Số 9 Hồng Bàng, đường Hồng Bàng, Thành phố Hải Phòng
+</div>
 
 </div>
 
 </section>
 
-<!-- STORY -->
+<!-- HERO (giữa trang) -->
 
-<section>
+<section class="hero">
 
-<h2 class="title">Chuyện Chúng Mình</h2>
+<h1>Đình Tùng ❤ Thu Hà</h1>
 
-<div class="story">
+<p>Save The Date</p>
 
-<img src="anh5.jpg">
+<p>20 • 10 • 2025</p>
 
-<div class="story-text">
+</section>
 
-<h3>Lần đầu gặp</h3>
+<!-- SLIDER -->
 
-<p>
+<section class="slider">
 
-Chúng mình gặp nhau trong một ngày bình yên
-nhưng lại trở thành kỷ niệm đặc biệt nhất.
+<div class="slides">
+
+<img src="anh1.jpg">
+<img src="anh2.jpg">
+<img src="anh3.jpg">
+<img src="anh4.jpg">
+<img src="anh8.jpg">
+
+</div>
+
+</section>
+
+<!-- ALBUM -->
+
+<section class="album-title">
+
+<h2>Album Hình Cưới</h2>
+
+<p class="quote">
+
+Được ai đó yêu sâu sắc sẽ mang lại cho bạn sức mạnh,  
+trong khi yêu ai đó sâu sắc sẽ cho bạn dũng khí.
 
 </p>
-
-</div>
-
-</div>
-
-<div class="story">
-
-<img src="anh6.jpg">
-
-<div class="story-text">
-
-<h3>Tình yêu lớn dần</h3>
-
-<p>
-
-Qua từng ngày bên nhau chúng mình hiểu nhau hơn
-và yêu nhau nhiều hơn.
-
-</p>
-
-</div>
-
-</div>
-
-<div class="story">
-
-<img src="anh7.jpg">
-
-<div class="story-text">
-
-<h3>Lời cầu hôn</h3>
-
-<p>
-
-Khoảnh khắc anh ngỏ lời
-là lúc chúng mình biết đã đến lúc
-bắt đầu một chương mới.
-
-</p>
-
-</div>
-
-</div>
 
 </section>
 
@@ -332,35 +353,35 @@ bắt đầu một chương mới.
 
 <section>
 
-<h2 class="title">Album Ảnh</h2>
+<div class="gallery-grid">
 
-<div class="gallery">
-
+<img src="anh1.jpg">
+<img src="anh2.jpg">
+<img src="anh3.jpg">
+<img src="anh4.jpg">
+<img src="anh5.jpg">
+<img src="anh6.jpg">
+<img src="anh7.jpg">
 <img src="anh8.jpg">
 <img src="anh9.jpg">
 <img src="anh10.jpg">
 <img src="anh11.jpg">
-
 <img src="anh12.jpg">
 <img src="anh13.jpg">
 <img src="anh14.jpg">
 <img src="anh15.jpg">
-
 <img src="anh16.jpg">
 <img src="anh17.jpg">
 <img src="anh18.jpg">
 <img src="anh19.jpg">
-
 <img src="anh20.jpg">
 <img src="anh21.jpg">
 <img src="anh22.jpg">
 <img src="anh23.jpg">
-
 <img src="anh24.jpg">
 <img src="anh25.jpg">
 <img src="anh26.jpg">
 <img src="anh27.jpg">
-
 <img src="anh28.jpg">
 <img src="anh29.jpg">
 <img src="anh30.jpg">
@@ -369,107 +390,45 @@ bắt đầu một chương mới.
 
 </section>
 
+<!-- EVENT -->
+
+<section class="event">
+
+<h2>Thời Gian & Địa Điểm</h2>
+
+<p>📅 20/10/2025</p>
+
+<p>⏰ 17:00</p>
+
+<p>📍 Trung tâm Tiệc Cưới ABC</p>
+
+</section>
+
 <!-- RSVP -->
 
 <section class="rsvp">
 
-<h2 class="title">Xác Nhận Tham Dự</h2>
+<h2>Xác nhận tham dự</h2>
 
-<label>
+<button onclick="showForm()">Tôi sẽ tham dự</button>
 
-<input type="radio" name="attend" onclick="showForm(true)">
-Tham dự
+<div class="form" id="form">
 
-</label>
+<input placeholder="Họ tên"><br>
 
-<label>
+<input placeholder="Số lượng khách"><br>
 
-<input type="radio" name="attend" onclick="showForm(false)">
-Không tham dự
-
-</label>
-
-<div id="guestForm" style="display:none">
-
-<form
-
-action="https://docs.google.com/forms/d/e/1idmx7zE70ab_1ERp-8xhGivVvg4Y5wrCdJz9nGQ8A_w/formResponse"
-method="POST"
-target="hidden_iframe"
-
->
-
-<br>
-
-<input type="text"
-
-name="entry.1470591758"
-placeholder="Họ tên"
-required>
-
-<input type="number"
-
-name="entry.450176909"
-placeholder="Số lượng"
-required>
-
-<br>
-
-<button type="submit">
-
-Gửi xác nhận
-
-</button>
-
-</form>
+<button>Gửi</button>
 
 </div>
-
-<iframe name="hidden_iframe" style="display:none"></iframe>
 
 </section>
 
 <script>
 
-/* SLIDER */
-
-let slides=document.querySelectorAll(".slide")
-
-let index=0
-
-setInterval(()=>{
-
-slides[index].classList.remove("active")
-
-index=(index+1)%slides.length
-
-slides[index].classList.add("active")
-
-},4000)
-
-/* RSVP */
-
-function showForm(status){
-
-if(status){
-
-document.getElementById("guestForm").style.display="block"
-
-}
-else{
-
-document.getElementById("guestForm").style.display="none"
-alert("Cảm ơn bạn đã phản hồi ❤️")
-
-}
-
-}
-
 /* HEART EFFECT */
 
 function heart(){
-
-if(Math.random()>0.95){
 
 let h=document.createElement("div")
 
@@ -477,9 +436,9 @@ h.className="heart"
 
 h.innerHTML="❤"
 
-h.style.left=Math.random()*100+"vw"
+h.style.left=Math.random()*100+"%"
 
-h.style.bottom="0"
+h.style.fontSize=(Math.random()*20+10)+"px"
 
 document.body.appendChild(h)
 
@@ -487,12 +446,37 @@ setTimeout(()=>h.remove(),6000)
 
 }
 
+setInterval(heart,150)
+
+/* FADE GALLERY */
+
+const images=document.querySelectorAll(".gallery img")
+
+window.addEventListener("scroll",()=>{
+
+images.forEach(img=>{
+
+let top=img.getBoundingClientRect().top
+
+if(top<window.innerHeight-100){
+
+img.classList.add("show")
+
 }
 
-setInterval(heart,300)
+})
+
+})
+
+/* RSVP */
+
+function showForm(){
+
+document.getElementById("form").style.display="block"
+
+}
 
 </script>
 
 </body>
 </html>
-
