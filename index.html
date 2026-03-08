@@ -1,147 +1,135 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Đình Tùng & Thu Hà Wedding</title>
+<title>Đình Tùng ❤ Thu Hà</title>
 
 <style>
 
-html{
-scroll-behavior:smooth;
+/* FONT */
+
+@font-face{
+font-family: wedding;
+src:url("UTM-EdwardianKT.ttf");
 }
 
 body{
 margin:0;
-font-family:Cambria;
-background:white;
-text-align:center;
+font-family: Cambria, serif;
+background:#f7f3ee;
+color:#444;
+scroll-behavior:smooth;
 overflow-x:hidden;
 }
 
-.section{
-min-height:100vh;
+/* HERO PARALLAX */
+
+.hero{
+height:100vh;
+background:url("anh1.jpg") center/cover fixed;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-padding:50px 20px;
+text-align:center;
+color:white;
+text-shadow:0 4px 12px black;
 }
 
-.names{
-font-family:"UTM EdwardianKT";
-font-size:70px;
-color:#DAA520;
+.hero h1{
+font-family:wedding;
+font-size:64px;
+margin:0;
 }
 
-.text{
+.hero p{
 font-size:24px;
-line-height:1.7;
+margin-top:10px;
 }
 
-#countdown{
-font-size:26px;
-margin-top:20px;
-color:#DAA520;
+/* SECTION */
+
+section{
+padding:80px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+/* TITLE */
+
+.title{
+text-align:center;
+font-size:36px;
+margin-bottom:40px;
+color:#8b6f3d;
 }
 
 /* STORY */
 
-.story-item{
-display:flex;
-align-items:center;
+.story{
+display:grid;
+grid-template-columns:1fr 1fr;
 gap:40px;
-margin:80px auto;
-max-width:1100px;
+align-items:center;
+margin-bottom:80px;
 }
 
-.story-item img{
-width:45%;
-border-radius:20px;
+.story img{
+width:100%;
+border-radius:14px;
 opacity:0;
-transform:scale(1.1);
+transform:translateY(60px);
 transition:1s;
-cursor:pointer;
+}
+
+.story.show img{
+opacity:1;
+transform:none;
 }
 
 .story-text{
-width:45%;
-text-align:left;
 font-size:22px;
+line-height:1.8;
 }
 
 .story-text h3{
-font-size:32px;
-color:#DAA520;
+font-size:30px;
+margin-bottom:10px;
+color:#8b6f3d;
 }
 
-.reverse{
-flex-direction:row-reverse;
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
 }
 
-/* MOBILE */
-
-@media(max-width:768px){
-
-.story-item{
-flex-direction:column;
-}
-
-.story-item img,
-.story-text{
+.gallery img{
 width:100%;
-text-align:center;
-}
-
-}
-
-/* BUTTON */
-
-button{
-padding:15px 40px;
-font-size:22px;
-background:#DAA520;
-border:none;
-color:white;
-border-radius:12px;
+border-radius:10px;
 cursor:pointer;
+transition:0.5s;
+opacity:0;
+transform:scale(1.1);
 }
 
-/* POPUP */
-
-#popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:10;
+.gallery img.show{
+opacity:1;
+transform:scale(1);
 }
 
-.popup-box{
-background:white;
-padding:30px;
-border-radius:15px;
-width:320px;
-}
-
-input{
-width:100%;
-padding:10px;
-margin:10px 0;
-font-size:16px;
+.gallery img:hover{
+transform:scale(1.05);
 }
 
 /* LIGHTBOX */
 
-#lightbox{
+.lightbox{
 position:fixed;
 top:0;
 left:0;
@@ -151,300 +139,306 @@ background:black;
 display:none;
 justify-content:center;
 align-items:center;
+z-index:999;
 }
 
-#lightbox img{
+.lightbox img{
 max-width:95%;
 max-height:95%;
+}
+
+/* FAMILY */
+
+.family{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+text-align:center;
+}
+
+.family img{
+width:100%;
+border-radius:12px;
+}
+
+.family h3{
+font-family:wedding;
+font-size:40px;
+margin:10px 0;
+}
+
+/* RSVP */
+
+.rsvp{
+text-align:center;
+}
+
+input,button{
+padding:14px;
+margin:8px;
+font-size:18px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+background:#DAA520;
+color:white;
+border:none;
+cursor:pointer;
 }
 
 /* HEART */
 
 .heart{
 position:fixed;
-top:-10px;
 color:#DAA520;
-font-size:20px;
-animation:fall linear forwards;
+font-size:18px;
+animation:floatUp 6s linear;
 }
 
-@keyframes fall{
-to{
-transform:translateY(110vh);
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-100vh);opacity:0;}
 }
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:44px;
+}
+
+.story{
+grid-template-columns:1fr;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+.family{
+grid-template-columns:1fr;
+}
+
 }
 
 </style>
-
 </head>
 
 <body>
 
-<audio autoplay loop>
-<source src="music.mp3" type="audio/mpeg">
+<audio id="music" loop>
+<source src="music.mp3">
 </audio>
 
-<!-- INTRO -->
+<!-- HERO -->
 
-<section class="section">
+<section class="hero">
 
-<div class="names">
-Đình Tùng & Thu Hà
-</div>
+<h1>Đình Tùng & Thu Hà</h1>
 
-<div class="text">
-Trân trọng kính mời bạn đến dự lễ cưới
-</div>
-
-</section>
-
-<!-- INFO -->
-
-<section class="section">
-
-<div class="text">
-
-Hôn lễ được cử hành tại
-
-<br><br>
-
-<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
-
-<br><br>
-
-Vào lúc <b>17:30</b>
-
-<br>
-
-Chủ nhật
-
-<br>
-
-<b>29.03.2026</b>
-
-<br>
-
-(Nhằm ngày 11.02.2026 Âm lịch)
-
-</div>
-
-<div id="countdown"></div>
+<p>29.03.2026</p>
 
 </section>
 
 <!-- STORY -->
 
-<section class="section">
+<section>
 
-<h2 style="font-size:36px;color:#DAA520">Câu chuyện của chúng mình</h2>
+<h2 class="title">Chuyện Chúng Mình</h2>
 
-<div class="story-item fade">
-<img src="anh1.jpg">
-<div class="story-text">
-<h3>Lần đầu gặp</h3>
-<p>Chúng mình gặp nhau trong một ngày bình yên.</p>
-</div>
-</div>
+<div class="story fade">
 
-<div class="story-item reverse fade">
 <img src="anh2.jpg">
+
 <div class="story-text">
-<h3>Bắt đầu trò chuyện</h3>
-<p>Những cuộc trò chuyện khiến khoảng cách dần biến mất.</p>
-</div>
+
+<h3>Lần đầu gặp</h3>
+
+<p>
+Chúng mình gặp nhau trong một ngày bình yên
+nhưng lại trở thành kỷ niệm đặc biệt nhất.
+</p>
+
 </div>
 
-<div class="story-item fade">
-<img src="anh3.jpg">
+</div>
+
+
+<div class="story fade">
+
 <div class="story-text">
+
 <h3>Tình yêu lớn dần</h3>
-<p>Chúng mình hiểu nhau và yêu nhau nhiều hơn.</p>
-</div>
+
+<p>
+Qua từng ngày bên nhau chúng mình hiểu nhau hơn
+và yêu nhau nhiều hơn.
+</p>
+
 </div>
 
-<div class="story-item reverse fade">
+<img src="anh3.jpg">
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section>
+
+<h2 class="title">Bộ Sưu Tập Ảnh Cưới</h2>
+
+<div class="gallery">
+
 <img src="anh4.jpg">
-<div class="story-text">
-<h3>Những chuyến đi</h3>
-<p>Nhiều chuyến đi và những khoảnh khắc đáng nhớ.</p>
-</div>
-</div>
-
-<div class="story-item fade">
 <img src="anh5.jpg">
-<div class="story-text">
-<h3>Kỷ niệm đẹp</h3>
-<p>Những khoảnh khắc giản dị nhưng ý nghĩa.</p>
-</div>
-</div>
-
-<div class="story-item reverse fade">
 <img src="anh6.jpg">
-<div class="story-text">
-<h3>Hiểu nhau hơn</h3>
-<p>Chúng mình nhận ra người kia là một nửa của mình.</p>
-</div>
-</div>
-
-<div class="story-item fade">
 <img src="anh7.jpg">
-<div class="story-text">
-<h3>Lời cầu hôn</h3>
-<p>Một khoảnh khắc mở ra chương mới.</p>
-</div>
+<img src="anh8.jpg">
+<img src="anh9.jpg">
+
 </div>
 
-<div class="story-item reverse fade">
-<img src="anh8.jpg">
-<div class="story-text">
-<h3>Ngày hạnh phúc</h3>
-<p>Và giờ đây chúng mình chuẩn bị về chung một nhà.</p>
+</section>
+
+<!-- FAMILY -->
+
+<section>
+
+<h2 class="title">Gia Đình Hai Bên</h2>
+
+<div class="family">
+
+<div>
+
+<img src="anh4.jpg">
+
+<h3>Chú Rể</h3>
+
+<p>
+
+Ông: NGUYỄN TIẾN THỰC  
+<br>
+Bà: NGUYỄN THỊ BÍCH LIÊN  
+
+<br><br>
+
+Phường Hồng Bàng  
+<br>
+Thành phố Hải Phòng
+
+</p>
+
 </div>
+
+
+<div>
+
+<img src="anh5.jpg">
+
+<h3>Cô Dâu</h3>
+
+<p>
+
+Bà: NGUYỄN THỊ LÝ  
+
+<br><br>
+
+Xã Phong Doanh  
+<br>
+Tỉnh Ninh Bình
+
+</p>
+
+</div>
+
 </div>
 
 </section>
 
 <!-- RSVP -->
 
-<section class="section">
+<section class="rsvp">
 
-<button onclick="openForm()">
-Xác nhận tham dự
-</button>
+<h2 class="title">Xác Nhận Tham Dự</h2>
 
-</section>
-
-<!-- FORM -->
-
-<div id="popup">
-
-<div class="popup-box">
-
-<h3>Xác nhận tham dự</h3>
-
-<form 
+<form
 action="https://docs.google.com/forms/d/e/1idmx7zE70ab_1ERp-8xhGivVvg4Y5wrCdJz9nGQ8A_w/formResponse"
 method="POST"
 target="hidden_iframe"
 onsubmit="sent()"
 >
 
-<input
-type="text"
-name="entry.1470591758"
-placeholder="Họ tên"
-required
->
+<input type="text" name="entry.1470591758" placeholder="Họ tên" required>
 
-<input
-type="number"
-name="entry.450176909"
-placeholder="Số lượng"
-required
->
-
-<label>
-<input type="radio"
-name="entry.418138023"
-value="Tham dự"
-required>
-Tham dự
-</label>
+<input type="number" name="entry.450176909" placeholder="Số lượng" required>
 
 <br>
 
 <label>
-<input type="radio"
-name="entry.418138023"
-value="Không tham dự">
+<input type="radio" name="entry.418138023" value="Tham dự" required>
+Tham dự
+</label>
+
+<label>
+<input type="radio" name="entry.418138023" value="Không tham dự">
 Không tham dự
 </label>
 
 <br><br>
 
-<button type="submit">Gửi</button>
+<button type="submit">Gửi xác nhận</button>
 
 </form>
 
 <iframe name="hidden_iframe" style="display:none"></iframe>
 
-</div>
+</section>
 
-</div>
-
-<iframe name="hidden_iframe" style="display:none"></iframe>
-
-<!-- LIGHTBOX -->
-
-<div id="lightbox" onclick="closeLightbox()">
-<img id="lightimg">
+<div class="lightbox" id="lightbox" onclick="this.style.display='none'">
+<img id="lightbox-img">
 </div>
 
 <script>
 
-/* COUNTDOWN */
+/* MUSIC */
 
-const weddingDate=new Date("Mar 29, 2026 17:30:00").getTime()
+window.addEventListener("click",()=>{
+document.getElementById("music").play()
+},{once:true})
 
-setInterval(()=>{
+/* SCROLL FADE */
 
-let now=new Date().getTime()
-
-let d=weddingDate-now
-
-let days=Math.floor(d/(1000*60*60*24))
-let hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
-let mins=Math.floor((d%(1000*60*60))/(1000*60))
-
-document.getElementById("countdown").innerHTML=
-"Còn "+days+" ngày "+hours+" giờ "+mins+" phút"
-
-},1000)
-
-/* FADE */
-
-const imgs=document.querySelectorAll(".story-item img")
+const faders=document.querySelectorAll(".story img,.gallery img")
 
 const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.style.opacity=1
-e.target.style.transform="scale(1)"
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
 }
 })
 })
 
-imgs.forEach(img=>observer.observe(img))
+faders.forEach(el=>observer.observe(el))
 
 /* LIGHTBOX */
 
-document.querySelectorAll(".story-item img").forEach(img=>{
+document.querySelectorAll(".gallery img").forEach(img=>{
 img.onclick=()=>{
 document.getElementById("lightbox").style.display="flex"
-document.getElementById("lightimg").src=img.src
+document.getElementById("lightbox-img").src=img.src
 }
 })
-
-function closeLightbox(){
-document.getElementById("lightbox").style.display="none"
-}
-
-/* FORM */
-
-function openForm(){
-document.getElementById("popup").style.display="flex"
-}
-
-function sent(){
-setTimeout(()=>{
-alert("Cảm ơn bạn đã phản hồi ❤️")
-document.getElementById("popup").style.display="none"
-},500)
-}
 
 /* HEART */
 
 function heart(){
+
+if(Math.random()>0.97){
 
 let h=document.createElement("div")
 
@@ -454,17 +448,23 @@ h.innerHTML="❤"
 
 h.style.left=Math.random()*100+"vw"
 
-h.style.animationDuration=6+Math.random()*4+"s"
+h.style.bottom="0"
 
 document.body.appendChild(h)
 
-setTimeout(()=>{
-h.remove()
-},9000)
+setTimeout(()=>h.remove(),6000)
 
 }
 
-setInterval(heart,2500)
+}
+
+window.addEventListener("scroll",heart)
+
+/* FORM */
+
+function sent(){
+alert("Cảm ơn bạn đã xác nhận ❤️")
+}
 
 </script>
 
