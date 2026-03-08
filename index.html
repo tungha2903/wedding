@@ -19,9 +19,10 @@ font-family:Cambria, serif;
 background:#fffdf8;
 color:#5b4636;
 overflow-x:hidden;
+text-align:center;
 }
 
-/* OPEN CARD */
+/* INTRO */
 
 #intro{
 position:fixed;
@@ -32,10 +33,9 @@ height:100%;
 background:#fffdf8;
 display:flex;
 flex-direction:column;
-align-items:center;
 justify-content:center;
+align-items:center;
 z-index:9999;
-text-align:center;
 }
 
 #intro h1{
@@ -47,22 +47,47 @@ margin-bottom:20px;
 #intro button{
 padding:15px 40px;
 font-size:22px;
-border:none;
 background:#c79a5b;
+border:none;
 color:white;
 cursor:pointer;
 }
 
-/* HERO */
+/* TITLE */
+
+.header{
+padding:60px 20px 20px;
+}
+
+.couple{
+font-family:Edwardian;
+font-size:80px;
+}
+
+.save{
+font-size:28px;
+margin-top:10px;
+}
+
+/* INFO */
+
+.info{
+margin-top:30px;
+font-size:22px;
+line-height:1.6;
+}
+
+/* HERO SLIDER */
 
 .hero{
-padding:60px 20px;
-text-align:center;
+margin-top:60px;
 }
 
 .slider{
-width:100%;
+width:90%;
+max-width:1100px;
 height:70vh;
+margin:auto;
 position:relative;
 overflow:hidden;
 border-radius:10px;
@@ -82,24 +107,13 @@ transition:opacity 2s;
 opacity:1;
 }
 
-.couple{
-font-family:Edwardian;
-font-size:80px;
-margin-top:40px;
-}
-
-.save{
-font-size:26px;
-margin-top:10px;
-}
-
 /* COUNTDOWN */
 
 .countdown{
 display:flex;
 justify-content:center;
-gap:25px;
-margin-top:25px;
+gap:30px;
+margin-top:40px;
 flex-wrap:wrap;
 }
 
@@ -113,29 +127,7 @@ min-width:80px;
 
 .time span{
 display:block;
-font-size:32px;
-}
-
-/* INFO */
-
-.info{
-margin-top:25px;
-font-size:22px;
-line-height:1.6;
-}
-
-/* HEART */
-
-.heart{
-position:fixed;
-bottom:-20px;
-color:#d4af37;
-animation:fly 8s linear;
-}
-
-@keyframes fly{
-0%{transform:translateY(0);opacity:1}
-100%{transform:translateY(-110vh);opacity:0}
+font-size:34px;
 }
 
 /* STORY */
@@ -144,7 +136,6 @@ animation:fly 8s linear;
 max-width:900px;
 margin:auto;
 padding:100px 20px;
-text-align:center;
 }
 
 .story h2{
@@ -161,8 +152,7 @@ margin-bottom:25px;
 /* ALBUM */
 
 .album{
-text-align:center;
-padding:100px 8%;
+padding:100px 10%;
 background:#f6f3ee;
 }
 
@@ -173,13 +163,12 @@ color:#9c6b44;
 
 .quote{
 font-size:20px;
-margin-top:20px;
-margin-bottom:60px;
+margin:20px 0 60px;
 }
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:15px;
 }
 
@@ -193,6 +182,25 @@ box-shadow:0 10px 25px rgba(0,0,0,0.1);
 
 .gallery img:hover{
 transform:scale(1.05);
+}
+
+/* PARALLAX */
+
+.parallax{
+height:70vh;
+background-attachment:fixed;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+color:white;
+text-shadow:0 5px 20px rgba(0,0,0,0.7);
+}
+
+.parallax.small{
+height:50vh;
 }
 
 /* LIGHTBOX */
@@ -217,7 +225,6 @@ max-height:90%;
 /* RSVP */
 
 .rsvp{
-text-align:center;
 padding:100px 20px;
 }
 
@@ -246,6 +253,20 @@ margin-top:20px;
 font-size:22px;
 }
 
+/* HEART */
+
+.heart{
+position:fixed;
+bottom:-20px;
+color:#d4af37;
+animation:fly 8s linear;
+}
+
+@keyframes fly{
+0%{transform:translateY(0);opacity:1}
+100%{transform:translateY(-110vh);opacity:0}
+}
+
 /* MOBILE */
 
 @media(max-width:768px){
@@ -258,8 +279,10 @@ font-size:48px;
 height:45vh;
 }
 
-.gallery{
-grid-template-columns:repeat(2,1fr);
+.parallax{
+background-attachment:scroll;
+font-size:26px;
+height:45vh;
 }
 
 .story p{
@@ -281,15 +304,34 @@ font-size:20px;
 <source src="music.mp3">
 </audio>
 
-<!-- OPEN INVITATION -->
+<!-- INTRO -->
 
 <div id="intro">
-
 <h1>Đình Tùng ❤ Thu Hà</h1>
-
-<p>Trân trọng kính mời</p>
-
 <button onclick="openCard()">Mở Thiệp</button>
+</div>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="couple">Đình Tùng ❤ Thu Hà</div>
+
+<div class="save">Save The Date • 29.03.2026</div>
+
+<div class="info">
+
+<p>Hôn lễ được cử hành tại</p>
+
+<p><b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b></p>
+
+<p>Vào lúc 17:30</p>
+
+<p>Chủ nhật 29.03.2026</p>
+
+<p>(Nhằm ngày 11.02.2026 Âm lịch)</p>
+
+</div>
 
 </div>
 
@@ -305,44 +347,6 @@ font-size:20px;
 
 </div>
 
-<div class="couple">Đình Tùng ❤ Thu Hà</div>
-
-<div class="save">Save The Date • 29.03.2026</div>
-
-<div class="countdown">
-
-<div class="time">
-<span id="days">0</span>Ngày
-</div>
-
-<div class="time">
-<span id="hours">0</span>Giờ
-</div>
-
-<div class="time">
-<span id="minutes">0</span>Phút
-</div>
-
-<div class="time">
-<span id="seconds">0</span>Giây
-</div>
-
-</div>
-
-<div class="info">
-
-<p>Hôn lễ được cử hành tại</p>
-
-<p><b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b></p>
-
-<p>Vào lúc 17:30</p>
-
-<p>Chủ nhật 29.03.2026</p>
-
-<p>(Tức ngày 11.02.2026 Âm lịch)</p>
-
-</div>
-
 </div>
 
 <!-- STORY -->
@@ -354,18 +358,12 @@ font-size:20px;
 <p>
 Trong cuộc đời mỗi người luôn có những cuộc gặp gỡ tưởng chừng rất bình thường,
 nhưng lại trở thành định mệnh của cả một hành trình.
-Chúng mình gặp nhau trong một ngày giản dị,
-không có điều gì đặc biệt ngoài những nụ cười và những câu chuyện nhỏ.
 </p>
 
 <p>
 Thời gian trôi qua,
 những cuộc trò chuyện trở nên dài hơn,
 những buổi gặp gỡ trở nên quen thuộc hơn.
-Chúng mình bắt đầu chia sẻ với nhau
-những niềm vui nhỏ bé của cuộc sống,
-những ước mơ về tương lai
-và cả những nỗi lo rất đời thường.
 </p>
 
 </div>
@@ -394,6 +392,38 @@ trong khi yêu ai đó sâu sắc sẽ cho bạn dũng khí.
 
 </div>
 
+<!-- PARALLAX -->
+
+<div class="parallax" style="background-image:url('anh10.jpg')">
+Love is not finding someone to live with
+</div>
+
+<div class="parallax small" style="background-image:url('anh11.jpg')">
+It's finding someone you can't live without
+</div>
+
+<!-- COUNTDOWN + INFO -->
+
+<div class="countdown">
+
+<div class="time">
+<span id="days">0</span>Ngày
+</div>
+
+<div class="time">
+<span id="hours">0</span>Giờ
+</div>
+
+<div class="time">
+<span id="minutes">0</span>Phút
+</div>
+
+<div class="time">
+<span id="seconds">0</span>Giây
+</div>
+
+</div>
+
 <!-- RSVP -->
 
 <div class="rsvp">
@@ -418,14 +448,14 @@ trong khi yêu ai đó sâu sắc sẽ cho bạn dũng khí.
 
 <script>
 
-/* OPEN CARD */
+/* OPEN */
 
 function openCard(){
 document.getElementById("intro").style.display="none"
 document.getElementById("music").play()
 }
 
-/* HERO SLIDER */
+/* SLIDER */
 
 let slides=document.querySelectorAll(".slide")
 let index=0
@@ -471,11 +501,8 @@ setInterval(()=>{
 let heart=document.createElement("div")
 
 heart.className="heart"
-
 heart.innerHTML="❤"
-
 heart.style.left=Math.random()*100+"%"
-
 heart.style.fontSize=(16+Math.random()*20)+"px"
 
 document.body.appendChild(heart)
@@ -499,8 +526,6 @@ lightimg.src=img.src
 
 lightbox.onclick=()=>lightbox.style.display="none"
 
-/* RSVP */
-
 function thanks(){
 document.getElementById("msg").style.display="block"
 }
@@ -509,4 +534,3 @@ document.getElementById("msg").style.display="block"
 
 </body>
 </html>
-
