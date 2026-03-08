@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Đình Tùng ❤ Thu Hà</title>
 
@@ -13,8 +13,8 @@
 /* FONT */
 
 @font-face{
-font-family:Edward;
-src:url("UTM-EdwardianKT.ttf");
+font-family:"Edwardian";
+src:url("UTM-EdwardianKT.ttf") format("truetype");
 }
 
 /* BODY */
@@ -22,330 +22,217 @@ src:url("UTM-EdwardianKT.ttf");
 body{
 margin:0;
 font-family:Cambria;
-background:#fffaf5;
+background:#fffdf7;
 color:#333;
 overflow-x:hidden;
-scroll-behavior:smooth;
 }
 
 /* SECTION */
 
 section{
 padding:80px 8%;
+text-align:center;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(#fff7e6,#ffffff);
+}
+
+/* COUPLE NAME */
+
+.couple-name{
+font-family:"Edwardian";
+font-size:80px;
+color:#c79a5b;
+opacity:0;
+transform:translateY(40px);
+animation:fadeName 3s forwards;
+}
+
+.date{
+font-size:20px;
+margin-top:10px;
+opacity:0;
+animation:fadeDate 3s forwards;
+animation-delay:1.5s;
+}
+
+@keyframes fadeName{
+0%{opacity:0;transform:translateY(40px);}
+100%{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeDate{
+0%{opacity:0;}
+100%{opacity:1;}
 }
 
 /* STORY */
 
 .story{
-text-align:center;
-}
-
-.story h2{
-font-family:Edward;
-font-size:55px;
-color:#b87a42;
-}
-
-.story-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-margin-top:40px;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
 }
 
 .story img{
 width:100%;
-border-radius:12px;
-}
-
-.story p{
-line-height:1.8;
-}
-
-/* HERO (giữa trang) */
-
-.hero{
-text-align:center;
-padding:140px 20px;
-background:linear-gradient(#fff7e8,#fff);
-position:relative;
-}
-
-.hero h1{
-font-family:Edward;
-font-size:80px;
-color:#c69a5a;
-margin:0;
-}
-
-.hero p{
-font-size:22px;
-margin-top:10px;
-}
-
-/* SLIDER */
-
-.slider{
-margin:60px auto;
-width:90%;
-overflow:hidden;
-border-radius:10px;
-}
-
-.slides{
-display:flex;
-animation:slide 25s infinite linear;
-}
-
-.slides img{
-width:100%;
+height:400px;
 object-fit:cover;
-}
-
-@keyframes slide{
-
-0%{transform:translateX(0)}
-
-20%{transform:translateX(-100%)}
-
-40%{transform:translateX(-200%)}
-
-60%{transform:translateX(-300%)}
-
-80%{transform:translateX(-400%)}
-
-100%{transform:translateX(0)}
-
-}
-
-/* ALBUM TITLE */
-
-.album-title{
-text-align:center;
-}
-
-.album-title h2{
-font-family:Edward;
-font-size:65px;
-color:#b87a42;
-}
-
-.quote{
-max-width:700px;
-margin:auto;
-line-height:1.8;
+border-radius:10px;
 }
 
 /* GALLERY */
 
-.gallery-grid{
-columns:3 250px;
-column-gap:15px;
+.gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
 }
 
 .gallery img{
 width:100%;
-margin-bottom:15px;
-border-radius:10px;
-opacity:0;
-transform:translateY(40px);
-transition:1s;
+height:250px;
+object-fit:cover;
+border-radius:8px;
 }
 
-.gallery img.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* EVENT */
-
-.event{
-text-align:center;
-background:#fdf6ea;
-}
-
-.event h2{
-font-family:Edward;
-font-size:55px;
-color:#b87a42;
-}
-
-/* RSVP */
-
-.rsvp{
-text-align:center;
-}
+/* BUTTON */
 
 button{
-background:#c69a5a;
-color:white;
+background:#c79a5b;
 border:none;
-padding:15px 30px;
-font-size:18px;
-border-radius:6px;
+padding:14px 26px;
+color:white;
+font-size:16px;
 cursor:pointer;
+border-radius:6px;
+margin:10px;
 }
 
-.form{
-display:none;
-margin-top:20px;
-}
+/* INPUT */
 
 input{
 padding:10px;
-margin:10px;
-width:200px;
+margin:8px;
+width:220px;
+}
+
+/* MUSIC BUTTON */
+
+#musicBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#c79a5b;
+border:none;
+color:white;
+padding:12px;
+border-radius:50%;
+font-size:18px;
+cursor:pointer;
 }
 
 /* HEART */
 
 .heart{
 position:fixed;
-color:#e8c46a;
-animation:float 6s linear forwards;
-pointer-events:none;
+bottom:-20px;
+font-size:22px;
+color:#d4af37;
+animation:float 8s linear infinite;
 }
 
 @keyframes float{
-
-0%{
-transform:translateY(0);
-opacity:1;
-}
-
-100%{
-transform:translateY(-800px);
-opacity:0;
-}
-
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
 
-.hero h1{
-font-size:50px;
+.couple-name{
+font-size:46px;
 }
 
-.story-grid{
+.story{
 grid-template-columns:1fr;
 }
 
-.gallery-grid{
-columns:2;
+.story img{
+height:260px;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+.gallery img{
+height:170px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
 <!-- MUSIC -->
 
-<audio autoplay loop>
+<audio id="bgmusic" loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- STORY -->
+<button id="musicBtn">🔊</button>
 
-<section class="story">
-
-<h2>Chuyện Tình Yêu</h2>
-
-<div class="story-grid">
-
-<div>
-
-<img src="anh5.jpg">
-
-<p>
-
-Trong một ngày bình thường,  
-chúng tôi vô tình gặp nhau.  
-Một ánh nhìn thoáng qua  
-nhưng lại khiến trái tim rung động.
-
-</p>
-
-</div>
-
-<div>
-
-<img src="anh6.jpg">
-
-<p>
-
-Từ những cuộc trò chuyện nhỏ,  
-những buổi cà phê giản dị,  
-tình cảm dần lớn lên  
-theo cách rất tự nhiên.
-
-</p>
-
-</div>
-
-<div>
-
-<img src="anh7.jpg">
-
-<p>
-
-Sau tất cả,  
-chúng tôi nhận ra rằng  
-hạnh phúc là khi  
-có nhau trên mọi chặng đường.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- HERO (giữa trang) -->
+<!-- HERO -->
 
 <section class="hero">
 
-<h1>Đình Tùng ❤ Thu Hà</h1>
+<h1 class="couple-name">
+Đình Tùng ❤ Thu Hà
+</h1>
 
-<p>Save The Date</p>
-
-<p>20 • 10 • 2025</p>
+<p class="date">
+Save the Date • 20.10.2025
+</p>
 
 </section>
 
-<!-- SLIDER -->
+<!-- STORY 1 -->
 
-<section class="slider">
+<section class="story">
 
-<div class="slides">
+<div>
 
-<img src="anh1.jpg">
-<img src="anh2.jpg">
-<img src="anh3.jpg">
-<img src="anh4.jpg">
-<img src="anh8.jpg">
+<h2>Lần đầu gặp gỡ</h2>
+
+<p>
+
+Chúng mình gặp nhau vào một ngày rất bình thường.
+Không ai nghĩ rằng cuộc gặp gỡ ấy lại trở thành
+khởi đầu của một hành trình dài.
+
+Từ những câu chuyện nhỏ,
+tình cảm dần lớn lên một cách tự nhiên
+và ấm áp.
+
+</p>
 
 </div>
 
-</section>
-
-<!-- ALBUM -->
-
-<section class="album-title">
-
-<h2>Album Hình Cưới</h2>
-
-<p class="quote">
-
-Được ai đó yêu sâu sắc sẽ mang lại cho bạn sức mạnh,  
-trong khi yêu ai đó sâu sắc sẽ cho bạn dũng khí.
-
-</p>
+<img src="anh1.jpg">
 
 </section>
 
@@ -353,23 +240,98 @@ trong khi yêu ai đó sâu sắc sẽ cho bạn dũng khí.
 
 <section>
 
-<div class="gallery-grid">
+<h2>Khoảnh khắc</h2>
 
-<img src="anh1.jpg">
+<div class="gallery">
+
 <img src="anh2.jpg">
 <img src="anh3.jpg">
 <img src="anh4.jpg">
 <img src="anh5.jpg">
 <img src="anh6.jpg">
 <img src="anh7.jpg">
+
+</div>
+
+</section>
+
+<!-- STORY 2 -->
+
+<section class="story">
+
 <img src="anh8.jpg">
+
+<div>
+
+<h2>Những năm tháng bên nhau</h2>
+
+<p>
+
+Chúng mình đã cùng nhau đi qua
+những ngày vui và cả những lúc khó khăn.
+
+Mỗi kỷ niệm nhỏ
+đều trở thành một mảnh ghép
+tạo nên câu chuyện tình yêu của hai đứa.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section>
+
+<h2>Kỷ niệm</h2>
+
+<div class="gallery">
+
 <img src="anh9.jpg">
 <img src="anh10.jpg">
 <img src="anh11.jpg">
 <img src="anh12.jpg">
 <img src="anh13.jpg">
 <img src="anh14.jpg">
+
+</div>
+
+</section>
+
+<!-- STORY 3 -->
+
+<section class="story">
+
+<div>
+
+<h2>Lời hứa</h2>
+
+<p>
+
+Sau tất cả những hành trình đã đi qua,
+chúng mình nhận ra điều quý giá nhất
+chính là được ở bên nhau.
+
+Vì vậy chúng mình quyết định
+bước sang chương mới của cuộc đời.
+
+</p>
+
+</div>
+
 <img src="anh15.jpg">
+
+</section>
+
+<!-- ALBUM -->
+
+<section>
+
+<h2>Album cưới</h2>
+
+<div class="gallery">
+
 <img src="anh16.jpg">
 <img src="anh17.jpg">
 <img src="anh18.jpg">
@@ -390,29 +352,17 @@ trong khi yêu ai đó sâu sắc sẽ cho bạn dũng khí.
 
 </section>
 
-<!-- EVENT -->
-
-<section class="event">
-
-<h2>Thời Gian & Địa Điểm</h2>
-
-<p>📅 20/10/2025</p>
-
-<p>⏰ 17:00</p>
-
-<p>📍 Trung tâm Tiệc Cưới ABC</p>
-
-</section>
-
 <!-- RSVP -->
 
-<section class="rsvp">
+<section>
 
 <h2>Xác nhận tham dự</h2>
 
 <button onclick="showForm()">Tôi sẽ tham dự</button>
 
-<div class="form" id="form">
+<button onclick="decline()">Không tham dự</button>
+
+<div id="form" style="display:none;margin-top:20px">
 
 <input placeholder="Họ tên"><br>
 
@@ -422,57 +372,66 @@ trong khi yêu ai đó sâu sắc sẽ cho bạn dũng khí.
 
 </div>
 
+<p id="thanks" style="display:none;margin-top:20px">
+Cảm ơn bạn đã phản hồi ❤️
+</p>
+
 </section>
 
 <script>
 
-/* HEART EFFECT */
+/* HEARTS */
 
-function heart(){
+for(let i=0;i<30;i++){
 
-let h=document.createElement("div")
+let heart=document.createElement("div")
 
-h.className="heart"
+heart.className="heart"
 
-h.innerHTML="❤"
+heart.innerHTML="❤"
 
-h.style.left=Math.random()*100+"%"
+heart.style.left=Math.random()*100+"%"
 
-h.style.fontSize=(Math.random()*20+10)+"px"
+heart.style.animationDuration=(6+Math.random()*6)+"s"
 
-document.body.appendChild(h)
-
-setTimeout(()=>h.remove(),6000)
+document.body.appendChild(heart)
 
 }
-
-setInterval(heart,150)
-
-/* FADE GALLERY */
-
-const images=document.querySelectorAll(".gallery img")
-
-window.addEventListener("scroll",()=>{
-
-images.forEach(img=>{
-
-let top=img.getBoundingClientRect().top
-
-if(top<window.innerHeight-100){
-
-img.classList.add("show")
-
-}
-
-})
-
-})
 
 /* RSVP */
 
 function showForm(){
 
 document.getElementById("form").style.display="block"
+document.getElementById("thanks").style.display="none"
+
+}
+
+function decline(){
+
+document.getElementById("form").style.display="none"
+document.getElementById("thanks").style.display="block"
+
+}
+
+/* MUSIC */
+
+let music=document.getElementById("bgmusic")
+let btn=document.getElementById("musicBtn")
+
+document.addEventListener("click",function(){
+music.play()
+},{once:true})
+
+btn.onclick=function(){
+
+if(music.paused){
+music.play()
+btn.innerHTML="🔊"
+}else{
+music.pause()
+btn.innerHTML="🔇"
+}
 
 }
 
