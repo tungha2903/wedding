@@ -6,43 +6,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thiệp Cưới</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<title>Đình Tùng & Thu Hà</title>
 
 <style>
 
+/* FONT */
+
+@font-face{
+font-family:wedding;
+src:url("UTM-EdwardianKT.ttf");
+}
+
 body{
 margin:0;
-font-family:Poppins;
-background:#fafafa;
-color:#333;
+font-family:Cambria;
+background:#f8f6f1;
+color:#444;
 overflow-x:hidden;
 }
 
-h1,h2,h3{
-font-family:"Playfair Display";
-}
+/* TITLE */
 
-section{
-padding:80px 10%;
-}
+.names{
 
-.title{
 text-align:center;
-font-size:40px;
-margin-bottom:50px;
+margin-top:80px;
+
 }
 
-/* HERO */
+.names h1{
 
-.hero{
-height:100vh;
+font-family:wedding;
+font-size:70px;
+color:#C9A24A;
+margin:0;
+
+}
+
+.names p{
+
+font-size:22px;
+margin-top:10px;
+
+}
+
+/* SLIDER */
+
+.slider{
+
+width:90%;
+margin:auto;
+margin-top:60px;
+height:70vh;
 position:relative;
 overflow:hidden;
+border-radius:20px;
+
 }
 
-.hero-slide{
+.slide{
+
 position:absolute;
 width:100%;
 height:100%;
@@ -52,61 +75,53 @@ background-position:center;
 background-color:black;
 opacity:0;
 transition:2s;
+
 }
 
-.hero-slide.active{
+.slide.active{
 opacity:1;
 }
 
-.hero-text{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+/* SECTION */
+
+section{
+
+padding:80px 10%;
+
+}
+
+.title{
+
 text-align:center;
-color:white;
-z-index:2;
-}
+font-size:36px;
+margin-bottom:40px;
 
-.hero-text h1{
-font-size:60px;
-margin:0;
-}
-
-.hero-text p{
-font-size:24px;
-}
-
-/* PARALLAX */
-
-.parallax{
-background:url("anh1.jpg") center/cover fixed;
-height:400px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:40px;
 }
 
 /* STORY */
 
 .story{
+
 display:flex;
 gap:40px;
 margin-bottom:80px;
 align-items:center;
+
 }
 
 .story img{
+
 width:50%;
 border-radius:15px;
+
 }
 
 .story-text{
+
 width:50%;
-font-size:18px;
-line-height:1.7;
+font-size:20px;
+line-height:1.8;
+
 }
 
 .story:nth-child(even){
@@ -129,22 +144,25 @@ width:100%;
 /* GALLERY */
 
 .gallery{
+
 columns:4;
 column-gap:12px;
+
 }
 
 .gallery img{
+
 width:100%;
 margin-bottom:12px;
 border-radius:12px;
-opacity:0;
-transform:scale(1.1);
-transition:1s;
+transition:0.6s;
+
 }
 
-.gallery img.show{
-opacity:1;
-transform:scale(1);
+.gallery img:hover{
+
+transform:scale(1.05);
+
 }
 
 @media(max-width:900px){
@@ -162,50 +180,68 @@ text-align:center;
 }
 
 input,button{
+
 padding:12px;
 margin:10px;
 font-size:16px;
+
 }
 
 button{
-background:#e91e63;
+
+background:#C9A24A;
 color:white;
 border:none;
 cursor:pointer;
+
+}
+
+/* HEART */
+
+.heart{
+
+position:fixed;
+color:#C9A24A;
+font-size:18px;
+animation:floatUp 6s linear;
+
+}
+
+@keyframes floatUp{
+
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-100vh);opacity:0;}
+
 }
 
 </style>
 
 </head>
 
-
 <body>
 
-<!-- HERO -->
+<!-- NAMES -->
 
-<div class="hero">
+<div class="names">
 
-<div class="hero-slide active" style="background-image:url('anh1.jpg')"></div>
-<div class="hero-slide" style="background-image:url('anh2.jpg')"></div>
-<div class="hero-slide" style="background-image:url('anh3.jpg')"></div>
-<div class="hero-slide" style="background-image:url('anh4.jpg')"></div>
+<h1>Đình Tùng ❤ Thu Hà</h1>
 
-<div class="hero-text">
-
-<h1>Tùng & Hà</h1>
 <p>29.03.2026</p>
 
 </div>
 
+<!-- HERO SLIDER -->
+
+<div class="slider">
+
+<div class="slide active" style="background-image:url('anh1.jpg')"></div>
+<div class="slide" style="background-image:url('anh2.jpg')"></div>
+<div class="slide" style="background-image:url('anh3.jpg')"></div>
+<div class="slide" style="background-image:url('anh4.jpg')"></div>
+
 </div>
 
-<!-- PARALLAX -->
-
-<div class="parallax">
-Save The Date
-</div>
-
-<!-- THỜI GIAN -->
+<!-- TIME -->
 
 <section>
 
@@ -213,13 +249,14 @@ Save The Date
 
 <div style="text-align:center;font-size:22px;line-height:2">
 
-📅 10:30 – Chủ Nhật  
+📅 17:30 – Chủ Nhật  
 <br>
 29 / 03 / 2026
 
 <br><br>
 
-📍 Hải Phòng
+📍 Trung tâm tiệc cưới Hoàng Thành 
+  Số 9 Hồng Bàng, đường Hồng Bàng, Thành phố Hải Phòng
 
 </div>
 
@@ -240,14 +277,15 @@ Save The Date
 <h3>Lần đầu gặp</h3>
 
 <p>
+
 Chúng mình gặp nhau trong một ngày bình yên
 nhưng lại trở thành kỷ niệm đặc biệt nhất.
+
 </p>
 
 </div>
 
 </div>
-
 
 <div class="story">
 
@@ -258,14 +296,15 @@ nhưng lại trở thành kỷ niệm đặc biệt nhất.
 <h3>Tình yêu lớn dần</h3>
 
 <p>
+
 Qua từng ngày bên nhau chúng mình hiểu nhau hơn
 và yêu nhau nhiều hơn.
+
 </p>
 
 </div>
 
 </div>
-
 
 <div class="story">
 
@@ -276,9 +315,11 @@ và yêu nhau nhiều hơn.
 <h3>Lời cầu hôn</h3>
 
 <p>
+
 Khoảnh khắc anh ngỏ lời
 là lúc chúng mình biết đã đến lúc
 bắt đầu một chương mới.
+
 </p>
 
 </div>
@@ -335,32 +376,39 @@ bắt đầu một chương mới.
 <h2 class="title">Xác Nhận Tham Dự</h2>
 
 <label>
+
 <input type="radio" name="attend" onclick="showForm(true)">
 Tham dự
+
 </label>
 
 <label>
+
 <input type="radio" name="attend" onclick="showForm(false)">
 Không tham dự
+
 </label>
 
 <div id="guestForm" style="display:none">
 
 <form
+
 action="https://docs.google.com/forms/d/e/1idmx7zE70ab_1ERp-8xhGivVvg4Y5wrCdJz9nGQ8A_w/formResponse"
 method="POST"
 target="hidden_iframe"
-onsubmit="sent()"
+
 >
 
 <br>
 
 <input type="text"
+
 name="entry.1470591758"
 placeholder="Họ tên"
 required>
 
 <input type="number"
+
 name="entry.450176909"
 placeholder="Số lượng"
 required>
@@ -368,7 +416,9 @@ required>
 <br>
 
 <button type="submit">
+
 Gửi xác nhận
+
 </button>
 
 </form>
@@ -381,50 +431,65 @@ Gửi xác nhận
 
 <script>
 
-/* HERO SLIDE */
+/* SLIDER */
 
-let slides=document.querySelectorAll(".hero-slide")
+let slides=document.querySelectorAll(".slide")
+
 let index=0
 
 setInterval(()=>{
+
 slides[index].classList.remove("active")
+
 index=(index+1)%slides.length
+
 slides[index].classList.add("active")
+
 },4000)
-
-
-/* GALLERY FADE */
-
-const images=document.querySelectorAll(".gallery img")
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show")
-}
-})
-})
-
-images.forEach(img=>observer.observe(img))
-
 
 /* RSVP */
 
 function showForm(status){
 
 if(status){
+
 document.getElementById("guestForm").style.display="block"
+
 }
 else{
+
 document.getElementById("guestForm").style.display="none"
 alert("Cảm ơn bạn đã phản hồi ❤️")
-}
 
 }
 
-function sent(){
-alert("Cảm ơn bạn đã xác nhận tham dự ❤️")
 }
+
+/* HEART EFFECT */
+
+function heart(){
+
+if(Math.random()>0.95){
+
+let h=document.createElement("div")
+
+h.className="heart"
+
+h.innerHTML="❤"
+
+h.style.left=Math.random()*100+"vw"
+
+h.style.bottom="0"
+
+document.body.appendChild(h)
+
+setTimeout(()=>h.remove(),6000)
+
+}
+
+}
+
+setInterval(heart,300)
 
 </script>
 
