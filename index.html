@@ -474,6 +474,61 @@ VÀO LÚC <b>17:30</b><br>
 CHỦ NHẬT 29.03.2026
 </p>
 
+<!-- CHÈN ĐOẠN NÀY -->
+
+<div class="countdown">
+
+<div class="flip-box">
+<div class="flip" id="days">00</div>
+<span>Ngày</span>
+</div>
+
+<div class="flip-box">
+<div class="flip" id="hours">00</div>
+<span>Giờ</span>
+</div>
+
+<div class="flip-box">
+<div class="flip" id="mins">00</div>
+<span>Phút</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="rsvp fade">
+
+<h2>Xác nhận tham dự</h2>
+
+<button class="join" onclick="showForm()">Tôi sẽ tham dự</button>
+
+<button class="nojoin" onclick="alert('Cảm ơn bạn đã quan tâm ❤')">
+Xin lỗi tôi không thể tham dự
+</button>
+
+<div class="form-box" id="formBox">
+
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSc/formResponse" method="POST">
+
+<input type="hidden" name="entry.418138023" value="Tôi sẽ tham dự">
+
+<input type="text" name="entry.1470591758" placeholder="Họ tên khách">
+
+<input type="number" name="entry.450176909" placeholder="Số lượng">
+
+<br>
+
+<button type="submit" class="join">Gửi xác nhận</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- KẾT THÚC PHẦN CHÈN -->
+
 <script>
 
 /* RSVP */
@@ -616,4 +671,5 @@ document.getElementById("mins").innerText=mins
 
 </body>
 </html>
+
 
