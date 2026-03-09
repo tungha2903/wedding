@@ -251,66 +251,174 @@ margin:20px 0;
 GALLERY
 ========================= */
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
+<section class="fade">
+
+<style>
+
+/* CONTAINER */
+
+.gallery-masonry{
+column-count:2; /* mobile 2 cột */
+column-gap:12px;
+padding:10px;
 }
 
-.gallery img{
+/* tablet */
+
+@media(min-width:768px){
+.gallery-masonry{
+column-count:3;
+}
+}
+
+/* desktop */
+
+@media(min-width:1100px){
+.gallery-masonry{
+column-count:4;
+}
+}
+
+/* ẢNH */
+
+.gallery-masonry img{
+
 width:100%;
-border-radius:10px;
-}
+margin-bottom:12px;
 
-/* =========================
-COUNTDOWN
-========================= */
+border-radius:12px;
 
-.countdown{
-font-size:26px;
-margin-top:20px;
-color:#c79b00;
-}
+break-inside:avoid;
 
-/* =========================
-FORM RSVP
-========================= */
-
-.rsvp button{
-padding:12px 22px;
-border-radius:25px;
-border:none;
-margin:10px;
-font-size:16px;
 cursor:pointer;
+
+/* animation */
+
+opacity:0;
+transform:translateY(30px);
+transition:0.8s;
+
 }
 
-.join{
-background:#c79b00;
-color:white;
+/* khi hiện */
+
+.gallery-masonry img.show{
+opacity:1;
+transform:translateY(0);
 }
 
-.nojoin{
-background:#ccc;
+/* hover nhẹ */
+
+.gallery-masonry img:hover{
+transform:scale(1.03);
 }
 
-.form-box{
+/* LIGHTBOX */
+
+.lightbox{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.9);
+
 display:none;
-margin-top:20px;
+
+justify-content:center;
+align-items:center;
+
+z-index:999;
 }
 
-input{
-width:80%;
-padding:12px;
-margin:10px 0;
-border-radius:25px;
-border:1px solid #ddd;
+.lightbox img{
+
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+
 }
 
 </style>
-</head>
 
-<body>
+<h2>Album ảnh cưới</h2>
+
+<div class="gallery-masonry">
+
+<!-- thay ảnh tại đây -->
+
+<img src="anh10.jpg">
+<img src="anh11.jpg">
+<img src="anh12.jpg">
+<img src="anh13.jpg">
+<img src="anh14.jpg">
+<img src="anh15.jpg">
+<img src="anh16.jpg">
+<img src="anh17.jpg">
+
+</div>
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+<img id="lightbox-img">
+</div>
+
+<script>
+
+/* =========================
+HIỆU ỨNG XUẤT HIỆN KHI CUỘN
+========================= */
+
+const galleryImgs=document.querySelectorAll(".gallery-masonry img")
+
+window.addEventListener("scroll",()=>{
+
+galleryImgs.forEach(img=>{
+
+const top=img.getBoundingClientRect().top
+
+if(top<window.innerHeight-80){
+
+img.classList.add("show")
+
+}
+
+})
+
+})
+
+/* =========================
+LIGHTBOX PHÓNG TO ẢNH
+========================= */
+
+const lightbox=document.getElementById("lightbox")
+const lightboxImg=document.getElementById("lightbox-img")
+
+galleryImgs.forEach(img=>{
+
+img.onclick=()=>{
+
+lightbox.style.display="flex"
+
+lightboxImg.src=img.src
+
+}
+
+})
+
+lightbox.onclick=()=>{
+
+lightbox.style.display="none"
+
+}
+
+</script>
+
+</section>
 
 <!-- =========================
 NHẠC NỀN
@@ -589,4 +697,5 @@ document.getElementById("formBox").style.display="block"
 
 </body>
 </html>
+
 
