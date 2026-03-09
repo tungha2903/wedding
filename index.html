@@ -894,24 +894,20 @@ setInterval(createHeart,600);
 
 <script>
 
-const gallery=document.querySelector(".gallery")
-const images=document.querySelectorAll(".gallery img")
+const gallery = document.querySelector(".gallery")
+const images = document.querySelectorAll(".gallery img")
 
-<script>
-
-const gallery=document.querySelector(".gallery")
-const images=document.querySelectorAll(".gallery img")
-
-let speed=0.35
-let paused=false
+let scrollSpeed = 0.35
+let paused = false
 
 function autoScroll(){
 
 if(!paused){
-gallery.scrollLeft+=speed
 
-if(gallery.scrollLeft>=gallery.scrollWidth-gallery.clientWidth){
-gallery.scrollLeft=0
+gallery.scrollLeft += scrollSpeed
+
+if(gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth){
+gallery.scrollLeft = 0
 }
 
 }
@@ -922,57 +918,22 @@ requestAnimationFrame(autoScroll)
 
 autoScroll()
 
-/* chạm dừng */
+/* chạm giữ -> dừng */
 
 gallery.addEventListener("touchstart",()=>{
-paused=true
+paused = true
 })
 
 gallery.addEventListener("touchend",()=>{
-paused=false
+paused = false
 })
 
 gallery.addEventListener("mousedown",()=>{
-paused=true
+paused = true
 })
 
 gallery.addEventListener("mouseup",()=>{
-paused=false
-})
-
-/* zoom */
-
-images.forEach(img=>{
-
-img.addEventListener("click",()=>{
-
-paused=true
-img.classList.toggle("zoomed")
-
-})
-
-})
-
-</script>
-
-startAutoScroll()
-
-/* chạm dừng */
-
-gallery.addEventListener("touchstart",()=>{
-clearInterval(autoScroll)
-})
-
-gallery.addEventListener("touchend",()=>{
-startAutoScroll()
-})
-
-gallery.addEventListener("mousedown",()=>{
-clearInterval(autoScroll)
-})
-
-gallery.addEventListener("mouseup",()=>{
-startAutoScroll()
+paused = false
 })
 
 /* zoom ảnh */
@@ -981,9 +942,17 @@ images.forEach(img=>{
 
 img.addEventListener("click",()=>{
 
-clearInterval(autoScroll)
+if(img.classList.contains("zoomed")){
+img.classList.remove("zoomed")
+paused = false
+}else{
 
-img.classList.toggle("zoomed")
+images.forEach(i=>i.classList.remove("zoomed"))
+
+img.classList.add("zoomed")
+paused = true
+
+}
 
 })
 
@@ -992,8 +961,10 @@ img.classList.toggle("zoomed")
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
