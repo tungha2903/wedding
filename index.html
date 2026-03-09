@@ -1,303 +1,219 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Đình Tùng & Thu Hà</title>
+<!-- =========================
+FONT CHỮ
+========================= -->
 
 <style>
 
-/* =====================================================
-FONT
-===================================================== */
-
 @font-face{
-font-family:Edwardian;
-src:url("UTM-EdwardianKT.ttf");
+font-family: "Edward";
+src: url("UTM-EdwardianKT.ttf");
 }
 
-/* =====================================================
+/* =========================
 CÀI ĐẶT CHUNG
-===================================================== */
+========================= */
 
 body{
 margin:0;
-font-family:Cambria;
-background:#f5efe6;
-color:#5b4636;
+font-family: Cambria, serif;
+background:#f6eee6; /* tone kem nude */
+color:#333;
 overflow-x:hidden;
 }
 
-/* =====================================================
-TRÁI TIM BAY
-===================================================== */
-
-.heart{
-position:fixed;
-bottom:-20px;
-color:#d4af37;
-font-size:20px;
-animation:fly 7s linear;
-pointer-events:none;
-}
-
-@keyframes fly{
-0%{transform:translateY(0);opacity:1}
-100%{transform:translateY(-120vh);opacity:0}
-}
-
-/* =====================================================
-PHẦN MỞ THIỆP
-===================================================== */
-
-#intro{
-
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-background:#efe5d7;
-text-align:center;
-
-}
-
-.intro-name{
-
-font-size:60px;
-line-height:1.2;
-color:#fff;
-
-}
-
-.open-btn{
-
-margin-top:40px;
-padding:15px 40px;
-background:#c79a5b;
-border:none;
-border-radius:30px;
-color:white;
-font-size:22px;
-cursor:pointer;
-
-}
-
-/* =====================================================
-THẺ 1 - HERO
-===================================================== */
-
-.hero{
-
-position:relative;
-height:33vh;
-overflow:hidden;
-
-}
-
-.slide{
-
-position:absolute;
-width:100%;
-height:100%;
-background-size:cover;
-background-position:center;
-filter:blur(3px) brightness(0.7);
-opacity:0;
-transition:opacity 2s;
-
-}
-
-.slide.active{
-opacity:1;
-}
-
-/* TÊN CÔ DÂU CHÚ RỂ */
-
-.couple{
-
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-text-align:center;
-color:#d4af37;
-font-family:Edwardian;
-font-size:70px;
-
-}
-
-.couple .left{
-text-align:left;
-}
-
-.couple .heart{
-font-size:50px;
+/* section mỗi thẻ */
+section{
+padding:60px 20px;
 text-align:center;
 }
 
-.couple .right{
-text-align:right;
-}
-
-/* =====================================================
-ANIMATION SCROLL
-===================================================== */
-
-.reveal{
+/* hiệu ứng xuất hiện khi cuộn */
+.fade{
 opacity:0;
 transform:translateY(40px);
 transition:1s;
 }
 
-.reveal.active{
+.fade.show{
 opacity:1;
 transform:translateY(0);
 }
 
-/* =====================================================
-STORY
-===================================================== */
+/* =========================
+TIM BAY
+========================= */
 
-.story{
-padding:80px 20px;
-max-width:900px;
-margin:auto;
+.heart{
+position:fixed;
+color:gold;
+animation:float 6s linear infinite;
+opacity:0.7;
 }
 
-.story img{
-width:100%;
-border-radius:10px;
-margin:20px 0;
+@keyframes float{
+0%{
+transform:translateY(100vh) scale(0.8);
+opacity:0;
+}
+50%{
+opacity:1;
+}
+100%{
+transform:translateY(-10vh) scale(1.3);
+opacity:0;
+}
 }
 
-/* =====================================================
-ALBUM
-===================================================== */
+/* =========================
+TRANG MỞ THIỆP
+========================= */
 
-.album{
-
-padding:80px 10%;
-background:#f6f3ee;
-
-}
-
-.gallery{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-
-}
-
-.gallery img{
-
-width:100%;
-border-radius:10px;
-transition:0.5s;
-
-}
-
-/* =====================================================
-THÔNG TIN CƯỚI
-===================================================== */
-
-.info{
-
-text-align:center;
-padding:100px 20px;
-
-}
-
-.countdown{
-
+#cover{
+height:100vh;
 display:flex;
 justify-content:center;
-gap:25px;
-margin-top:40px;
-
+align-items:center;
+flex-direction:column;
+background:#f6eee6;
 }
 
-.time{
-
-background:#f1ece6;
-padding:15px 20px;
-border-radius:10px;
-}
-
-.time span{
-display:block;
-font-size:32px;
-}
-
-/* =====================================================
-RSVP
-===================================================== */
-
-.rsvp{
-
-text-align:center;
-padding:100px 20px;
-
-}
-
-.btn{
-
-padding:14px 30px;
-border:none;
-border-radius:30px;
-font-size:20px;
-margin:10px;
-cursor:pointer;
-
-}
-
-.yes{
-background:#c79a5b;
+.names{
+font-size:42px;
 color:white;
+text-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
-.no{
-background:#ddd;
+.names div{
+line-height:1.3;
 }
 
-.form{
-
-display:none;
+.open-btn{
 margin-top:30px;
-
+padding:14px 30px;
+border-radius:30px;
+border:none;
+background:gold;
+font-size:18px;
+cursor:pointer;
 }
 
-input{
-
-padding:12px;
-width:260px;
-border-radius:20px;
-border:1px solid #ccc;
-margin:10px;
-
-}
-
-/* =====================================================
-MOBILE
-===================================================== */
-
-@media(max-width:768px){
-
-.couple{
-font-size:48px;
-}
+/* =========================
+HERO SLIDER
+========================= */
 
 .hero{
 height:35vh;
+overflow:hidden;
+position:relative;
 }
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(70%);
+position:absolute;
+animation:slide 24s infinite;
+}
+
+.hero img:nth-child(2){animation-delay:6s}
+.hero img:nth-child(3){animation-delay:12s}
+.hero img:nth-child(4){animation-delay:18s}
+
+@keyframes slide{
+0%{opacity:0; transform:translateX(50px)}
+10%{opacity:1; transform:translateX(0)}
+25%{opacity:1}
+35%{opacity:0}
+100%{opacity:0}
+}
+
+/* =========================
+TÊN CÔ DÂU CHÚ RỂ
+========================= */
+
+.couple{
+font-family:"Edward";
+font-size:48px;
+color:gold;
+line-height:1.4;
+}
+
+/* =========================
+STORY ẢNH
+========================= */
+
+.story img{
+width:100%;
+border-radius:12px;
+margin:20px 0;
+}
+
+/* =========================
+GALLERY
+========================= */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+/* =========================
+COUNTDOWN
+========================= */
 
 .countdown{
-flex-wrap:wrap;
+font-size:26px;
+margin-top:20px;
+color:#c79b00;
 }
 
+/* =========================
+FORM RSVP
+========================= */
+
+.rsvp button{
+padding:12px 22px;
+border-radius:25px;
+border:none;
+margin:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.join{
+background:#c79b00;
+color:white;
+}
+
+.nojoin{
+background:#ccc;
+}
+
+.form-box{
+display:none;
+margin-top:20px;
+}
+
+input{
+width:80%;
+padding:12px;
+margin:10px 0;
+border-radius:25px;
+border:1px solid #ddd;
 }
 
 </style>
@@ -305,17 +221,24 @@ flex-wrap:wrap;
 
 <body>
 
+<!-- =========================
+NHẠC NỀN
+========================= -->
+
 <audio id="music" loop>
 <source src="music.mp3">
 </audio>
 
-<!-- =====================================================
-PHẦN 1 - MỞ THIỆP
-===================================================== -->
 
-<div id="intro">
+<!-- =========================
+TRANG MỞ THIỆP
+========================= -->
 
-<div class="intro-name">
+<div id="cover">
+
+<div class="names">
+
+<!-- chỉnh sửa tên tại đây -->
 
 <div style="text-align:left">Đình Tùng</div>
 <div style="text-align:center">&</div>
@@ -323,70 +246,73 @@ PHẦN 1 - MỞ THIỆP
 
 </div>
 
-<button class="open-btn" onclick="openCard()">Mở Thiệp</button>
+<button class="open-btn" onclick="openCard()">
+Mở thiệp
+</button>
 
 </div>
 
-<!-- =====================================================
-THẺ 1 - HERO
-===================================================== -->
+
+<!-- =========================
+THẺ 1 HERO
+========================= -->
+
+<section class="fade">
 
 <div class="hero">
 
-<div class="slide active" style="background-image:url('anh1.jpg')"></div>
-<div class="slide" style="background-image:url('anh2.jpg')"></div>
-<div class="slide" style="background-image:url('anh3.jpg')"></div>
-<div class="slide" style="background-image:url('anh4.jpg')"></div>
+<!-- thay ảnh tại đây -->
+
+<img src="anh1.jpg">
+<img src="anh2.jpg">
+<img src="anh3.jpg">
+<img src="anh4.jpg">
+
+</div>
 
 <div class="couple">
 
-<div class="left">Đình Tùng</div>
-<div class="heart">❤</div>
-<div class="right">Thu Hà</div>
+<div style="text-align:left">Đình Tùng</div>
+<div style="text-align:center">❤</div>
+<div style="text-align:right">Thu Hà</div>
 
 </div>
 
-</div>
+</section>
 
-<!-- =====================================================
-THẺ 2 - STORY
-===================================================== -->
 
-<div class="story reveal">
+<!-- =========================
+THẺ STORY
+========================= -->
 
-<p>
-Trong cuộc đời mỗi người luôn có những cuộc gặp gỡ tưởng chừng bình thường,
-nhưng lại trở thành định mệnh của cả một hành trình.
-</p>
+<section class="story fade">
+
+<p>Chuyện tình của chúng mình bắt đầu từ...</p>
 
 <img src="anh5.jpg">
 
-<p>
-Những buổi trò chuyện, những lần gặp gỡ dần trở thành thói quen.
-</p>
+<p>Một ngày thật đặc biệt...</p>
 
 <img src="anh6.jpg">
 
 <img src="anh7.jpg">
 
-<p>
-Chúng mình nhận ra rằng người bên cạnh không chỉ là người yêu
-mà còn là người bạn đồng hành suốt cuộc đời.
-</p>
+<p>Và rồi chúng mình quyết định...</p>
 
 <img src="anh8.jpg">
 
 <img src="anh9.jpg">
 
-</div>
+</section>
 
-<!-- =====================================================
-THẺ 4 - ALBUM
-===================================================== -->
 
-<div class="album reveal">
+<!-- =========================
+ALBUM ẢNH
+========================= -->
 
-<h2 style="text-align:center">Album Hình Cưới</h2>
+<section class="fade">
+
+<h2>Album ảnh cưới</h2>
 
 <div class="gallery">
 
@@ -401,170 +327,170 @@ THẺ 4 - ALBUM
 
 </div>
 
-</div>
+</section>
 
-<!-- =====================================================
-THẺ 5 - THÔNG TIN CƯỚI
-===================================================== -->
 
-<div class="info reveal">
+<!-- =========================
+THÔNG TIN CƯỚI
+========================= -->
 
-<p>Hôn lễ được cử hành tại</p>
+<section class="fade">
 
-<h2>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</h2>
+<h2>Trân trọng kính mời</h2>
 
-<p>Vào lúc 17:30</p>
+<p>
 
-<p>Chủ nhật 29.03.2026</p>
+Hôn lễ được cử hành tại<br>
 
-<p>(Tức ngày 11.02.2026 Âm lịch)</p>
+<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
 
-<div class="countdown">
+</p>
 
-<div class="time"><span id="days">0</span>Ngày</div>
-<div class="time"><span id="hours">0</span>Giờ</div>
-<div class="time"><span id="minutes">0</span>Phút</div>
-<div class="time"><span id="seconds">0</span>Giây</div>
+<p>
 
-</div>
+VÀO LÚC <b>17:30</b><br>
 
-</div>
+CHỦ NHẬT 29.03.2026<br>
 
-<!-- =====================================================
-THẺ 6 - RSVP
-===================================================== -->
+(TỨC 11.02 ÂM LỊCH)
 
-<div class="rsvp reveal">
+</p>
+
+<div class="countdown" id="countdown"></div>
+
+</section>
+
+
+<!-- =========================
+RSVP
+========================= -->
+
+<section class="rsvp fade">
 
 <h2>Xác nhận tham dự</h2>
 
-<button class="btn yes" onclick="showForm()">Tôi sẽ tham dự</button>
+<button class="join" onclick="showForm()">Tôi sẽ tham dự</button>
 
-<button class="btn no" onclick="sorry()">Xin lỗi tôi không thể tham dự</button>
+<button class="nojoin" onclick="alert('Cảm ơn bạn đã quan tâm đến đám cưới của chúng mình ❤')">
+Xin lỗi tôi không thể tham dự
+</button>
 
-<div class="form" id="form">
+<div class="form-box" id="formBox">
 
-<input placeholder="Họ tên khách"><br>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSc/ formResponse" method="POST">
 
-<input placeholder="Số lượng khách"><br>
+<input type="hidden" name="entry.418138023" value="Tôi sẽ tham dự">
 
-<button class="btn yes">Gửi xác nhận</button>
+<input type="text" name="entry.1470591758" placeholder="Họ tên khách">
+
+<input type="number" name="entry.450176909" placeholder="Số lượng">
+
+<br>
+
+<button type="submit" class="join">Gửi xác nhận</button>
+
+</form>
 
 </div>
 
-</div>
+</section>
+
 
 <script>
 
-/* MỞ THIỆP */
+/* =========================
+MỞ THIỆP
+========================= */
 
 function openCard(){
 
-document.getElementById("intro").style.display="none"
+document.getElementById("cover").style.display="none";
 
-document.getElementById("music").play()
+document.getElementById("music").play();
 
 }
 
-/* HERO SLIDER */
 
-let slides=document.querySelectorAll(".slide")
+/* =========================
+HIỆU ỨNG XUẤT HIỆN KHI CUỘN
+========================= */
 
-let index=0
+const faders=document.querySelectorAll('.fade')
 
-setInterval(()=>{
+window.addEventListener('scroll',()=>{
 
-slides[index].classList.remove("active")
+faders.forEach(el=>{
 
-index++
+const top=el.getBoundingClientRect().top
 
-if(index>=slides.length) index=0
+if(top<window.innerHeight-100){
 
-slides[index].classList.add("active")
-
-},5000)
-
-/* TRÁI TIM BAY */
-
-setInterval(()=>{
-
-let heart=document.createElement("div")
-
-heart.className="heart"
-
-heart.innerHTML="❤"
-
-heart.style.left=Math.random()*100+"%"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>heart.remove(),7000)
-
-},700)
-
-/* SCROLL REVEAL */
-
-function reveal(){
-
-let reveals=document.querySelectorAll(".reveal")
-
-reveals.forEach(el=>{
-
-let windowHeight=window.innerHeight
-
-let top=el.getBoundingClientRect().top
-
-if(top < windowHeight-100){
-
-el.classList.add("active")
+el.classList.add('show')
 
 }
 
 })
 
+})
+
+
+/* =========================
+TIM BAY
+========================= */
+
+function createHeart(){
+
+const heart=document.createElement("div")
+
+heart.classList.add("heart")
+
+heart.style.left=Math.random()*100+"vw"
+
+heart.style.fontSize=(Math.random()*20+10)+"px"
+
+heart.innerHTML="❤"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),6000)
+
 }
 
-window.addEventListener("scroll",reveal)
+setInterval(createHeart,700)
 
-/* COUNTDOWN */
 
-const wedding=new Date("2026-03-29T17:30:00").getTime()
+/* =========================
+COUNTDOWN
+========================= */
+
+const target=new Date("Mar 29, 2026 17:30:00").getTime()
 
 setInterval(()=>{
 
-let now=new Date().getTime()
+const now=new Date().getTime()
 
-let diff=wedding-now
+const d=target-now
 
-let d=Math.floor(diff/(1000*60*60*24))
+const days=Math.floor(d/(1000*60*60*24))
 
-let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60))
+const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
 
-let m=Math.floor((diff%(1000*60*60))/(1000*60))
+const mins=Math.floor((d%(1000*60*60))/(1000*60))
 
-let s=Math.floor((diff%(1000*60))/1000)
+document.getElementById("countdown").innerHTML=
 
-document.getElementById("days").innerHTML=d
-
-document.getElementById("hours").innerHTML=h
-
-document.getElementById("minutes").innerHTML=m
-
-document.getElementById("seconds").innerHTML=s
+days+" ngày "+hours+" giờ "+mins+" phút"
 
 },1000)
 
-/* RSVP */
+
+/* =========================
+HIỆN FORM
+========================= */
 
 function showForm(){
 
-document.getElementById("form").style.display="block"
-
-}
-
-function sorry(){
-
-alert("Cảm ơn bạn đã quan tâm đến đám cưới của chúng mình ❤")
+document.getElementById("formBox").style.display="block"
 
 }
 
