@@ -89,14 +89,23 @@ font-size:18px;
 .invite-message{
 position:absolute;
 bottom:120px;
-width:100%;
-text-align:center;
+left:50%;
+transform:translateX(-50%);
 font-family:"Edward";
 font-size:34px;
 color:#d4af37;
 opacity:0;
 animation:fadeInvite 2.5s forwards;
 animation-delay:1s;
+}
+
+.invite-message .line1{
+text-align:left;
+}
+
+.invite-message .line2{
+text-align:right;
+margin-top:4px;
 }
 
 @keyframes fadeInvite{
@@ -532,7 +541,8 @@ border:1px solid #ddd;
 <div id="envelopeScreen">
 
 <div class="invite-message">
-Thân gửi thiệp hồng tới những người thân thương
+<div class="line1">Thân gửi thiệp hồng</div>
+<div class="line2">tới những người thân thương</div>
 </div>
 
 <div class="envelope" onclick="openEnvelope()">
@@ -996,6 +1006,7 @@ paused = true
 
 </body>
 </html>
+
 
 
 
