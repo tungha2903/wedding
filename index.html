@@ -5,15 +5,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- =========================
-FONT CHỮ
-========================= -->
-
 <style>
 
+/* =========================
+FONT
+========================= */
+
 @font-face{
-font-family: "Edward";
-src: url("UTM-EdwardianKT.ttf");
+font-family:"Edward";
+src:url("UTM-EdwardianKT.ttf");
 }
 
 /* =========================
@@ -22,23 +22,21 @@ CÀI ĐẶT CHUNG
 
 body{
 margin:0;
-font-family: Cambria, serif;
-background:#f6eee6; /* tone kem nude */
+font-family:Cambria,serif;
+background:#f6eee6;
 color:#333;
 overflow-x:hidden;
 }
 
-/* section mỗi thẻ */
 section{
-padding:60px 20px;
+padding:50px 18px;
 text-align:center;
 }
 
-/* hiệu ứng xuất hiện khi cuộn */
 .fade{
 opacity:0;
 transform:translateY(40px);
-transition:1s;
+transition:0.8s;
 }
 
 .fade.show{
@@ -58,17 +56,19 @@ opacity:0.7;
 }
 
 @keyframes float{
+
 0%{
 transform:translateY(100vh) scale(0.8);
 opacity:0;
 }
-50%{
-opacity:1;
-}
+
+50%{opacity:1;}
+
 100%{
 transform:translateY(-10vh) scale(1.3);
 opacity:0;
 }
+
 }
 
 /* =========================
@@ -85,13 +85,9 @@ background:#f6eee6;
 }
 
 .names{
-font-size:42px;
+font-size:38px;
 color:white;
 text-shadow:0 0 10px rgba(0,0,0,0.2);
-}
-
-.names div{
-line-height:1.3;
 }
 
 .open-btn{
@@ -105,7 +101,7 @@ cursor:pointer;
 }
 
 /* =========================
-HERO CINEMATIC SLIDER
+HERO SLIDER
 ========================= */
 
 .hero{
@@ -114,44 +110,29 @@ overflow:hidden;
 position:relative;
 }
 
-/* ảnh slider */
-
 .hero img{
 
 position:absolute;
-
 top:50%;
 left:50%;
-
-/* căn giữa tuyệt đối */
 
 transform:translate(-50%,-50%) scale(1.1);
 
 width:110%;
 height:110%;
-
 object-fit:cover;
-
-/* làm mờ nhẹ vừa phải */
 
 filter:brightness(75%) blur(1px);
 
 opacity:0;
 
-/* hiệu ứng cinematic */
-
 animation:heroCinematic 32s infinite;
 
 }
 
-/* delay từng ảnh */
-
 .hero img:nth-child(2){animation-delay:8s}
 .hero img:nth-child(3){animation-delay:16s}
 .hero img:nth-child(4){animation-delay:24s}
-
-
-/* Ken Burns cinematic */
 
 @keyframes heroCinematic{
 
@@ -160,76 +141,58 @@ opacity:0;
 transform:translate(-50%,-50%) scale(1.15);
 }
 
-8%{
-opacity:1;
-}
+8%{opacity:1;}
 
 30%{
 opacity:1;
 transform:translate(-50%,-50%) scale(1);
 }
 
-40%{
-opacity:0;
-}
+40%{opacity:0;}
 
-100%{
-opacity:0;
-}
+100%{opacity:0;}
 
 }
 
 /* =========================
-TÊN CÔ DÂU CHÚ RỂ
+TÊN CẶP ĐÔI
 ========================= */
 
 .couple{
 font-family:"Edward";
-font-size:48px;
+font-size:46px;
 color:gold;
 line-height:1.4;
 }
 
 /* =========================
-STORY ẢNH
+STORY
 ========================= */
 
 .story img{
 width:100%;
 border-radius:12px;
-margin:20px 0;
+margin:18px 0;
 }
 
 /* =========================
-GALLERY PINTEREST MASONRY
+GALLERY
 ========================= */
 
 .gallery{
 column-count:2;
-column-gap:12px;
-padding-top:10px;
+column-gap:10px;
+margin-top:20px;
 }
-
-/* tablet */
 
 @media(min-width:768px){
-.gallery{
-column-count:3;
-}
-}
-
-/* desktop */
-
-@media(min-width:1100px){
-.gallery{
-column-count:4;
-}
+.gallery{column-count:3}
 }
 
 .gallery img{
 
 width:100%;
-margin-bottom:12px;
+margin-bottom:10px;
 
 border-radius:12px;
 
@@ -244,20 +207,18 @@ transition:0.8s;
 
 }
 
-/* khi xuất hiện */
-
 .gallery img.show{
 opacity:1;
 transform:translateY(0);
 }
 
-/* hover nhẹ */
-
 .gallery img:hover{
 transform:scale(1.03);
 }
 
-/* LIGHTBOX */
+/* =========================
+LIGHTBOX
+========================= */
 
 .lightbox{
 
@@ -280,12 +241,9 @@ z-index:999;
 }
 
 .lightbox img{
-
 max-width:90%;
 max-height:90%;
-
 border-radius:10px;
-
 }
 
 /* =========================
@@ -293,13 +251,13 @@ COUNTDOWN
 ========================= */
 
 .countdown{
-font-size:26px;
+font-size:24px;
 margin-top:20px;
 color:#c79b00;
 }
 
 /* =========================
-FORM RSVP
+RSVP
 ========================= */
 
 .rsvp button{
@@ -338,29 +296,18 @@ border:1px solid #ddd;
 
 <body>
 
-<!-- =========================
-NHẠC NỀN
-========================= -->
-
 <audio id="music" loop>
 <source src="music.mp3">
 </audio>
 
-
-<!-- =========================
-TRANG MỞ THIỆP
-========================= -->
+<!-- COVER -->
 
 <div id="cover">
 
 <div class="names">
-
-<!-- chỉnh sửa tên tại đây -->
-
 <div style="text-align:left">Đình Tùng</div>
 <div style="text-align:center">&</div>
 <div style="text-align:right">Thu Hà</div>
-
 </div>
 
 <button class="open-btn" onclick="openCard()">
@@ -369,33 +316,18 @@ Mở thiệp
 
 </div>
 
+<!-- HERO -->
 
-<!-- =========================
-THẺ 1 HERO
-========================= -->
+<div class="hero">
+
+<img src="anh1.jpg">
+<img src="anh2.jpg">
+<img src="anh3.jpg">
+<img src="anh4.jpg">
+
+</div>
 
 <section class="fade">
-
-<h2>Album ảnh cưới</h2>
-
-<div class="gallery">
-
-<img src="anh10.jpg">
-<img src="anh11.jpg">
-<img src="anh12.jpg">
-<img src="anh13.jpg">
-<img src="anh14.jpg">
-<img src="anh15.jpg">
-<img src="anh16.jpg">
-<img src="anh17.jpg">
-
-</div>
-
-<div class="lightbox" id="lightbox">
-<img id="lightbox-img">
-</div>
-
-</section>
 
 <div class="couple">
 
@@ -407,10 +339,7 @@ THẺ 1 HERO
 
 </section>
 
-
-<!-- =========================
-THẺ STORY
-========================= -->
+<!-- STORY -->
 
 <section class="story fade">
 
@@ -421,21 +350,16 @@ THẺ STORY
 <p>Một ngày thật đặc biệt...</p>
 
 <img src="anh6.jpg">
-
 <img src="anh7.jpg">
 
 <p>Và rồi chúng mình quyết định...</p>
 
 <img src="anh8.jpg">
-
 <img src="anh9.jpg">
 
 </section>
 
-
-<!-- =========================
-ALBUM ẢNH
-========================= -->
+<!-- GALLERY -->
 
 <section class="fade">
 
@@ -456,10 +380,13 @@ ALBUM ẢNH
 
 </section>
 
+<!-- LIGHTBOX -->
 
-<!-- =========================
-THÔNG TIN CƯỚI
-========================= -->
+<div class="lightbox" id="lightbox">
+<img id="lightbox-img">
+</div>
+
+<!-- THÔNG TIN -->
 
 <section class="fade">
 
@@ -487,10 +414,7 @@ CHỦ NHẬT 29.03.2026<br>
 
 </section>
 
-
-<!-- =========================
-RSVP
-========================= -->
+<!-- RSVP -->
 
 <section class="rsvp fade">
 
@@ -498,13 +422,13 @@ RSVP
 
 <button class="join" onclick="showForm()">Tôi sẽ tham dự</button>
 
-<button class="nojoin" onclick="alert('Cảm ơn bạn đã quan tâm đến đám cưới của chúng mình ❤')">
+<button class="nojoin" onclick="alert('Cảm ơn bạn đã quan tâm ❤')">
 Xin lỗi tôi không thể tham dự
 </button>
 
 <div class="form-box" id="formBox">
 
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSc/ formResponse" method="POST">
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSc/formResponse" method="POST">
 
 <input type="hidden" name="entry.418138023" value="Tôi sẽ tham dự">
 
@@ -522,37 +446,30 @@ Xin lỗi tôi không thể tham dự
 
 </section>
 
-
 <script>
 
-/* =========================
-MỞ THIỆP
-========================= */
+/* mở thiệp */
 
 function openCard(){
 
-document.getElementById("cover").style.display="none";
-
-document.getElementById("music").play();
+document.getElementById("cover").style.display="none"
+document.getElementById("music").play()
 
 }
 
+/* scroll animation */
 
-/* =========================
-HIỆU ỨNG XUẤT HIỆN KHI CUỘN
-========================= */
+const faders=document.querySelectorAll(".fade")
 
-const faders=document.querySelectorAll('.fade')
-
-window.addEventListener('scroll',()=>{
+window.addEventListener("scroll",()=>{
 
 faders.forEach(el=>{
 
 const top=el.getBoundingClientRect().top
 
-if(top<window.innerHeight-100){
+if(top<window.innerHeight-80){
 
-el.classList.add('show')
+el.classList.add("show")
 
 }
 
@@ -560,10 +477,7 @@ el.classList.add('show')
 
 })
 
-
-/* =========================
-TIM BAY
-========================= */
+/* tim bay */
 
 function createHeart(){
 
@@ -585,10 +499,7 @@ setTimeout(()=>heart.remove(),6000)
 
 setInterval(createHeart,700)
 
-
-/* =========================
-COUNTDOWN
-========================= */
+/* countdown */
 
 const target=new Date("Mar 29, 2026 17:30:00").getTime()
 
@@ -599,28 +510,23 @@ const now=new Date().getTime()
 const d=target-now
 
 const days=Math.floor(d/(1000*60*60*24))
-
 const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
-
 const mins=Math.floor((d%(1000*60*60))/(1000*60))
 
 document.getElementById("countdown").innerHTML=
-
 days+" ngày "+hours+" giờ "+mins+" phút"
 
 },1000)
 
-
-/* =========================
-HIỆN FORM
-========================= */
+/* form */
 
 function showForm(){
 
 document.getElementById("formBox").style.display="block"
-/* =========================
-GALLERY ANIMATION + LIGHTBOX
-========================= */
+
+}
+
+/* gallery animation */
 
 const galleryImgs=document.querySelectorAll(".gallery img")
 
@@ -640,6 +546,8 @@ img.classList.add("show")
 
 })
 
+/* lightbox */
+
 const lightbox=document.getElementById("lightbox")
 const lightboxImg=document.getElementById("lightbox-img")
 
@@ -648,7 +556,6 @@ galleryImgs.forEach(img=>{
 img.onclick=()=>{
 
 lightbox.style.display="flex"
-
 lightboxImg.src=img.src
 
 }
@@ -660,28 +567,8 @@ lightbox.onclick=()=>{
 lightbox.style.display="none"
 
 }
-}
-/* =========================
-HERO PARALLAX
-========================= */
 
-window.addEventListener("scroll",()=>{
-
-const hero=document.querySelector(".hero img")
-
-if(!hero) return
-
-const scroll=window.pageYOffset
-
-hero.style.transform =
-"translate(-50%,"+(-50+scroll*0.02)+"%) scale(1.05)"
-
-})
 </script>
 
 </body>
 </html>
-
-
-
-
