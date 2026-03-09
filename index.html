@@ -798,6 +798,39 @@ behavior:"smooth"
 })
 
 }
+  /* AUTO SLIDE GALLERY */
+
+const galleryAuto=document.querySelector(".gallery")
+
+let autoSlide=setInterval(autoScroll,30)
+
+function autoScroll(){
+
+galleryAuto.scrollLeft+=1
+
+if(galleryAuto.scrollLeft>=galleryAuto.scrollWidth-galleryAuto.clientWidth){
+galleryAuto.scrollLeft=0
+}
+
+}
+
+/* dừng khi chạm */
+
+galleryAuto.addEventListener("mouseenter",()=>{
+clearInterval(autoSlide)
+})
+
+galleryAuto.addEventListener("mouseleave",()=>{
+autoSlide=setInterval(autoScroll,30)
+})
+
+galleryAuto.addEventListener("touchstart",()=>{
+clearInterval(autoSlide)
+})
+
+galleryAuto.addEventListener("touchend",()=>{
+autoSlide=setInterval(autoScroll,30)
+})
 </script>
 
 <script>
@@ -839,6 +872,7 @@ setInterval(createHeart,600);
 </script>
 </body>
 </html>
+
 
 
 
