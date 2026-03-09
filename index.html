@@ -574,12 +574,54 @@ HIỆN FORM
 function showForm(){
 
 document.getElementById("formBox").style.display="block"
+/* =========================
+GALLERY ANIMATION + LIGHTBOX
+========================= */
 
+const galleryImgs=document.querySelectorAll(".gallery img")
+
+window.addEventListener("scroll",()=>{
+
+galleryImgs.forEach(img=>{
+
+const top=img.getBoundingClientRect().top
+
+if(top<window.innerHeight-80){
+
+img.classList.add("show")
+
+}
+
+})
+
+})
+
+const lightbox=document.getElementById("lightbox")
+const lightboxImg=document.getElementById("lightbox-img")
+
+galleryImgs.forEach(img=>{
+
+img.onclick=()=>{
+
+lightbox.style.display="flex"
+
+lightboxImg.src=img.src
+
+}
+
+})
+
+lightbox.onclick=()=>{
+
+lightbox.style.display="none"
+
+}
 }
 
 </script>
 
 </body>
 </html>
+
 
 
