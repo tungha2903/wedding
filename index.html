@@ -217,12 +217,12 @@ opacity:1;
 
 .gallery{
 display:flex;
-overflow-x:auto;
-overflow-y:hidden;
+overflow:hidden;
 gap:16px;
 padding:20px;
 align-items:center;
-scroll-behavior:smooth;
+scroll-behavior:auto;
+will-change:transform;
 }
 
 /* khung từng ảnh */
@@ -238,8 +238,8 @@ height:260px;
 border-radius:14px;
 cursor:pointer;
 transition:0.4s;
+transform:translateZ(0);
 }
-
 /* zoom khi click */
 
 .gallery img.zoomed{
@@ -897,22 +897,63 @@ setInterval(createHeart,600);
 const gallery=document.querySelector(".gallery")
 const images=document.querySelectorAll(".gallery img")
 
-let speed=0.8
-let autoScroll
+<script>
 
-function startAutoScroll(){
+const gallery=document.querySelector(".gallery")
+const images=document.querySelectorAll(".gallery img")
 
-autoScroll=setInterval(()=>{
+let speed=0.35
+let paused=false
 
+function autoScroll(){
+
+if(!paused){
 gallery.scrollLeft+=speed
 
 if(gallery.scrollLeft>=gallery.scrollWidth-gallery.clientWidth){
 gallery.scrollLeft=0
 }
 
-},16)
+}
+
+requestAnimationFrame(autoScroll)
 
 }
+
+autoScroll()
+
+/* chạm dừng */
+
+gallery.addEventListener("touchstart",()=>{
+paused=true
+})
+
+gallery.addEventListener("touchend",()=>{
+paused=false
+})
+
+gallery.addEventListener("mousedown",()=>{
+paused=true
+})
+
+gallery.addEventListener("mouseup",()=>{
+paused=false
+})
+
+/* zoom */
+
+images.forEach(img=>{
+
+img.addEventListener("click",()=>{
+
+paused=true
+img.classList.toggle("zoomed")
+
+})
+
+})
+
+</script>
 
 startAutoScroll()
 
@@ -953,6 +994,7 @@ img.classList.toggle("zoomed")
 
 </body>
 </html>
+
 
 
 
