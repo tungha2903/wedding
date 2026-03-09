@@ -223,6 +223,7 @@ padding:20px;
 align-items:center;
 scroll-behavior:auto;
 will-change:transform;
+white-space:nowrap;
 }
 
 /* khung từng ảnh */
@@ -740,20 +741,7 @@ img.classList.add("show")
 
 const galleryImgs=document.querySelectorAll(".gallery img")
 
-galleryImgs.forEach(img=>{
 
-img.onclick=()=>{
-
-document.getElementById("lightbox").style.display="flex"
-document.getElementById("lightbox-img").src=img.src
-
-}
-
-})
-
-document.getElementById("lightbox").onclick=()=>{
-document.getElementById("lightbox").style.display="none"
-}
 
 /* POPUP THIỆP */
 
@@ -964,6 +952,7 @@ paused = true
 
 </body>
 </html>
+
 
 
 
