@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Thiệp Cưới</title>
 
 <style>
 
-/* =========================
-FONT
-========================= */
+/* FONT */
 
 @font-face{
 font-family:"Edward";
 src:url("UTM-EdwardianKT.ttf");
 }
-
-/* =========================
-BODY
-========================= */
 
 body{
 margin:0;
@@ -35,9 +27,7 @@ padding:50px 18px;
 text-align:center;
 }
 
-/* =========================
-FADE SCROLL
-========================= */
+/* FADE */
 
 .fade{
 opacity:0;
@@ -50,9 +40,7 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* =========================
-PHONG BÌ
-========================= */
+/* PHONG BÌ */
 
 #envelopeScreen{
 position:fixed;
@@ -80,8 +68,6 @@ box-shadow:0 10px 25px rgba(0,0,0,0.2);
 
 .flap{
 position:absolute;
-top:0;
-left:0;
 width:100%;
 height:100%;
 background:#d9c6ae;
@@ -97,296 +83,62 @@ transform:rotateX(180deg);
 .envelope-text{
 margin-top:20px;
 font-size:18px;
-color:#555;
 }
 
-/* =========================
-<div class="hero">
-
-<img src="anh1.jpg">
-<img src="anh2.jpg">
-<img src="anh3.jpg">
-<img src="anh4.jpg">
-
-<div class="hero-overlay">
-
-<div class="couple">
-
-<div class="name-left">Đình Tùng</div>
-
-<div class="heart-center">❤</div>
-
-<div class="name-right">Thu Hà</div>
-
-</div>
-
-/* =========================
-CHỮ XUẤT HIỆN CINEMATIC
-========================= */
-
-.couple{
-font-family:"Edward";
-font-size:48px;
-color:gold;
-line-height:1.4;
-overflow:hidden;
-}
-
-.name-left{
-
-transform:translateX(-80px);
-opacity:0;
-
-animation:nameLeft 2s forwards;
-animation-delay:1s;
-
-}
-
-.name-right{
-
-transform:translateX(80px);
-opacity:0;
-
-animation:nameRight 2s forwards;
-animation-delay:1s;
-
-}
-
-.heart-center{
-
-opacity:0;
-
-animation:heartShow 2s forwards;
-animation-delay:1.5s;
-
-}
-
-/* animation */
-
-@keyframes nameLeft{
-
-to{
-transform:translateX(0);
-opacity:1;
-}
-
-}
-
-@keyframes nameRight{
-
-to{
-transform:translateX(0);
-opacity:1;
-}
-
-}
-
-@keyframes heartShow{
-
-to{
-opacity:1;
-}
-
-}
-
-</div>
-
-</div>
-
-</div>
-
-/* =========================
-HERO SLIDER
-========================= */
+/* HERO */
 
 .hero{
-
 position:relative;
 width:100%;
-height:65vh;
-
+height:70vh;
 overflow:hidden;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
 background:#000;
-
 }
-
-/* ảnh hero */
 
 .hero img{
-
 position:absolute;
-
 width:100%;
 height:100%;
-
-object-fit:contain;
-
-left:0;
-top:0;
-
+object-fit:cover;
 opacity:0;
-
 animation:heroSlider 32s infinite;
-
 }
-
-/* delay ảnh */
 
 .hero img:nth-child(2){animation-delay:8s}
 .hero img:nth-child(3){animation-delay:16s}
 .hero img:nth-child(4){animation-delay:24s}
 
-/* cinematic animation */
-
 @keyframes heroSlider{
 
-0%{
-opacity:0;
-transform:scale(1.1);
-}
-
-10%{
-opacity:1;
-}
-
-35%{
-opacity:1;
-transform:scale(1);
-}
-
-45%{
-opacity:0;
-}
-
-100%{
-opacity:0;
-}
+0%{opacity:0;transform:scale(1.1)}
+10%{opacity:1}
+35%{opacity:1;transform:scale(1)}
+45%{opacity:0}
+100%{opacity:0}
 
 }
-
-/* =========================
-OVERLAY HERO
-========================= */
 
 .hero-overlay{
-
 position:absolute;
-
+top:0;
+left:0;
 width:100%;
 height:100%;
-
 display:flex;
-align-items:center;
 justify-content:center;
-
+align-items:center;
 background:rgba(0,0,0,0.35);
-
 }
 
-/* =========================
-TÊN CÔ DÂU CHÚ RỂ
-========================= */
+/* TÊN */
 
 .couple{
-
 font-family:"Edward";
 font-size:46px;
-
 color:gold;
-
 display:flex;
-align-items:center;
 gap:12px;
-
-}
-
-/* animation chữ */
-
-.name-left{
-
-transform:translateX(-80px);
-opacity:0;
-
-animation:nameLeft 2s forwards;
-animation-delay:1s;
-
-}
-
-.name-right{
-
-transform:translateX(80px);
-opacity:0;
-
-animation:nameRight 2s forwards;
-animation-delay:1s;
-
-}
-
-.heart-center{
-
-opacity:0;
-
-animation:heartShow 2s forwards;
-animation-delay:1.5s;
-
-}
-
-@keyframes nameLeft{
-
-to{
-transform:translateX(0);
-opacity:1;
-}
-
-}
-
-@keyframes nameRight{
-
-to{
-transform:translateX(0);
-opacity:1;
-}
-
-}
-
-@keyframes heartShow{
-
-to{
-opacity:1;
-}
-
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-
-@media(max-width:600px){
-
-.hero{
-height:60vh;
-}
-
-.couple{
-font-size:34px;
-}
-
-}
-/* =========================
-COUPLE NAME
-========================= */
-
-.couple{
-font-family:"Edward";
-font-size:48px;
-color:gold;
-line-height:1.4;
-overflow:hidden;
+align-items:center;
 }
 
 .name-left{
@@ -421,9 +173,7 @@ to{transform:translateX(0);opacity:1;}
 to{opacity:1;}
 }
 
-/* =========================
-STORY
-========================= */
+/* STORY */
 
 .story img{
 width:100%;
@@ -431,9 +181,7 @@ border-radius:12px;
 margin:18px 0;
 }
 
-/* =========================
-GALLERY
-========================= */
+/* GALLERY */
 
 .gallery{
 column-count:2;
@@ -445,8 +193,8 @@ margin-top:20px;
 width:100%;
 margin-bottom:10px;
 border-radius:12px;
-break-inside:avoid;
 cursor:pointer;
+break-inside:avoid;
 opacity:0;
 transform:translateY(30px);
 transition:0.8s;
@@ -457,9 +205,7 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* =========================
-LIGHTBOX
-========================= */
+/* LIGHTBOX */
 
 .lightbox{
 position:fixed;
@@ -480,19 +226,42 @@ max-height:90%;
 border-radius:10px;
 }
 
-/* =========================
-COUNTDOWN
-========================= */
+/* COUNTDOWN FLIP */
 
 .countdown{
-font-size:24px;
+display:flex;
+justify-content:center;
+gap:14px;
 margin-top:20px;
-color:#c79b00;
 }
 
-/* =========================
-TIM BAY
-========================= */
+.flip-box{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.flip{
+background:#c79b00;
+color:white;
+font-size:28px;
+font-weight:bold;
+padding:12px 18px;
+border-radius:6px;
+min-width:60px;
+transition:0.6s;
+}
+
+.flip.animate{
+transform:rotateX(360deg);
+}
+
+.flip-box span{
+margin-top:6px;
+font-size:14px;
+}
+
+/* TIM BAY */
 
 .heart{
 position:fixed;
@@ -516,9 +285,7 @@ opacity:0;
 
 }
 
-/* =========================
-RSVP
-========================= */
+/* RSVP */
 
 .rsvp button{
 padding:12px 22px;
@@ -549,6 +316,20 @@ padding:12px;
 margin:10px 0;
 border-radius:25px;
 border:1px solid #ddd;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.hero{
+height:60vh;
+}
+
+.couple{
+font-size:32px;
+}
+
 }
 
 </style>
@@ -583,21 +364,19 @@ Nhấn để mở thiệp
 <img src="anh3.jpg">
 <img src="anh4.jpg">
 
-</div>
-
-<section class="fade">
+<div class="hero-overlay">
 
 <div class="couple">
 
 <div class="name-left">Đình Tùng</div>
-
 <div class="heart-center">❤</div>
-
 <div class="name-right">Thu Hà</div>
 
 </div>
 
-</section>
+</div>
+
+</div>
 
 <!-- STORY -->
 
@@ -660,22 +439,6 @@ VÀO LÚC <b>17:30</b><br>
 CHỦ NHẬT 29.03.2026
 </p>
 
-<section class="fade">
-
-<h2>Trân trọng kính mời</h2>
-
-<p>
-Hôn lễ được cử hành tại<br>
-<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
-</p>
-
-<p>
-VÀO LÚC <b>17:30</b><br>
-CHỦ NHẬT 29.03.2026
-</p>
-
-<!-- COUNTDOWN -->
-
 <div class="countdown">
 
 <div class="flip-box">
@@ -696,9 +459,96 @@ CHỦ NHẬT 29.03.2026
 </div>
 
 </section>
-JS countdown cần có
 
-Đặt trong <script>:
+<!-- RSVP -->
+
+<section class="rsvp fade">
+
+<h2>Xác nhận tham dự</h2>
+
+<button class="join" onclick="showForm()">Tôi sẽ tham dự</button>
+
+<button class="nojoin" onclick="alert('Cảm ơn bạn đã quan tâm ❤')">
+Xin lỗi tôi không thể tham dự
+</button>
+
+<div class="form-box" id="formBox">
+
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSc/formResponse" method="POST">
+
+<input type="hidden" name="entry.418138023" value="Tôi sẽ tham dự">
+
+<input type="text" name="entry.1470591758" placeholder="Họ tên khách">
+
+<input type="number" name="entry.450176909" placeholder="Số lượng">
+
+<br>
+
+<button type="submit" class="join">Gửi xác nhận</button>
+
+</form>
+
+</div>
+
+</section>
+
+<script>
+
+/* phong bì */
+
+function openEnvelope(){
+
+const env=document.querySelector(".envelope")
+
+env.classList.add("open")
+
+setTimeout(()=>{
+
+document.getElementById("envelopeScreen").style.display="none"
+document.getElementById("music").play()
+
+},900)
+
+}
+
+/* fade */
+
+const faders=document.querySelectorAll(".fade")
+
+window.addEventListener("scroll",()=>{
+
+faders.forEach(el=>{
+
+const top=el.getBoundingClientRect().top
+
+if(top<window.innerHeight-80){
+el.classList.add("show")
+}
+
+})
+
+})
+
+/* gallery */
+
+const galleryImgs=document.querySelectorAll(".gallery img")
+
+galleryImgs.forEach(img=>{
+
+img.onclick=()=>{
+
+document.getElementById("lightbox").style.display="flex"
+document.getElementById("lightbox-img").src=img.src
+
+}
+
+})
+
+document.getElementById("lightbox").onclick=()=>{
+document.getElementById("lightbox").style.display="none"
+}
+
+/* countdown flip */
 
 const target=new Date("Mar 29, 2026 17:30:00").getTime()
 
@@ -734,176 +584,6 @@ el.classList.add("animate")
 }
 
 }
-CSS cần có
-.countdown{
-display:flex;
-justify-content:center;
-gap:12px;
-margin-top:20px;
-}
-
-.flip-box{
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.flip{
-
-background:#c79b00;
-color:white;
-
-font-size:28px;
-font-weight:bold;
-
-padding:12px 18px;
-
-border-radius:6px;
-
-min-width:60px;
-
-transition:0.6s;
-}
-
-.flip.animate{
-transform:rotateX(360deg);
-}
-
-.flip-box span{
-margin-top:6px;
-font-size:14px;
-}
-
-</section>
-
-<!-- RSVP -->
-
-<section class="rsvp fade">
-
-<h2>Xác nhận tham dự</h2>
-
-<button class="join" onclick="showForm()">Tôi sẽ tham dự</button>
-
-<button class="nojoin"
-onclick="alert('Cảm ơn bạn đã quan tâm ❤')">
-Xin lỗi tôi không thể tham dự
-</button>
-
-<div class="form-box" id="formBox">
-
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSc/formResponse" method="POST">
-
-<input type="hidden" name="entry.418138023" value="Tôi sẽ tham dự">
-
-<input type="text" name="entry.1470591758" placeholder="Họ tên khách">
-
-<input type="number" name="entry.450176909" placeholder="Số lượng">
-
-<br>
-
-<button type="submit" class="join">Gửi xác nhận</button>
-
-</form>
-
-</div>
-
-</section>
-
-<script>
-
-/* mở phong bì */
-
-function openEnvelope(){
-
-const env=document.querySelector(".envelope")
-
-env.classList.add("open")
-
-setTimeout(()=>{
-
-document.getElementById("envelopeScreen").style.display="none"
-document.getElementById("music").play()
-
-},900)
-
-}
-
-/* scroll animation */
-
-const faders=document.querySelectorAll(".fade")
-
-window.addEventListener("scroll",()=>{
-
-faders.forEach(el=>{
-
-const top=el.getBoundingClientRect().top
-
-if(top<window.innerHeight-80){
-el.classList.add("show")
-}
-
-})
-
-})
-
-/* gallery animation */
-
-const galleryImgs=document.querySelectorAll(".gallery img")
-
-window.addEventListener("scroll",()=>{
-
-galleryImgs.forEach(img=>{
-
-const top=img.getBoundingClientRect().top
-
-if(top<window.innerHeight-80){
-img.classList.add("show")
-}
-
-})
-
-})
-
-/* lightbox */
-
-const lightbox=document.getElementById("lightbox")
-const lightboxImg=document.getElementById("lightbox-img")
-
-galleryImgs.forEach(img=>{
-
-img.onclick=()=>{
-
-lightbox.style.display="flex"
-lightboxImg.src=img.src
-
-}
-
-})
-
-lightbox.onclick=()=>{
-
-lightbox.style.display="none"
-
-}
-
-/* countdown */
-
-const target=new Date("Mar 29, 2026 17:30:00").getTime()
-
-setInterval(()=>{
-
-const now=new Date().getTime()
-
-const d=target-now
-
-const days=Math.floor(d/(1000*60*60*24))
-const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
-const mins=Math.floor((d%(1000*60*60))/(1000*60))
-
-document.getElementById("countdown").innerHTML=
-days+" ngày "+hours+" giờ "+mins+" phút"
-
-},1000)
 
 /* tim bay */
 
@@ -936,4 +616,3 @@ document.getElementById("formBox").style.display="block"
 
 </body>
 </html>
-
