@@ -108,32 +108,123 @@ cursor:pointer;
 HERO SLIDER
 ========================= */
 
+<section class="fade">
+
+<style>
+
+/* HERO CONTAINER */
+
 .hero{
+width:100%;
 height:35vh;
 overflow:hidden;
 position:relative;
 }
 
+/* ẢNH SLIDER */
+
 .hero img{
-width:100%;
-height:100%;
-object-fit:cover;
-filter:brightness(70%);
+
 position:absolute;
-animation:slide 24s infinite;
+top:50%;
+left:50%;
+
+/* căn giữa tuyệt đối */
+transform:translate(-50%,-50%) scale(1.15);
+
+width:110%;
+height:110%;
+object-fit:cover;
+
+/* làm mờ để nổi chữ */
+filter:brightness(55%) blur(2px);
+
+opacity:0;
+
+/* cinematic animation */
+animation:heroCinematic 32s infinite;
+
 }
 
-.hero img:nth-child(2){animation-delay:6s}
-.hero img:nth-child(3){animation-delay:12s}
-.hero img:nth-child(4){animation-delay:18s}
+/* delay từng ảnh */
 
-@keyframes slide{
-0%{opacity:0; transform:translateX(50px)}
-10%{opacity:1; transform:translateX(0)}
-25%{opacity:1}
-35%{opacity:0}
-100%{opacity:0}
+.hero img:nth-child(2){animation-delay:8s}
+.hero img:nth-child(3){animation-delay:16s}
+.hero img:nth-child(4){animation-delay:24s}
+
+/* hiệu ứng ken burns */
+
+@keyframes heroCinematic{
+
+0%{
+opacity:0;
+transform:translate(-50%,-50%) scale(1.2);
 }
+
+8%{
+opacity:1;
+}
+
+30%{
+opacity:1;
+transform:translate(-50%,-50%) scale(1);
+}
+
+40%{
+opacity:0;
+}
+
+100%{
+opacity:0;
+}
+
+}
+
+</style>
+
+
+<div class="hero">
+
+<!-- thay ảnh tại đây -->
+
+<img src="anh1.jpg">
+<img src="anh2.jpg">
+<img src="anh3.jpg">
+<img src="anh4.jpg">
+
+</div>
+
+
+<!-- TÊN CÔ DÂU CHÚ RỂ -->
+
+<div class="couple">
+
+<div style="text-align:left">Đình Tùng</div>
+<div style="text-align:center">❤</div>
+<div style="text-align:right">Thu Hà</div>
+
+</div>
+
+<script>
+
+/* PARALLAX HERO */
+
+window.addEventListener("scroll",function(){
+
+const hero=document.querySelector(".hero img")
+
+if(!hero) return
+
+const scroll=window.pageYOffset
+
+hero.style.transform=
+"translate(-50%,"+(-50+scroll*0.02)+"%) scale(1.05)"
+
+})
+
+</script>
+
+</section>
 
 /* =========================
 TÊN CÔ DÂU CHÚ RỂ
@@ -498,3 +589,4 @@ document.getElementById("formBox").style.display="block"
 
 </body>
 </html>
+
