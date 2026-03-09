@@ -217,11 +217,39 @@ opacity:1;
 
 .gallery{
 display:flex;
+overflow:hidden;
 gap:16px;
-overflow-x:auto;
+padding:20px;
+align-items:center;
 scroll-behavior:smooth;
-padding:20px 0;
-scroll-snap-type:x mandatory;
+}
+
+/* khung từng ảnh */
+
+.gallery-item{
+flex:0 0 auto;
+transition:transform .4s ease, opacity .4s ease;
+}
+
+.gallery img{
+height:260px;
+border-radius:14px;
+cursor:pointer;
+transition:0.4s;
+}
+
+/* ảnh trung tâm */
+
+.gallery-item.active img{
+transform:scale(1.25);
+z-index:2;
+}
+
+/* ảnh hai bên */
+
+.gallery-item.side img{
+transform:scale(0.9);
+opacity:0.6;
 }
 
 .gallery::-webkit-scrollbar{
@@ -526,15 +554,39 @@ Nhấn để mở thiệp
 
 <div class="gallery">
 
+<div class="gallery-item">
 <img src="anh10.jpg">
-<img src="anh11.jpg">
-<img src="anh12.jpg">
-<img src="anh13.jpg">
-<img src="anh14.jpg">
-<img src="anh15.jpg">
-<img src="anh16.jpg">
-<img src="anh17.jpg">
+</div>
 
+<div class="gallery-item">
+<img src="anh11.jpg">
+</div>
+
+<div class="gallery-item">
+<img src="anh12.jpg">
+</div>
+
+<div class="gallery-item">
+<img src="anh13.jpg">
+</div>
+
+<div class="gallery-item">
+<img src="anh14.jpg">
+</div>
+
+<div class="gallery-item">
+<img src="anh15.jpg">
+</div>
+
+<div class="gallery-item">
+<img src="anh16.jpg">
+</div>
+
+<div class="gallery-item">
+<img src="anh17.jpg">
+</div>
+
+</div>
 </div>
 
 <button class="slide-btn right" onclick="slideGallery(1)">❯</button>
@@ -865,8 +917,85 @@ img.classList.add("show")
 setInterval(createHeart,600);
 
 </script>
+  const gallery=document.querySelector(".gallery")
+const items=document.querySelectorAll(".gallery-item")
+
+let index=0
+let autoSlide
+
+function updateGallery(){
+
+items.forEach((item,i)=>{
+
+item.classList.remove("active","side")
+
+if(i===index){
+item.classList.add("active")
+}
+
+if(i===index-1 || i===index+1){
+item.classList.add("side")
+}
+
+})
+
+gallery.scrollTo({
+left:items[index].offsetLeft - gallery.offsetWidth/2 + items[index].offsetWidth/2,
+behavior:"smooth"
+})
+
+}
+
+function nextSlide(){
+
+index++
+
+if(index>=items.length){
+index=0
+}
+
+updateGallery()
+
+}
+
+autoSlide=setInterval(nextSlide,3000)
+
+updateGallery()
+
+/* pause khi chạm */
+
+gallery.addEventListener("touchstart",()=>{
+clearInterval(autoSlide)
+})
+
+gallery.addEventListener("touchend",()=>{
+autoSlide=setInterval(nextSlide,3000)
+})
+
+gallery.addEventListener("mouseenter",()=>{
+clearInterval(autoSlide)
+})
+
+gallery.addEventListener("mouseleave",()=>{
+autoSlide=setInterval(nextSlide,3000)
+})
+
+/* pause khi zoom */
+
+const images=document.querySelectorAll(".gallery img")
+
+images.forEach(img=>{
+
+img.addEventListener("click",()=>{
+
+clearInterval(autoSlide)
+
+})
+
+})
 </body>
 </html>
+
 
 
 
