@@ -845,21 +845,7 @@ behavior:"smooth"
 })
 
 }
-  /* AUTO SLIDE GALLERY */
 
-const galleryAuto=document.querySelector(".gallery")
-
-let autoSlide=setInterval(autoScroll,16)
-
-function autoScroll(){
-
-galleryAuto.scrollLeft+=5
-
-if(galleryAuto.scrollLeft>=galleryAuto.scrollWidth-galleryAuto.clientWidth){
-galleryAuto.scrollLeft=0
-}
-
-}
 
 /* dừng khi chạm */
 
@@ -917,8 +903,60 @@ img.classList.add("show")
 setInterval(createHeart,600);
 
 </script>
-  const gallery=document.querySelector(".gallery")
+
+<script>
+
+const gallery=document.querySelector(".gallery")
 const items=document.querySelectorAll(".gallery-item")
+
+let index=0
+let autoSlide
+
+function updateGallery(){
+
+items.forEach((item,i)=>{
+
+item.classList.remove("active","side")
+
+if(i===index){
+item.classList.add("active")
+}
+
+if(i===index-1 || i===index+1){
+item.classList.add("side")
+}
+
+})
+
+gallery.scrollTo({
+left:items[index].offsetLeft - gallery.offsetWidth/2 + items[index].offsetWidth/2,
+behavior:"smooth"
+})
+
+}
+
+function nextSlide(){
+
+index++
+
+if(index>=items.length){
+index=0
+}
+
+updateGallery()
+
+}
+
+autoSlide=setInterval(nextSlide,3000)
+
+updateGallery()
+
+gallery.addEventListener("touchstart",()=>clearInterval(autoSlide))
+gallery.addEventListener("touchend",()=>autoSlide=setInterval(nextSlide,3000))
+gallery.addEventListener("mouseenter",()=>clearInterval(autoSlide))
+gallery.addEventListener("mouseleave",()=>autoSlide=setInterval(nextSlide,3000))
+
+</script>
 
 let index=0
 let autoSlide
@@ -995,6 +1033,7 @@ clearInterval(autoSlide)
 })
 </body>
 </html>
+
 
 
 
