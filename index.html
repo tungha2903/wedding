@@ -247,32 +247,6 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(4px);
-}
-
-.popup img{
-position:absolute;
-max-width:85%;
-max-height:85%;
-opacity:0;
-transition:opacity 1.5s ease;
-border-radius:10px;
-}
-
-.popup img.show{
-opacity:1;
-}
-
-/* lớp nền làm mờ */
-
-.popup::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
 background:rgba(0,0,0,0.45);
 backdrop-filter:blur(4px);
 }
@@ -280,7 +254,10 @@ backdrop-filter:blur(4px);
 /* ảnh thiệp */
 
 .popup img{
-position:relative;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 max-width:85%;
 max-height:85%;
 opacity:0;
@@ -471,12 +448,12 @@ Nhấn để mở thiệp
 <div class="lightbox" id="lightbox">
 <img id="lightbox-img">
 </div>
+
 <!-- POPUP THIỆP -->
 
 <div id="weddingPopup" class="popup">
 
 <img id="cardFront" src="bia ngoai thiep cuoi.jpg">
-
 <img id="cardInside" src="mat trong thiep cuoi.jpg">
 
 </div>
@@ -593,13 +570,16 @@ popupShown=true
 
 popup.style.display="flex"
 
-
 front.classList.add("show")
 
 setTimeout(()=>{
 front.classList.remove("show")
-inside.classList.add("show")
+front.style.display="none"
 },2000)
+
+setTimeout(()=>{
+inside.classList.add("show")
+},2500)
 
 }
 
@@ -609,14 +589,12 @@ inside.classList.add("show")
 
 observer.observe(document.getElementById("gallerySection"))
 
-popup.addEventListener("click",()=>{
+popup.onclick=()=>{
 
 popup.style.display="none"
-
-
 invite.style.display="block"
 
-})
+}
 
 /* countdown */
 
@@ -642,5 +620,3 @@ document.getElementById("mins").innerText=mins
 
 </body>
 </html>
-
-
