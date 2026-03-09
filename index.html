@@ -108,123 +108,32 @@ cursor:pointer;
 HERO SLIDER
 ========================= */
 
-<section class="fade">
-
-<style>
-
-/* HERO CONTAINER */
-
 .hero{
-width:100%;
 height:35vh;
 overflow:hidden;
 position:relative;
 }
 
-/* ẢNH SLIDER */
-
 .hero img{
-
-position:absolute;
-top:50%;
-left:50%;
-
-/* căn giữa tuyệt đối */
-transform:translate(-50%,-50%) scale(1.15);
-
-width:110%;
-height:110%;
+width:100%;
+height:100%;
 object-fit:cover;
-
-/* làm mờ để nổi chữ */
-filter:brightness(55%) blur(2px);
-
-opacity:0;
-
-/* cinematic animation */
-animation:heroCinematic 32s infinite;
-
+filter:brightness(70%);
+position:absolute;
+animation:slide 24s infinite;
 }
 
-/* delay từng ảnh */
+.hero img:nth-child(2){animation-delay:6s}
+.hero img:nth-child(3){animation-delay:12s}
+.hero img:nth-child(4){animation-delay:18s}
 
-.hero img:nth-child(2){animation-delay:8s}
-.hero img:nth-child(3){animation-delay:16s}
-.hero img:nth-child(4){animation-delay:24s}
-
-/* hiệu ứng ken burns */
-
-@keyframes heroCinematic{
-
-0%{
-opacity:0;
-transform:translate(-50%,-50%) scale(1.2);
+@keyframes slide{
+0%{opacity:0; transform:translateX(50px)}
+10%{opacity:1; transform:translateX(0)}
+25%{opacity:1}
+35%{opacity:0}
+100%{opacity:0}
 }
-
-8%{
-opacity:1;
-}
-
-30%{
-opacity:1;
-transform:translate(-50%,-50%) scale(1);
-}
-
-40%{
-opacity:0;
-}
-
-100%{
-opacity:0;
-}
-
-}
-
-</style>
-
-
-<div class="hero">
-
-<!-- thay ảnh tại đây -->
-
-<img src="anh1.jpg">
-<img src="anh2.jpg">
-<img src="anh3.jpg">
-<img src="anh4.jpg">
-
-</div>
-
-
-<!-- TÊN CÔ DÂU CHÚ RỂ -->
-
-<div class="couple">
-
-<div style="text-align:left">Đình Tùng</div>
-<div style="text-align:center">❤</div>
-<div style="text-align:right">Thu Hà</div>
-
-</div>
-
-<script>
-
-/* PARALLAX HERO */
-
-window.addEventListener("scroll",function(){
-
-const hero=document.querySelector(".hero img")
-
-if(!hero) return
-
-const scroll=window.pageYOffset
-
-hero.style.transform=
-"translate(-50%,"+(-50+scroll*0.02)+"%) scale(1.05)"
-
-})
-
-</script>
-
-</section>
 
 /* =========================
 TÊN CÔ DÂU CHÚ RỂ
@@ -251,174 +160,66 @@ margin:20px 0;
 GALLERY
 ========================= */
 
-<section class="fade">
-
-<style>
-
-/* CONTAINER */
-
-.gallery-masonry{
-column-count:2; /* mobile 2 cột */
-column-gap:12px;
-padding:10px;
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
 }
 
-/* tablet */
-
-@media(min-width:768px){
-.gallery-masonry{
-column-count:3;
-}
-}
-
-/* desktop */
-
-@media(min-width:1100px){
-.gallery-masonry{
-column-count:4;
-}
-}
-
-/* ẢNH */
-
-.gallery-masonry img{
-
+.gallery img{
 width:100%;
-margin-bottom:12px;
-
-border-radius:12px;
-
-break-inside:avoid;
-
-cursor:pointer;
-
-/* animation */
-
-opacity:0;
-transform:translateY(30px);
-transition:0.8s;
-
-}
-
-/* khi hiện */
-
-.gallery-masonry img.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* hover nhẹ */
-
-.gallery-masonry img:hover{
-transform:scale(1.03);
-}
-
-/* LIGHTBOX */
-
-.lightbox{
-
-position:fixed;
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:rgba(0,0,0,0.9);
-
-display:none;
-
-justify-content:center;
-align-items:center;
-
-z-index:999;
-}
-
-.lightbox img{
-
-max-width:90%;
-max-height:90%;
 border-radius:10px;
+}
 
+/* =========================
+COUNTDOWN
+========================= */
+
+.countdown{
+font-size:26px;
+margin-top:20px;
+color:#c79b00;
+}
+
+/* =========================
+FORM RSVP
+========================= */
+
+.rsvp button{
+padding:12px 22px;
+border-radius:25px;
+border:none;
+margin:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.join{
+background:#c79b00;
+color:white;
+}
+
+.nojoin{
+background:#ccc;
+}
+
+.form-box{
+display:none;
+margin-top:20px;
+}
+
+input{
+width:80%;
+padding:12px;
+margin:10px 0;
+border-radius:25px;
+border:1px solid #ddd;
 }
 
 </style>
+</head>
 
-<h2>Album ảnh cưới</h2>
-
-<div class="gallery-masonry">
-
-<!-- thay ảnh tại đây -->
-
-<img src="anh10.jpg">
-<img src="anh11.jpg">
-<img src="anh12.jpg">
-<img src="anh13.jpg">
-<img src="anh14.jpg">
-<img src="anh15.jpg">
-<img src="anh16.jpg">
-<img src="anh17.jpg">
-
-</div>
-
-<!-- LIGHTBOX -->
-
-<div class="lightbox" id="lightbox">
-<img id="lightbox-img">
-</div>
-
-<script>
-
-/* =========================
-HIỆU ỨNG XUẤT HIỆN KHI CUỘN
-========================= */
-
-const galleryImgs=document.querySelectorAll(".gallery-masonry img")
-
-window.addEventListener("scroll",()=>{
-
-galleryImgs.forEach(img=>{
-
-const top=img.getBoundingClientRect().top
-
-if(top<window.innerHeight-80){
-
-img.classList.add("show")
-
-}
-
-})
-
-})
-
-/* =========================
-LIGHTBOX PHÓNG TO ẢNH
-========================= */
-
-const lightbox=document.getElementById("lightbox")
-const lightboxImg=document.getElementById("lightbox-img")
-
-galleryImgs.forEach(img=>{
-
-img.onclick=()=>{
-
-lightbox.style.display="flex"
-
-lightboxImg.src=img.src
-
-}
-
-})
-
-lightbox.onclick=()=>{
-
-lightbox.style.display="none"
-
-}
-
-</script>
-
-</section>
+<body>
 
 <!-- =========================
 NHẠC NỀN
@@ -697,5 +498,3 @@ document.getElementById("formBox").style.display="block"
 
 </body>
 </html>
-
-
