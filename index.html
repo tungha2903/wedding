@@ -904,73 +904,6 @@ const gallery=document.querySelector(".gallery")
 const items=document.querySelectorAll(".gallery-item")
 const images=document.querySelectorAll(".gallery img")
 
-/* dừng khi chạm */
-
-gallery.addEventListener("touchstart",()=>{
-clearInterval(autoSlide)
-})
-
-gallery.addEventListener("touchend",()=>{
-autoSlide=setInterval(nextSlide,4000)
-})
-
-gallery.addEventListener("mousedown",()=>{
-clearInterval(autoSlide)
-})
-
-gallery.addEventListener("mouseup",()=>{
-autoSlide=setInterval(nextSlide,4000)
-})
-  images.forEach(img=>{
-
-img.addEventListener("click",()=>{
-
-clearInterval(autoSlide)
-
-img.classList.toggle("zoomed")
-
-})
-
-})
-
-
-
-if(i===index-1 || i===index+1){
-item.classList.add("side")
-}
-
-})
-
-gallery.scrollTo({
-left:items[index].offsetLeft - gallery.offsetWidth/2 + items[index].offsetWidth/2,
-behavior:"smooth"
-})
-
-}
-
-function nextSlide(){
-
-index++
-
-if(index>=items.length){
-index=0
-}
-
-updateGallery()
-
-}
-
-autoSlide=setInterval(nextSlide,5000)
-
-updateGallery()
-
-gallery.addEventListener("touchstart",()=>clearInterval(autoSlide))
-gallery.addEventListener("touchend",()=>autoSlide=setInterval(nextSlide,3000))
-gallery.addEventListener("mouseenter",()=>clearInterval(autoSlide))
-gallery.addEventListener("mouseleave",()=>autoSlide=setInterval(nextSlide,3000))
-
-</script>
-
 let index=0
 let autoSlide
 
@@ -1009,43 +942,29 @@ updateGallery()
 
 }
 
-autoSlide=setInterval(nextSlide,3000)
+autoSlide=setInterval(nextSlide,4000)
 
 updateGallery()
 
-/* pause khi chạm */
+gallery.addEventListener("touchstart",()=>clearInterval(autoSlide))
+gallery.addEventListener("touchend",()=>autoSlide=setInterval(nextSlide,4000))
 
-gallery.addEventListener("touchstart",()=>{
-clearInterval(autoSlide)
-})
-
-gallery.addEventListener("touchend",()=>{
-autoSlide=setInterval(nextSlide,5000)
-})
-
-gallery.addEventListener("mouseenter",()=>{
-clearInterval(autoSlide)
-})
-
-gallery.addEventListener("mouseleave",()=>{
-autoSlide=setInterval(nextSlide,5000)
-})
-
-/* pause khi zoom */
-
-const images=document.querySelectorAll(".gallery img")
+gallery.addEventListener("mousedown",()=>clearInterval(autoSlide))
+gallery.addEventListener("mouseup",()=>autoSlide=setInterval(nextSlide,4000))
 
 images.forEach(img=>{
-
 img.addEventListener("click",()=>{
-
+img.classList.toggle("zoomed")
 clearInterval(autoSlide)
-
+})
 })
 
-})
+</script>
+
+
 </body>
 </html>
+
 
 
 
