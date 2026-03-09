@@ -3,7 +3,9 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Thiệp Cưới</title>
 
 <style>
 
@@ -17,7 +19,7 @@ src:url("UTM-EdwardianKT.ttf");
 }
 
 /* =========================
-CÀI ĐẶT CHUNG
+BODY
 ========================= */
 
 body{
@@ -33,6 +35,10 @@ padding:50px 18px;
 text-align:center;
 }
 
+/* =========================
+FADE SCROLL
+========================= */
+
 .fade{
 opacity:0;
 transform:translateY(40px);
@@ -45,59 +51,53 @@ transform:translateY(0);
 }
 
 /* =========================
-TIM BAY
+PHONG BÌ
 ========================= */
 
-.heart{
+#envelopeScreen{
 position:fixed;
-color:gold;
-animation:float 6s linear infinite;
-opacity:0.7;
-}
-
-@keyframes float{
-
-0%{
-transform:translateY(100vh) scale(0.8);
-opacity:0;
-}
-
-50%{opacity:1;}
-
-100%{
-transform:translateY(-10vh) scale(1.3);
-opacity:0;
-}
-
-}
-
-/* =========================
-TRANG MỞ THIỆP
-========================= */
-
-#cover{
-height:100vh;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#f6eee6;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-background:#f6eee6;
+z-index:9999;
 }
 
-.names{
-font-size:38px;
-color:white;
-text-shadow:0 0 10px rgba(0,0,0,0.2);
-}
-
-.open-btn{
-margin-top:30px;
-padding:14px 30px;
-border-radius:30px;
-border:none;
-background:gold;
-font-size:18px;
+.envelope{
+width:220px;
+height:140px;
+background:#e8d9c7;
+position:relative;
 cursor:pointer;
+border-radius:6px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#d9c6ae;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:0.8s;
+}
+
+.envelope.open .flap{
+transform:rotateX(180deg);
+}
+
+.envelope-text{
+margin-top:20px;
+font-size:18px;
+color:#555;
 }
 
 /* =========================
@@ -136,17 +136,11 @@ animation:heroCinematic 32s infinite;
 
 @keyframes heroCinematic{
 
-0%{
-opacity:0;
-transform:translate(-50%,-50%) scale(1.15);
-}
+0%{opacity:0;transform:translate(-50%,-50%) scale(1.15);}
 
 8%{opacity:1;}
 
-30%{
-opacity:1;
-transform:translate(-50%,-50%) scale(1);
-}
+30%{opacity:1;transform:translate(-50%,-50%) scale(1);}
 
 40%{opacity:0;}
 
@@ -155,14 +149,47 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 /* =========================
-TÊN CẶP ĐÔI
+COUPLE NAME
 ========================= */
 
 .couple{
 font-family:"Edward";
-font-size:46px;
+font-size:48px;
 color:gold;
 line-height:1.4;
+overflow:hidden;
+}
+
+.name-left{
+transform:translateX(-80px);
+opacity:0;
+animation:nameLeft 2s forwards;
+animation-delay:1s;
+}
+
+.name-right{
+transform:translateX(80px);
+opacity:0;
+animation:nameRight 2s forwards;
+animation-delay:1s;
+}
+
+.heart-center{
+opacity:0;
+animation:heartShow 2s forwards;
+animation-delay:1.5s;
+}
+
+@keyframes nameLeft{
+to{transform:translateX(0);opacity:1;}
+}
+
+@keyframes nameRight{
+to{transform:translateX(0);opacity:1;}
+}
+
+@keyframes heartShow{
+to{opacity:1;}
 }
 
 /* =========================
@@ -185,26 +212,15 @@ column-gap:10px;
 margin-top:20px;
 }
 
-@media(min-width:768px){
-.gallery{column-count:3}
-}
-
 .gallery img{
-
 width:100%;
 margin-bottom:10px;
-
 border-radius:12px;
-
 break-inside:avoid;
-
 cursor:pointer;
-
 opacity:0;
 transform:translateY(30px);
-
 transition:0.8s;
-
 }
 
 .gallery img.show{
@@ -212,32 +228,21 @@ opacity:1;
 transform:translateY(0);
 }
 
-.gallery img:hover{
-transform:scale(1.03);
-}
-
 /* =========================
 LIGHTBOX
 ========================= */
 
 .lightbox{
-
 position:fixed;
 top:0;
 left:0;
-
 width:100%;
 height:100%;
-
 background:rgba(0,0,0,0.9);
-
 display:none;
-
 justify-content:center;
 align-items:center;
-
 z-index:999;
-
 }
 
 .lightbox img{
@@ -254,6 +259,32 @@ COUNTDOWN
 font-size:24px;
 margin-top:20px;
 color:#c79b00;
+}
+
+/* =========================
+TIM BAY
+========================= */
+
+.heart{
+position:fixed;
+color:gold;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(100vh) scale(0.8);
+opacity:0;
+}
+
+50%{opacity:1;}
+
+100%{
+transform:translateY(-10vh) scale(1.3);
+opacity:0;
+}
+
 }
 
 /* =========================
@@ -296,25 +327,23 @@ border:1px solid #ddd;
 
 <body>
 
+<!-- PHONG BÌ -->
+
+<div id="envelopeScreen">
+
+<div class="envelope" onclick="openEnvelope()">
+<div class="flap"></div>
+</div>
+
+<div class="envelope-text">
+Nhấn để mở thiệp
+</div>
+
+</div>
+
 <audio id="music" loop>
 <source src="music.mp3">
 </audio>
-
-<!-- COVER -->
-
-<div id="cover">
-
-<div class="names">
-<div style="text-align:left">Đình Tùng</div>
-<div style="text-align:center">&</div>
-<div style="text-align:right">Thu Hà</div>
-</div>
-
-<button class="open-btn" onclick="openCard()">
-Mở thiệp
-</button>
-
-</div>
 
 <!-- HERO -->
 
@@ -331,9 +360,11 @@ Mở thiệp
 
 <div class="couple">
 
-<div style="text-align:left">Đình Tùng</div>
-<div style="text-align:center">❤</div>
-<div style="text-align:right">Thu Hà</div>
+<div class="name-left">Đình Tùng</div>
+
+<div class="heart-center">❤</div>
+
+<div class="name-right">Thu Hà</div>
 
 </div>
 
@@ -380,8 +411,6 @@ Mở thiệp
 
 </section>
 
-<!-- LIGHTBOX -->
-
 <div class="lightbox" id="lightbox">
 <img id="lightbox-img">
 </div>
@@ -393,21 +422,13 @@ Mở thiệp
 <h2>Trân trọng kính mời</h2>
 
 <p>
-
 Hôn lễ được cử hành tại<br>
-
 <b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
-
 </p>
 
 <p>
-
 VÀO LÚC <b>17:30</b><br>
-
-CHỦ NHẬT 29.03.2026<br>
-
-(TỨC 11.02 ÂM LỊCH)
-
+CHỦ NHẬT 29.03.2026
 </p>
 
 <div class="countdown" id="countdown"></div>
@@ -422,7 +443,8 @@ CHỦ NHẬT 29.03.2026<br>
 
 <button class="join" onclick="showForm()">Tôi sẽ tham dự</button>
 
-<button class="nojoin" onclick="alert('Cảm ơn bạn đã quan tâm ❤')">
+<button class="nojoin"
+onclick="alert('Cảm ơn bạn đã quan tâm ❤')">
 Xin lỗi tôi không thể tham dự
 </button>
 
@@ -448,12 +470,20 @@ Xin lỗi tôi không thể tham dự
 
 <script>
 
-/* mở thiệp */
+/* mở phong bì */
 
-function openCard(){
+function openEnvelope(){
 
-document.getElementById("cover").style.display="none"
+const env=document.querySelector(".envelope")
+
+env.classList.add("open")
+
+setTimeout(()=>{
+
+document.getElementById("envelopeScreen").style.display="none"
 document.getElementById("music").play()
+
+},900)
 
 }
 
@@ -468,63 +498,12 @@ faders.forEach(el=>{
 const top=el.getBoundingClientRect().top
 
 if(top<window.innerHeight-80){
-
 el.classList.add("show")
-
 }
 
 })
 
 })
-
-/* tim bay */
-
-function createHeart(){
-
-const heart=document.createElement("div")
-
-heart.classList.add("heart")
-
-heart.style.left=Math.random()*100+"vw"
-
-heart.style.fontSize=(Math.random()*20+10)+"px"
-
-heart.innerHTML="❤"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>heart.remove(),6000)
-
-}
-
-setInterval(createHeart,700)
-
-/* countdown */
-
-const target=new Date("Mar 29, 2026 17:30:00").getTime()
-
-setInterval(()=>{
-
-const now=new Date().getTime()
-
-const d=target-now
-
-const days=Math.floor(d/(1000*60*60*24))
-const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
-const mins=Math.floor((d%(1000*60*60))/(1000*60))
-
-document.getElementById("countdown").innerHTML=
-days+" ngày "+hours+" giờ "+mins+" phút"
-
-},1000)
-
-/* form */
-
-function showForm(){
-
-document.getElementById("formBox").style.display="block"
-
-}
 
 /* gallery animation */
 
@@ -537,9 +516,7 @@ galleryImgs.forEach(img=>{
 const top=img.getBoundingClientRect().top
 
 if(top<window.innerHeight-80){
-
 img.classList.add("show")
-
 }
 
 })
@@ -566,6 +543,52 @@ lightbox.onclick=()=>{
 
 lightbox.style.display="none"
 
+}
+
+/* countdown */
+
+const target=new Date("Mar 29, 2026 17:30:00").getTime()
+
+setInterval(()=>{
+
+const now=new Date().getTime()
+
+const d=target-now
+
+const days=Math.floor(d/(1000*60*60*24))
+const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
+const mins=Math.floor((d%(1000*60*60))/(1000*60))
+
+document.getElementById("countdown").innerHTML=
+days+" ngày "+hours+" giờ "+mins+" phút"
+
+},1000)
+
+/* tim bay */
+
+function createHeart(){
+
+const heart=document.createElement("div")
+
+heart.classList.add("heart")
+
+heart.style.left=Math.random()*100+"vw"
+heart.style.fontSize=(Math.random()*20+10)+"px"
+
+heart.innerHTML="❤"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),6000)
+
+}
+
+setInterval(createHeart,800)
+
+/* form */
+
+function showForm(){
+document.getElementById("formBox").style.display="block"
 }
 
 </script>
