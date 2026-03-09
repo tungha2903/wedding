@@ -250,11 +250,6 @@ height:200px;
 
 }
 
-.gallery{
-column-count:1;
-}
-
-
 
 .gallery img.show{
 opacity:1;
@@ -802,11 +797,11 @@ behavior:"smooth"
 
 const galleryAuto=document.querySelector(".gallery")
 
-let autoSlide=setInterval(autoScroll,30)
+let autoSlide=setInterval(autoScroll,16)
 
 function autoScroll(){
 
-galleryAuto.scrollLeft+=1
+galleryAuto.scrollLeft+=2
 
 if(galleryAuto.scrollLeft>=galleryAuto.scrollWidth-galleryAuto.clientWidth){
 galleryAuto.scrollLeft=0
@@ -872,6 +867,7 @@ setInterval(createHeart,600);
 </script>
 </body>
 </html>
+
 
 
 
