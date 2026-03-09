@@ -84,7 +84,45 @@ transform:rotateX(180deg);
 margin-top:20px;
 font-size:18px;
 }
+/* lời mời đầu trang */
 
+.invite-message{
+position:absolute;
+bottom:120px;
+width:100%;
+text-align:center;
+font-family:"Edward";
+font-size:34px;
+color:#d4af37;
+opacity:0;
+animation:fadeInvite 2.5s forwards;
+animation-delay:1s;
+}
+
+@keyframes fadeInvite{
+0%{
+opacity:0;
+transform:translateY(20px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ngón tay chỉ */
+
+.finger{
+font-size:34px;
+margin-top:10px;
+animation:fingerMove 1.2s infinite;
+}
+
+@keyframes fingerMove{
+0%{transform:translateY(0)}
+50%{transform:translateY(8px)}
+100%{transform:translateY(0)}
+}
 /* HERO */
 
 .hero{
@@ -501,6 +539,14 @@ border:1px solid #ddd;
 Nhấn để mở thiệp
 </div>
 
+<div class="invite-message">
+Thân gửi thiệp hồng tới những người thân thương
+</div>
+
+<div class="tap-hand">
+👇
+</div>
+
 </div>
 
 <audio id="music" loop>
@@ -885,7 +931,7 @@ setInterval(createHeart,600);
 const gallery = document.querySelector(".gallery")
 const images = document.querySelectorAll(".gallery img")
 
-let scrollSpeed = 0.35
+let scrollSpeed = 1.5
 let paused = false
 
 function autoScroll(){
@@ -952,6 +998,7 @@ paused = true
 
 </body>
 </html>
+
 
 
 
