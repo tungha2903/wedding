@@ -101,53 +101,282 @@ color:#555;
 }
 
 /* =========================
+<div class="hero">
+
+<img src="anh1.jpg">
+<img src="anh2.jpg">
+<img src="anh3.jpg">
+<img src="anh4.jpg">
+
+<div class="hero-overlay">
+
+<div class="couple">
+
+<div class="name-left">Đình Tùng</div>
+
+<div class="heart-center">❤</div>
+
+<div class="name-right">Thu Hà</div>
+
+</div>
+
+/* =========================
+CHỮ XUẤT HIỆN CINEMATIC
+========================= */
+
+.couple{
+font-family:"Edward";
+font-size:48px;
+color:gold;
+line-height:1.4;
+overflow:hidden;
+}
+
+.name-left{
+
+transform:translateX(-80px);
+opacity:0;
+
+animation:nameLeft 2s forwards;
+animation-delay:1s;
+
+}
+
+.name-right{
+
+transform:translateX(80px);
+opacity:0;
+
+animation:nameRight 2s forwards;
+animation-delay:1s;
+
+}
+
+.heart-center{
+
+opacity:0;
+
+animation:heartShow 2s forwards;
+animation-delay:1.5s;
+
+}
+
+/* animation */
+
+@keyframes nameLeft{
+
+to{
+transform:translateX(0);
+opacity:1;
+}
+
+}
+
+@keyframes nameRight{
+
+to{
+transform:translateX(0);
+opacity:1;
+}
+
+}
+
+@keyframes heartShow{
+
+to{
+opacity:1;
+}
+
+}
+
+</div>
+
+</div>
+
+</div>
+
+/* =========================
 HERO SLIDER
 ========================= */
 
 .hero{
-height:35vh;
-overflow:hidden;
+
 position:relative;
+width:100%;
+height:65vh;
+
+overflow:hidden;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:#000;
+
 }
+
+/* ảnh hero */
 
 .hero img{
 
 position:absolute;
-top:50%;
-left:50%;
 
-transform:translate(-50%,-50%) scale(1.1);
+width:100%;
+height:100%;
 
-width:110%;
-height:110%;
-object-fit:cover;
+object-fit:contain;
 
-filter:brightness(75%) blur(1px);
+left:0;
+top:0;
 
 opacity:0;
 
-animation:heroCinematic 32s infinite;
+animation:heroSlider 32s infinite;
 
 }
+
+/* delay ảnh */
 
 .hero img:nth-child(2){animation-delay:8s}
 .hero img:nth-child(3){animation-delay:16s}
 .hero img:nth-child(4){animation-delay:24s}
 
-@keyframes heroCinematic{
+/* cinematic animation */
 
-0%{opacity:0;transform:translate(-50%,-50%) scale(1.15);}
+@keyframes heroSlider{
 
-8%{opacity:1;}
+0%{
+opacity:0;
+transform:scale(1.1);
+}
 
-30%{opacity:1;transform:translate(-50%,-50%) scale(1);}
+10%{
+opacity:1;
+}
 
-40%{opacity:0;}
+35%{
+opacity:1;
+transform:scale(1);
+}
 
-100%{opacity:0;}
+45%{
+opacity:0;
+}
+
+100%{
+opacity:0;
+}
 
 }
 
+/* =========================
+OVERLAY HERO
+========================= */
+
+.hero-overlay{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:rgba(0,0,0,0.35);
+
+}
+
+/* =========================
+TÊN CÔ DÂU CHÚ RỂ
+========================= */
+
+.couple{
+
+font-family:"Edward";
+font-size:46px;
+
+color:gold;
+
+display:flex;
+align-items:center;
+gap:12px;
+
+}
+
+/* animation chữ */
+
+.name-left{
+
+transform:translateX(-80px);
+opacity:0;
+
+animation:nameLeft 2s forwards;
+animation-delay:1s;
+
+}
+
+.name-right{
+
+transform:translateX(80px);
+opacity:0;
+
+animation:nameRight 2s forwards;
+animation-delay:1s;
+
+}
+
+.heart-center{
+
+opacity:0;
+
+animation:heartShow 2s forwards;
+animation-delay:1.5s;
+
+}
+
+@keyframes nameLeft{
+
+to{
+transform:translateX(0);
+opacity:1;
+}
+
+}
+
+@keyframes nameRight{
+
+to{
+transform:translateX(0);
+opacity:1;
+}
+
+}
+
+@keyframes heartShow{
+
+to{
+opacity:1;
+}
+
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+.hero{
+height:60vh;
+}
+
+.couple{
+font-size:34px;
+}
+
+}
 /* =========================
 COUPLE NAME
 ========================= */
@@ -431,7 +660,119 @@ VÀO LÚC <b>17:30</b><br>
 CHỦ NHẬT 29.03.2026
 </p>
 
-<div class="countdown" id="countdown"></div>
+<section class="fade">
+
+<h2>Trân trọng kính mời</h2>
+
+<p>
+Hôn lễ được cử hành tại<br>
+<b>TRUNG TÂM TIỆC CƯỚI HOÀNG THÀNH</b>
+</p>
+
+<p>
+VÀO LÚC <b>17:30</b><br>
+CHỦ NHẬT 29.03.2026
+</p>
+
+<!-- COUNTDOWN -->
+
+<div class="countdown">
+
+<div class="flip-box">
+<div class="flip" id="days">00</div>
+<span>Ngày</span>
+</div>
+
+<div class="flip-box">
+<div class="flip" id="hours">00</div>
+<span>Giờ</span>
+</div>
+
+<div class="flip-box">
+<div class="flip" id="mins">00</div>
+<span>Phút</span>
+</div>
+
+</div>
+
+</section>
+JS countdown cần có
+
+Đặt trong <script>:
+
+const target=new Date("Mar 29, 2026 17:30:00").getTime()
+
+setInterval(()=>{
+
+const now=new Date().getTime()
+
+const d=target-now
+
+const days=Math.floor(d/(1000*60*60*24))
+const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
+const mins=Math.floor((d%(1000*60*60))/(1000*60))
+
+updateFlip("days",days)
+updateFlip("hours",hours)
+updateFlip("mins",mins)
+
+},1000)
+
+function updateFlip(id,value){
+
+const el=document.getElementById(id)
+
+if(el.innerText!=value){
+
+el.classList.remove("animate")
+
+setTimeout(()=>{
+el.innerText=value
+el.classList.add("animate")
+},100)
+
+}
+
+}
+CSS cần có
+.countdown{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-top:20px;
+}
+
+.flip-box{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.flip{
+
+background:#c79b00;
+color:white;
+
+font-size:28px;
+font-weight:bold;
+
+padding:12px 18px;
+
+border-radius:6px;
+
+min-width:60px;
+
+transition:0.6s;
+}
+
+.flip.animate{
+transform:rotateX(360deg);
+}
+
+.flip-box span{
+margin-top:6px;
+font-size:14px;
+}
 
 </section>
 
@@ -595,3 +936,4 @@ document.getElementById("formBox").style.display="block"
 
 </body>
 </html>
+
