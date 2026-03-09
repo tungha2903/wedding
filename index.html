@@ -474,28 +474,13 @@ VÀO LÚC <b>17:30</b><br>
 CHỦ NHẬT 29.03.2026
 </p>
 
-<div class="countdown">
-
-<div class="flip-box">
-<div class="flip" id="days">00</div>
-<span>Ngày</span>
-</div>
-
-<div class="flip-box">
-<div class="flip" id="hours">00</div>
-<span>Giờ</span>
-</div>
-
-<div class="flip-box">
-<div class="flip" id="mins">00</div>
-<span>Phút</span>
-</div>
-
-</div>
-
-</section>
-
 <script>
+
+/* RSVP */
+
+function showForm(){
+document.getElementById("formBox").style.display="block"
+}
 
 /* phong bì */
 
@@ -514,9 +499,10 @@ document.getElementById("music").play()
 
 }
 
-/* fade */
+/* fade + gallery hiện dần */
 
 const faders=document.querySelectorAll(".fade")
+const galleryImages=document.querySelectorAll(".gallery img")
 
 window.addEventListener("scroll",()=>{
 
@@ -526,6 +512,16 @@ const top=el.getBoundingClientRect().top
 
 if(top<window.innerHeight-80){
 el.classList.add("show")
+}
+
+})
+
+galleryImages.forEach(img=>{
+
+const top=img.getBoundingClientRect().top
+
+if(top<window.innerHeight-60){
+img.classList.add("show")
 }
 
 })
@@ -620,3 +616,4 @@ document.getElementById("mins").innerText=mins
 
 </body>
 </html>
+
