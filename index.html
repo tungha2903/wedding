@@ -184,27 +184,43 @@ margin:18px 0;
 /* GALLERY */
 
 .gallery{
-column-count:2;
-column-gap:10px;
-margin-top:20px;
+display:flex;
+overflow-x:auto;
+gap:12px;
+padding:10px;
+scroll-snap-type:x mandatory;
+}
+
+.gallery img{
+height:260px;
+border-radius:12px;
+cursor:pointer;
+scroll-snap-align:center;
+flex-shrink:0;
+transition:0.5s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.gallery::-webkit-scrollbar{
+display:none;
 }
 @media(max-width:600px){
+
+.gallery img{
+height:200px;
+}
+
+}
 
 .gallery{
 column-count:1;
 }
 
 }
-.gallery img{
-width:100%;
-margin-bottom:10px;
-border-radius:12px;
-cursor:pointer;
-break-inside:avoid;
-opacity:0;
-transform:translateY(30px);
-transition:0.8s;
-}
+
 
 .gallery img.show{
 opacity:1;
@@ -359,7 +375,33 @@ margin:10px;
 font-size:16px;
 cursor:pointer;
 }
+/* NÚT TRƯỢT GALLERY */
 
+.gallery-wrapper{
+position:relative;
+}
+
+.slide-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.5);
+color:white;
+border:none;
+font-size:26px;
+padding:8px 14px;
+cursor:pointer;
+border-radius:50%;
+z-index:10;
+}
+
+.slide-btn.left{
+left:5px;
+}
+
+.slide-btn.right{
+right:5px;
+}
 .join{
 background:#c79b00;
 color:white;
@@ -451,6 +493,10 @@ Nhấn để mở thiệp
 
 <h2>Album ảnh cưới</h2>
 
+<div class="gallery-wrapper">
+
+<button class="slide-btn left" onclick="slideGallery(-1)">❮</button>
+
 <div class="gallery">
 
 <img src="anh10.jpg">
@@ -461,6 +507,10 @@ Nhấn để mở thiệp
 <img src="anh15.jpg">
 <img src="anh16.jpg">
 <img src="anh17.jpg">
+
+</div>
+
+<button class="slide-btn right" onclick="slideGallery(1)">❯</button>
 
 </div>
 
@@ -569,7 +619,8 @@ env.classList.add("open")
 setTimeout(()=>{
 
 document.getElementById("envelopeScreen").style.display="none"
-document.getElementById("music").play()
+const music=document.getElementById("music")
+music.play().catch(()=>{})
 
 },900)
 
@@ -705,7 +756,16 @@ el.classList.remove("animate")
 }
 
 setInterval(updateCountdown,1000)
+function slideGallery(direction){
 
+const gallery=document.querySelector(".gallery")
+
+gallery.scrollBy({
+left:direction*320,
+behavior:"smooth"
+})
+
+}
 </script>
 
 <script>
@@ -728,11 +788,12 @@ heart.remove();
 
 }
 
-setInterval(createHeart,300);
+setInterval(createHeart,600);
 
 </script>
 </body>
 </html>
+
 
 
 
