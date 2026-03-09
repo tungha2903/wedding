@@ -857,21 +857,7 @@ behavior:"smooth"
 
 /* dừng khi chạm */
 
-galleryAuto.addEventListener("mouseenter",()=>{
-clearInterval(autoSlide)
-})
 
-galleryAuto.addEventListener("mouseleave",()=>{
-autoSlide=setInterval(autoScroll,30)
-})
-
-galleryAuto.addEventListener("touchstart",()=>{
-clearInterval(autoSlide)
-})
-
-galleryAuto.addEventListener("touchend",()=>{
-autoSlide=setInterval(autoScroll,30)
-})
 </script>
 
 <script>
@@ -947,18 +933,7 @@ img.classList.toggle("zoomed")
 
 })
 
-let index=0
-let autoSlide
 
-function updateGallery(){
-
-items.forEach((item,i)=>{
-
-item.classList.remove("active","side")
-
-if(i===index){
-item.classList.add("active")
-}
 
 if(i===index-1 || i===index+1){
 item.classList.add("side")
@@ -1071,6 +1046,7 @@ clearInterval(autoSlide)
 })
 </body>
 </html>
+
 
 
 
