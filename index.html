@@ -895,62 +895,57 @@ setInterval(createHeart,600);
 <script>
 
 const gallery=document.querySelector(".gallery")
-const items=document.querySelectorAll(".gallery-item")
 const images=document.querySelectorAll(".gallery img")
 
-let index=0
-let autoSlide
+let speed=0.8
+let autoScroll
 
-function updateGallery(){
+function startAutoScroll(){
 
-items.forEach((item,i)=>{
+autoScroll=setInterval(()=>{
 
-item.classList.remove("active","side")
+gallery.scrollLeft+=speed
 
-if(i===index){
-item.classList.add("active")
+if(gallery.scrollLeft>=gallery.scrollWidth-gallery.clientWidth){
+gallery.scrollLeft=0
 }
 
-if(i===index-1 || i===index+1){
-item.classList.add("side")
+},16)
+
 }
 
+startAutoScroll()
+
+/* chạm dừng */
+
+gallery.addEventListener("touchstart",()=>{
+clearInterval(autoScroll)
 })
 
-gallery.scrollTo({
-left:items[index].offsetLeft - gallery.offsetWidth/2 + items[index].offsetWidth/2,
-behavior:"smooth"
+gallery.addEventListener("touchend",()=>{
+startAutoScroll()
 })
 
-}
+gallery.addEventListener("mousedown",()=>{
+clearInterval(autoScroll)
+})
 
-function nextSlide(){
+gallery.addEventListener("mouseup",()=>{
+startAutoScroll()
+})
 
-index++
-
-if(index>=items.length){
-index=0
-}
-
-updateGallery()
-
-}
-
-autoSlide=setInterval(nextSlide,4000)
-
-updateGallery()
-
-gallery.addEventListener("touchstart",()=>clearInterval(autoSlide))
-gallery.addEventListener("touchend",()=>autoSlide=setInterval(nextSlide,4000))
-
-gallery.addEventListener("mousedown",()=>clearInterval(autoSlide))
-gallery.addEventListener("mouseup",()=>autoSlide=setInterval(nextSlide,4000))
+/* zoom ảnh */
 
 images.forEach(img=>{
+
 img.addEventListener("click",()=>{
+
+clearInterval(autoScroll)
+
 img.classList.toggle("zoomed")
-clearInterval(autoSlide)
+
 })
+
 })
 
 </script>
@@ -958,6 +953,7 @@ clearInterval(autoSlide)
 
 </body>
 </html>
+
 
 
 
