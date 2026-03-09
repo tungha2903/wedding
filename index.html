@@ -226,7 +226,41 @@ max-height:90%;
 border-radius:10px;
 }
 
-/* COUNTDOWN FLIP */
+/* POPUP THIỆP */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,0.65);
+z-index:9998;
+}
+
+.popup img{
+max-width:85%;
+max-height:85%;
+position:absolute;
+opacity:0;
+transition:opacity 1.6s;
+border-radius:10px;
+}
+
+.popup img.show{
+opacity:1;
+}
+
+.blur-bg{
+filter:blur(6px);
+opacity:0.4;
+pointer-events:none;
+}
+
+/* COUNTDOWN */
 
 .countdown{
 display:flex;
@@ -261,7 +295,7 @@ margin-top:6px;
 font-size:14px;
 }
 
-/* TIM BAY */
+/* HEART */
 
 .heart{
 position:fixed;
@@ -318,20 +352,6 @@ border-radius:25px;
 border:1px solid #ddd;
 }
 
-/* MOBILE */
-
-@media(max-width:600px){
-
-.hero{
-height:60vh;
-}
-
-.couple{
-font-size:32px;
-}
-
-}
-
 </style>
 </head>
 
@@ -367,15 +387,12 @@ Nhấn để mở thiệp
 <div class="hero-overlay">
 
 <div class="couple">
-
 <div class="name-left">Đình Tùng</div>
 <div class="heart-center">❤</div>
 <div class="name-right">Thu Hà</div>
-
 </div>
 
 </div>
-
 </div>
 
 <!-- STORY -->
@@ -400,7 +417,7 @@ Nhấn để mở thiệp
 
 <!-- GALLERY -->
 
-<section class="fade">
+<section class="fade" id="gallerySection">
 
 <h2>Album ảnh cưới</h2>
 
@@ -423,9 +440,18 @@ Nhấn để mở thiệp
 <img id="lightbox-img">
 </div>
 
+<!-- POPUP THIỆP -->
+
+<div id="weddingPopup" class="popup">
+
+<img id="cardFront" src="bia ngoai thiep cuoi.jpg">
+<img id="cardInside" src="mat trong thiep cuoi.jpg">
+
+</div>
+
 <!-- THÔNG TIN -->
 
-<section class="fade">
+<section class="fade" id="inviteSection" style="display:none">
 
 <h2>Trân trọng kính mời</h2>
 
@@ -455,38 +481,6 @@ CHỦ NHẬT 29.03.2026
 <div class="flip" id="mins">00</div>
 <span>Phút</span>
 </div>
-
-</div>
-
-</section>
-
-<!-- RSVP -->
-
-<section class="rsvp fade">
-
-<h2>Xác nhận tham dự</h2>
-
-<button class="join" onclick="showForm()">Tôi sẽ tham dự</button>
-
-<button class="nojoin" onclick="alert('Cảm ơn bạn đã quan tâm ❤')">
-Xin lỗi tôi không thể tham dự
-</button>
-
-<div class="form-box" id="formBox">
-
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSc/formResponse" method="POST">
-
-<input type="hidden" name="entry.418138023" value="Tôi sẽ tham dự">
-
-<input type="text" name="entry.1470591758" placeholder="Họ tên khách">
-
-<input type="number" name="entry.450176909" placeholder="Số lượng">
-
-<br>
-
-<button type="submit" class="join">Gửi xác nhận</button>
-
-</form>
 
 </div>
 
@@ -529,7 +523,7 @@ el.classList.add("show")
 
 })
 
-/* gallery */
+/* gallery lightbox */
 
 const galleryImgs=document.querySelectorAll(".gallery img")
 
@@ -548,7 +542,53 @@ document.getElementById("lightbox").onclick=()=>{
 document.getElementById("lightbox").style.display="none"
 }
 
-/* countdown flip */
+/* POPUP THIỆP */
+
+const popup=document.getElementById("weddingPopup")
+const front=document.getElementById("cardFront")
+const inside=document.getElementById("cardInside")
+const invite=document.getElementById("inviteSection")
+
+let popupShown=false
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting && !popupShown){
+
+popupShown=true
+
+popup.style.display="flex"
+
+document.body.classList.add("blur-bg")
+
+front.classList.add("show")
+
+setTimeout(()=>{
+front.classList.remove("show")
+inside.classList.add("show")
+},2000)
+
+}
+
+})
+
+})
+
+observer.observe(document.getElementById("gallerySection"))
+
+popup.addEventListener("click",()=>{
+
+popup.style.display="none"
+
+document.body.classList.remove("blur-bg")
+
+invite.style.display="block"
+
+})
+
+/* countdown */
 
 const target=new Date("Mar 29, 2026 17:30:00").getTime()
 
@@ -562,55 +602,11 @@ const days=Math.floor(d/(1000*60*60*24))
 const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
 const mins=Math.floor((d%(1000*60*60))/(1000*60))
 
-updateFlip("days",days)
-updateFlip("hours",hours)
-updateFlip("mins",mins)
+document.getElementById("days").innerText=days
+document.getElementById("hours").innerText=hours
+document.getElementById("mins").innerText=mins
 
 },1000)
-
-function updateFlip(id,value){
-
-const el=document.getElementById(id)
-
-if(el.innerText!=value){
-
-el.classList.remove("animate")
-
-setTimeout(()=>{
-el.innerText=value
-el.classList.add("animate")
-},100)
-
-}
-
-}
-
-/* tim bay */
-
-function createHeart(){
-
-const heart=document.createElement("div")
-
-heart.classList.add("heart")
-
-heart.style.left=Math.random()*100+"vw"
-heart.style.fontSize=(Math.random()*20+10)+"px"
-
-heart.innerHTML="❤"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>heart.remove(),6000)
-
-}
-
-setInterval(createHeart,800)
-
-/* form */
-
-function showForm(){
-document.getElementById("formBox").style.display="block"
-}
 
 </script>
 
