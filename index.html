@@ -666,21 +666,39 @@ invite.style.display="block"
 
 const target=new Date("Mar 29, 2026 17:30:00").getTime()
 
-setInterval(()=>{
+function updateCountdown(){
 
 const now=new Date().getTime()
-
 const d=target-now
 
 const days=Math.floor(d/(1000*60*60*24))
 const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60))
 const mins=Math.floor((d%(1000*60*60))/(1000*60))
 
-document.getElementById("days").innerText=days
-document.getElementById("hours").innerText=hours
-document.getElementById("mins").innerText=mins
+updateFlip("days",days)
+updateFlip("hours",hours)
+updateFlip("mins",mins)
 
-},1000)
+}
+
+function updateFlip(id,value){
+
+const el=document.getElementById(id)
+
+if(el.innerText!=value){
+
+el.classList.add("animate")
+
+setTimeout(()=>{
+el.innerText=value
+el.classList.remove("animate")
+},300)
+
+}
+
+}
+
+setInterval(updateCountdown,1000)
 
 </script>
 
@@ -709,6 +727,7 @@ setInterval(createHeart,300);
 </script>
 </body>
 </html>
+
 
 
 
