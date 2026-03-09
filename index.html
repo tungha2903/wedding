@@ -304,12 +304,27 @@ margin-top:6px;
 font-size:14px;
 }
 
-/* HEART */
+/* HEART BAY */
 
 .heart{
 position:fixed;
-color:gold;
-animation:float 6s linear infinite;
+bottom:-20px;
+color:#FFD700;
+font-size:20px;
+pointer-events:none;
+animation:heartFly linear forwards;
+z-index:9999;
+}
+
+@keyframes heartFly{
+0%{
+transform:translateY(0) scale(0.6);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh) scale(1.2);
+opacity:0;
+}
 }
 
 @keyframes float{
@@ -669,8 +684,32 @@ document.getElementById("mins").innerText=mins
 
 </script>
 
+<script>
+
+function createHeart(){
+
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💛";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(16+Math.random()*20)+"px";
+heart.style.animationDuration=(4+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},7000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
 </body>
 </html>
+
 
 
 
