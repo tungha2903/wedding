@@ -88,25 +88,27 @@ font-size:18px;
 
 .invite-message{
 position:absolute;
-bottom:120px;
+bottom:180px; /* đẩy khối chữ xuống thấp hơn */
 left:50%;
 transform:translateX(-50%);
+text-align:center;
 font-family:"Edward";
 font-size:34px;
 color:#d4af37;
+line-height:1.3;
 opacity:0;
 animation:fadeInvite 2.5s forwards;
 animation-delay:1s;
 }
-
+  
 .invite-message .line1{
-text-align:left;
+display:block;
 }
 
 .invite-message .line2{
-text-align:left;
-margin-top:4px;
-margin-left:40px;
+display:block;
+margin-top:6px;
+margin-left:40px; /* dòng 2 lùi vào */
 }
 
 @keyframes fadeInvite{
@@ -1007,6 +1009,7 @@ paused = true
 
 </body>
 </html>
+
 
 
 
