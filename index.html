@@ -217,7 +217,8 @@ opacity:1;
 
 .gallery{
 display:flex;
-overflow:hidden;
+overflow-x:auto;
+overflow-y:hidden;
 gap:16px;
 padding:20px;
 align-items:center;
@@ -228,6 +229,7 @@ scroll-behavior:smooth;
 
 .gallery-item{
 flex:0 0 auto;
+width:260px;
 transition:transform .4s ease, opacity .4s ease;
 }
 
@@ -264,14 +266,6 @@ opacity:0.6;
 display:none;
 }
 
-.gallery img{
-height:260px;
-border-radius:12px;
-cursor:pointer;
-flex-shrink:0;
-scroll-snap-align:center;
-transition:0.3s;
-}
 
 .gallery img:hover{
 transform:scale(1.05);
@@ -964,6 +958,7 @@ clearInterval(autoSlide)
 
 </body>
 </html>
+
 
 
 
