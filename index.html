@@ -238,6 +238,14 @@ cursor:pointer;
 transition:0.4s;
 }
 
+/* zoom khi click */
+
+.gallery img.zoomed{
+transform:scale(1.8);
+z-index:10;
+position:relative;
+}
+
 /* ảnh trung tâm */
 
 .gallery-item.active img{
@@ -908,6 +916,36 @@ setInterval(createHeart,600);
 
 const gallery=document.querySelector(".gallery")
 const items=document.querySelectorAll(".gallery-item")
+const images=document.querySelectorAll(".gallery img")
+
+/* dừng khi chạm */
+
+gallery.addEventListener("touchstart",()=>{
+clearInterval(autoSlide)
+})
+
+gallery.addEventListener("touchend",()=>{
+autoSlide=setInterval(nextSlide,4000)
+})
+
+gallery.addEventListener("mousedown",()=>{
+clearInterval(autoSlide)
+})
+
+gallery.addEventListener("mouseup",()=>{
+autoSlide=setInterval(nextSlide,4000)
+})
+  images.forEach(img=>{
+
+img.addEventListener("click",()=>{
+
+clearInterval(autoSlide)
+
+img.classList.toggle("zoomed")
+
+})
+
+})
 
 let index=0
 let autoSlide
@@ -1033,6 +1071,7 @@ clearInterval(autoSlide)
 })
 </body>
 </html>
+
 
 
 
