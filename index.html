@@ -179,8 +179,40 @@ to{opacity:1;}
 width:100%;
 border-radius:12px;
 margin:18px 0;
+opacity:0;
+transition:1s;
 }
 
+.story img.left{
+transform:translateX(-80px);
+}
+
+.story img.right{
+transform:translateX(80px);
+}
+
+.story img.show{
+opacity:1;
+transform:translateX(0);
+}
+/* zoom effect */
+.story img.zoom.show{
+animation:zoomStory 1.2s;
+}
+
+@keyframes zoomStory{
+
+0%{
+transform:scale(0.8);
+opacity:0;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
 /* GALLERY */
 
 .gallery{
@@ -473,18 +505,16 @@ Nhấn để mở thiệp
 
 <p>Chuyện tình của chúng mình bắt đầu từ...</p>
 
-<img src="anh5.jpg">
+<img src="anh5.jpg" class="left">
 
 <p>Một ngày thật đặc biệt...</p>
 
-<img src="anh6.jpg">
-<img src="anh7.jpg">
-
+<img src="anh6.jpg" class="right">
+<img src="anh7.jpg" class="left zoom">
 <p>Và rồi chúng mình quyết định...</p>
 
-<img src="anh8.jpg">
-<img src="anh9.jpg">
-
+<img src="anh8.jpg" class="right">
+<img src="anh9.jpg" class="left zoom">
 </section>
 
 <!-- GALLERY -->
@@ -787,12 +817,27 @@ heart.remove();
 },7000);
 
 }
+const storyImgs=document.querySelectorAll(".story img")
 
+window.addEventListener("scroll",()=>{
+
+storyImgs.forEach(img=>{
+
+const top=img.getBoundingClientRect().top
+
+if(top<window.innerHeight-100){
+img.classList.add("show")
+}
+
+})
+
+})
 setInterval(createHeart,600);
 
 </script>
 </body>
 </html>
+
 
 
 
