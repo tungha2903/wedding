@@ -324,13 +324,16 @@ opacity:1;
 
 .gallery{
 display:flex;
-overflow:hidden;
-gap:8px;        /* khoảng cách ảnh */
+overflow-x:auto;
+overflow-y:hidden;
+white-space:nowrap;
+gap:8px;
 padding:10px 6px;
 align-items:center;
 scroll-behavior:auto;
-will-change:transform;
+will-change:scroll-position;
 }
+
 
 /* khung từng ảnh */
 
@@ -385,7 +388,7 @@ height:260px;        /* chiều cao cố định */
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden;
+overflow:visible;
 transition:all .45s cubic-bezier(.22,.61,.36,1);
 }
 
@@ -1073,6 +1076,8 @@ const clone=item.cloneNode(true)
 gallery.appendChild(clone)
 })
 
+gallery.scrollLeft = 1
+
 let scrollSpeed = 0.35
 let paused = false
 
@@ -1122,6 +1127,7 @@ requestAnimationFrame(autoScroll)
 
 }
 
+gallery.scrollLeft = 1
 autoScroll()
 
 /* chạm giữ dừng */
@@ -1220,6 +1226,7 @@ document.getElementById("customAlert").style.display = "none"
 
 </body>
 </html>
+
 
 
 
