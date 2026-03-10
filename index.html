@@ -336,11 +336,11 @@ will-change:transform;
 /* khung từng ảnh */
 
 .gallery img{
-width:100%;
-height:100%;
-object-fit:contain;   /* không cắt ảnh */
+height:240px;
+width:auto;
+object-fit:contain;
 border-radius:22px;
-background:#eee;      /* nền nếu ảnh dọc */
+background:#eee;
 cursor:pointer;
 transition:0.6s;
 opacity:0;
@@ -373,10 +373,10 @@ filter:blur(2px);
 
 /* ảnh xa */
 
-..gallery-item{
+.gallery-item{
 flex:0 0 auto;
 flex-shrink:0;
-width:210px;
+width:auto;
 height:260px;
 display:flex;
 align-items:center;
@@ -393,14 +393,6 @@ display:none;
 
 .gallery-item:hover{
 transform:scale(1.1);
-}
-
-@media(max-width:600px){
-
-.gallery img{
-height:200px;
-}
-
 }
 
 
@@ -1220,6 +1212,7 @@ document.getElementById("customAlert").style.display = "none"
 
 </body>
 </html>
+
 
 
 
