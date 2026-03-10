@@ -769,13 +769,13 @@ Nhấn để mở thiệp
 
 <button class="join" onclick="showForm()">Tôi sẽ tham dự</button>
 
-<button class="nojoin" onclick="alert('Cảm ơn bạn đã quan tâm ❤')">
+<button class="nojoin" onclick="showAlert('Cảm ơn bạn đã quan tâm đến đám cưới chúng mình ❤️')">
 Thông cảm nhé, tôi không thể tham dự
 </button>
 
 <div class="form-box" id="formBox">
 
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSd9vybyaDCn3TEV9TrFT3no7u0HrDRb0ijvhkPGQVFKzbmh2Q/formResponse" method="POST">
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSd9vybyaDCn3TEV9TrFT3no7u0HrDRb0ijvhkPGQVFKzbmh2Q/formResponse" method="POST" onsubmit="showAlert('Cảm ơn bạn đã tham dự đám cưới của chúng mình ❤️')">
 
 <input type="hidden" name="entry.418138023" value="Tôi sẽ tham dự">
 
@@ -1103,6 +1103,7 @@ setInterval(createSparkle,400)
 
 </body>
 </html>
+
 
 
 
