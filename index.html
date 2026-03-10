@@ -360,14 +360,26 @@ position:relative;
 
 /* ảnh trung tâm */
 
+/* ảnh giữa */
+
 .gallery-item.active img{
-transform:scale(1.35);
+transform:scale(1.45);
 z-index:5;
+filter:none;
 }
 
+/* ảnh 2 bên */
+
 .gallery-item.side img{
-transform:scale(0.9);
-opacity:0.5;
+transform:scale(0.85);
+opacity:0.6;
+filter:blur(2px);
+}
+
+/* ảnh xa */
+
+.gallery-item{
+transition:all .45s cubic-bezier(.22,.61,.36,1);
 }
 
 .gallery::-webkit-scrollbar{
@@ -1054,7 +1066,7 @@ const clone=item.cloneNode(true)
 gallery.appendChild(clone)
 })
 
-let scrollSpeed = 1.5
+let scrollSpeed = 0.35
 let paused = false
 
 function updateCenter(){
@@ -1071,11 +1083,11 @@ item.classList.remove("active","side")
 
 const distance = Math.abs(center - itemCenter)
 
-if(distance < 110){
+if(distance < 130){
 
 item.classList.add("active")
 
-}else if(distance < 260){
+}else if(distance < 300){
 
 item.classList.add("side")
 
@@ -1109,7 +1121,28 @@ autoScroll()
 
 gallery.addEventListener("touchstart",()=>paused=true)
 gallery.addEventListener("touchend",()=>paused=false)
+/* swipe mobile cực mượt */
 
+let startX = 0
+
+gallery.addEventListener("touchstart",e=>{
+startX = e.touches[0].clientX
+paused = true
+})
+
+gallery.addEventListener("touchend",e=>{
+
+let endX = e.changedTouches[0].clientX
+let move = startX - endX
+
+gallery.scrollBy({
+left: move * 1.8,
+behavior:"smooth"
+})
+
+setTimeout(()=>paused=false,600)
+
+})
 gallery.addEventListener("mousedown",()=>paused=true)
 gallery.addEventListener("mouseup",()=>paused=false)
 
@@ -1180,6 +1213,7 @@ document.getElementById("customAlert").style.display = "none"
 
 </body>
 </html>
+
 
 
 
