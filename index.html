@@ -84,6 +84,19 @@ transform:rotateX(180deg);
 margin-top:20px;
 font-size:18px;
 }
+  /* logo TH */
+
+.envelope-logo{
+width:140px;
+margin-bottom:25px;
+opacity:0;
+animation:fadeLogo 1.5s forwards;
+}
+
+@keyframes fadeLogo{
+from{opacity:0; transform:translateY(-20px);}
+to{opacity:1; transform:translateY(0);}
+}
 /* lời mời đầu trang */
 
 .invite-message{
@@ -545,7 +558,7 @@ border:1px solid #ddd;
 <!-- PHONG BÌ -->
 
 <div id="envelopeScreen">
-
+<img src="0.png" class="envelope-logo">
 <div class="invite-message">
 <div class="line1">Thân gửi thiệp hồng</div>
 <div class="line2">tới những người thân thương!</div>
@@ -1008,6 +1021,7 @@ paused = true
 
 </body>
 </html>
+
 
 
 
