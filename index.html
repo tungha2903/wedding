@@ -824,7 +824,8 @@ Thông cảm nhé, tôi không thể tham dự
 
 <form action="https://docs.google.com/forms/d/e/1FAIpQLSd9vybyaDCn3TEV9TrFT3no7u0HrDRb0ijvhkPGQVFKzbmh2Q/formResponse"
 method="POST"
-onsubmit="handleSubmit(event)">
+target="hiddenFrame"
+onsubmit="submitRSVP(event)">
 <input type="hidden" name="entry.418138023" value="Tôi sẽ tham dự">
 
 <input type="text" name="entry.1470591758" placeholder="Họ tên khách">
@@ -840,7 +841,7 @@ onsubmit="handleSubmit(event)">
 </div>
 
 </section>
-
+<iframe name="hiddenFrame" style="display:none;"></iframe>
 <!-- KẾT THÚC PHẦN CHÈN -->
 
 <script>
@@ -1144,7 +1145,31 @@ setTimeout(()=>s.remove(),3000)
 }
 
 setInterval(createSparkle,400)
-let formAction = ""
+function showAlert(message){
+document.getElementById("alertMessage").innerText = message
+document.getElementById("customAlert").style.display = "flex"
+}
+
+function submitRSVP(e){
+
+e.preventDefault()
+
+const form = e.target
+
+// gửi dữ liệu tới Google Form
+form.submit()
+
+// hiện popup cảm ơn
+showAlert("Cảm ơn bạn đã tham dự đám cưới chúng mình ❤️")
+
+// reset form
+form.reset()
+
+}
+
+function closeAlert(){
+document.getElementById("customAlert").style.display = "none"
+}
 /* CUSTOM ALERT */
 
 function showAlert(message){
@@ -1186,6 +1211,7 @@ window.location.href = formAction
 
 </body>
 </html>
+
 
 
 
