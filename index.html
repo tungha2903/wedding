@@ -341,10 +341,10 @@ transition:transform .4s ease, opacity .4s ease;
 }
 
 .gallery img{
-width:100%;
-height:auto;
-object-fit:contain;
-border-radius:22px;   /* bo góc đẹp hơn */
+max-width:100%;
+max-height:100%;
+object-fit:contain;     /* không cắt ảnh */
+border-radius:22px;
 cursor:pointer;
 transition:0.6s;
 opacity:0;
@@ -379,6 +379,13 @@ filter:blur(2px);
 /* ảnh xa */
 
 .gallery-item{
+flex:0 0 auto;
+width:210px;
+height:260px;        /* chiều cao cố định */
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
 transition:all .45s cubic-bezier(.22,.61,.36,1);
 }
 
@@ -1213,6 +1220,7 @@ document.getElementById("customAlert").style.display = "none"
 
 </body>
 </html>
+
 
 
 
