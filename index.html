@@ -1170,35 +1170,7 @@ form.reset()
 function closeAlert(){
 document.getElementById("customAlert").style.display = "none"
 }
-/* CUSTOM ALERT */
 
-function showAlert(message){
-document.getElementById("alertMessage").innerText = message
-document.getElementById("customAlert").style.display = "flex"
-}
-function handleSubmit(e){
-
-e.preventDefault()
-
-const form = e.target
-formAction = form.action
-
-showAlert("Cảm ơn bạn đã tham dự đám cưới chúng mình ❤️")
-
-}
-
-function closeAlert(){
-document.getElementById("customAlert").style.display = "none"
-}
-function closeAlert(){
-
-document.getElementById("customAlert").style.display = "none"
-
-if(formAction){
-window.location.href = formAction
-}
-
-}
 </script>
 <div id="customAlert" class="alert-box">
 <div class="alert-content">
@@ -1211,6 +1183,7 @@ window.location.href = formAction
 
 </body>
 </html>
+
 
 
 
