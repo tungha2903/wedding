@@ -1150,20 +1150,10 @@ document.getElementById("alertMessage").innerText = message
 document.getElementById("customAlert").style.display = "flex"
 }
 
-function submitRSVP(e){
-
-e.preventDefault()
-
-const form = e.target
-
-// gửi dữ liệu tới Google Form
-form.submit()
+function submitRSVP(){
 
 // hiện popup cảm ơn
 showAlert("Cảm ơn bạn đã tham dự đám cưới chúng mình ❤️")
-
-// reset form
-form.reset()
 
 }
 
@@ -1183,6 +1173,7 @@ document.getElementById("customAlert").style.display = "none"
 
 </body>
 </html>
+
 
 
 
