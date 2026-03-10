@@ -326,7 +326,7 @@ opacity:1;
 display:flex;
 overflow:hidden;
 white-space:nowrap;
-gap:6px;
+gap:8px;
 padding:10px 6px;
 align-items:center;
 will-change:transform;
@@ -335,16 +335,12 @@ will-change:transform;
 
 /* khung từng ảnh */
 
-.gallery img{
-height:240px;
-width:auto;
-object-fit:contain;
-border-radius:22px;
-background:#eee;
-cursor:pointer;
-transition:0.6s;
-opacity:0;
-transform:translateY(40px);
+.gallery-item{
+flex:0 0 220px;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:transform .4s ease, opacity .4s ease;
 }
 /* zoom khi click */
 
@@ -359,7 +355,7 @@ position:relative;
 /* ảnh giữa */
 
 .gallery-item.active{
-transform:scale(1.25);
+transform:scale(1.15);
 z-index:5;
 }
 
@@ -376,14 +372,11 @@ filter:blur(2px);
 .gallery-item{
 flex:0 0 auto;
 flex-shrink:0;
-width:auto;
-height:260px;
+width:220px;
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden;
-border-radius:22px;
-transition:all .45s cubic-bezier(.22,.61,.36,1);
+transition:transform .4s ease, opacity .4s ease;
 }
 
 .gallery::-webkit-scrollbar{
@@ -1212,6 +1205,7 @@ document.getElementById("customAlert").style.display = "none"
 
 </body>
 </html>
+
 
 
 
